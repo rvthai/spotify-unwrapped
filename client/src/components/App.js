@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
+// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 // color pallete
 /*
@@ -8,24 +9,9 @@ White: #fffff
 */
 
 function App() {
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    callBackendAPI().then((res) => {
-      setMessage(res);
-    });
-  }, [setMessage]);
-
-  const callBackendAPI = async () => {
-    const response = await fetch("/express");
-    const body = await response.json();
-
-    return body.message;
-  };
-
   return (
     <div>
-      <p>{message}</p>
+      <a href="http://localhost:8888/login">Log in</a>
     </div>
   );
 }
