@@ -4,6 +4,7 @@
 }
 
 body {
+  margin: 0;
   background: #212121;
   color: #fff;
   font-family: "Circular", "sans-serif";
