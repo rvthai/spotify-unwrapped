@@ -1,5 +1,4 @@
-//mport { LoginButton } from "../styles";
-import styled from "styled-components";
+import { LoginButton } from "../styles";
 
 const container = {
   position: "absolute",
@@ -8,21 +7,12 @@ const container = {
   transform: "translate(-40%, -50%)",
   textAlign: "center",
 };
-
-const LoginButton = styled.a`
-  textDecoration: none,
-  color: #fff,
-  padding: 15px 50px,
-  background: #1DB954,
-  borderRadius: 25px,
-`;
+const url = "http://localhost:8888/login";
 
 const Login = () => (
   <div style={container}>
     <h1 style={{ fontSize: "85px" }}>Statify</h1>
-    <LoginButton href="http://localhost:8888/login">
-      LOG IN WITH SPOTIFY
-    </LoginButton>
+    <LoginButton href={url}>LOG IN WITH SPOTIFY</LoginButton>
   </div>
 );
 

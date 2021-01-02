@@ -1,9 +1,10 @@
 import { createGlobalStyle } from "styled-components";
+import CircularFont from "../fonts/CircularStd-Book.ttf";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: "Circular";
-    src: url("../fonts/CircularStd-Book.woff") format('woff');
+    src: url(${CircularFont}) format('truetype');
   }
 
   body {
