@@ -1,10 +1,5 @@
-const loginButtonStyle = {
-  textDecoration: "none",
-  color: "#fff",
-  padding: "15px 50px",
-  background: "#1DB954",
-  borderRadius: "25px",
-};
+//mport { LoginButton } from "../styles";
+import styled from "styled-components";
 
 const container = {
   position: "absolute",
@@ -14,20 +9,21 @@ const container = {
   textAlign: "center",
 };
 
-function Login() {
-  return (
-    <div style={container}>
-      <h1 style={{ fontSize: "85px" }}>Spotify</h1>
-      <h1
-        style={{ fontSize: "50px", paddingBottom: "1rem", marginTop: "-25px" }}
-      >
-        Vibe Check
-      </h1>
-      <a href="http://localhost:8888/login" style={loginButtonStyle}>
-        LOG IN WITH SPOTIFY
-      </a>
-    </div>
-  );
-}
+const LoginButton = styled.a`
+  textDecoration: none,
+  color: #fff,
+  padding: 15px 50px,
+  background: #1DB954,
+  borderRadius: 25px,
+`;
+
+const Login = () => (
+  <div style={container}>
+    <h1 style={{ fontSize: "85px" }}>Statify</h1>
+    <LoginButton href="http://localhost:8888/login">
+      LOG IN WITH SPOTIFY
+    </LoginButton>
+  </div>
+);
 
 export default Login;
