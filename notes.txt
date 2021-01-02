@@ -4,7 +4,11 @@ To do:
 [X] User profile (image, name, followers, following, and playlists)
 [ ] Top artists from different time ranges component
 [ ] Top tracks from different time ranges component
-[ ] Sign out
+[ ] Sign out button and mechanism
+[ ] Incorporate home page routing 
+[ ] Component decomposition and reorganization
+[ ] Separation of logic and render
+[ ] Styles in separate directory
 
 Advanced features:
 [ ] See track info
