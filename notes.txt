@@ -1,0 +1,31 @@
+To do:
+[X] Top artists 
+[X] Top tracks
+[X] User profile (image, name, followers, following, and playlists)
+[ ] Top artists from different time ranges component
+[ ] Top tracks from different time ranges component
+[ ] Sign out
+
+Advanced features:
+[ ] See track info
+[ ] See artist info on click
+[ ] Display playlists, followers, and following on click 
+[ ] Top genres pie chart?
+
+Stats:
+- top artists
+- top tracks
+- recently played
+- playlists
+- top genres
+- listening patterns over the years
+
+Pages:
+- Home
+- Top tracks
+- Top artists
+- Top genres
+- Audio features over the years
+- Recently played
+- Playlists 
+- signout
