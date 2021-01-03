@@ -2,19 +2,27 @@ import { useEffect, useState } from "react";
 
 const container = {
   display: "flex",
-  justifyContent: "center",
+  justifyContent: "space-between",
   marginTop: "2rem",
+  width: "1000px",
 };
 
 const trackStyles = {
   display: "flex",
-  alignContent: "center",
+  alignItems: "center",
   padding: "1em",
 };
 
 const artistStyles = {
   display: "flex",
-  alignContent: "center",
+  alignItems: "center",
+  padding: "1em",
+};
+
+const genreStyles = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
   padding: "1em",
 };
 
@@ -30,14 +38,16 @@ const sidebar = {
   position: "fixed",
   top: "0",
   left: "0",
-  width: "100px",
+  width: "150px",
   height: "100vh",
   background: "#121212",
 };
 
 const rightSideStyles = {
-  marginLeft: "100px",
+  marginLeft: "150px",
   marginTop: "5rem",
+  display: "flex",
+  justifyContent: "center",
 };
 
 function Profile(props) {
@@ -45,6 +55,18 @@ function Profile(props) {
   const [userFollows, setUserFollows] = useState(null);
   const [userPlaylists, setUserPlaylists] = useState(null);
   const [userRecentlyPlayed, setRecentlyPlayed] = useState(null);
+  const [topGenres, setTopGenres] = useState([
+    "Pop",
+    "Country",
+    "HipHop",
+    "R&B",
+    "EDM",
+    "Indie",
+    "Folk",
+    "Jazz",
+    "Techno",
+    "Rock",
+  ]);
 
   const [topTracks, setTopTracks] = useState(null);
   const [topArtists, setTopArtists] = useState(null);
@@ -77,7 +99,6 @@ function Profile(props) {
       }
     );
     const results = await data.json();
-    console.log(results);
     setUserFollows(results);
   };
 
@@ -86,6 +107,7 @@ function Profile(props) {
       headers: { Authorization: "Bearer " + props.accessToken },
     });
     const results = await data.json();
+    console.log(results);
     setUserProfile(results);
   };
 
@@ -120,9 +142,7 @@ function Profile(props) {
           <li>Top Tracks</li>
           <li>Top Artists</li>
           <li>Top Geners</li>
-          <li>Metrics</li>
-          <li>Recently Played</li>
-          <li>Playlists</li>
+          <li>Sign Out</li>
         </ul>
       </div>
       <div style={rightSideStyles}>
@@ -148,36 +168,49 @@ function Profile(props) {
               </p>
             </div>
           ) : null}
-          <p style={headerStyles}>
-            <span style={{ marginLeft: "1rem", marginRight: "1rem" }}>
-              Top Tracks
-            </span>
-            <span style={{ marginLeft: "1rem", marginRight: "1rem" }}>
-              Top Artists
-            </span>
-            <span style={{ marginLeft: "1rem", marginRight: "1rem" }}>
-              Top Genres
-            </span>
-            <span style={{ marginLeft: "1rem", marginRight: "1rem" }}>
-              Metrics
-            </span>
-            <span style={{ marginLeft: "1rem", marginRight: "1rem" }}>
-              Recently Played
-            </span>
-            <span style={{ marginLeft: "1rem", marginRight: "1rem" }}>
-              Playlists
-            </span>
-          </p>
+
           <div style={container}>
-            <div>
-              TOP TRACKS OF ALL TIME
+            <div style={{ width: "33%", marginRight: "2rem" }}>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <p>TOP ARTISTS OF ALL TIME</p>
+                <p style={{ opacity: 0.5 }}>See More</p>
+              </div>
+              {topArtists
+                ? topArtists.map((artist, index) => (
+                    <div key={index} style={artistStyles}>
+                      <img
+                        style={{
+                          width: "50px",
+                          height: "50px",
+                          borderRadius: "50%",
+                        }}
+                        src={artist.images[2].url}
+                        alt="album-cover"
+                      />
+                      <p
+                        style={{
+                          marginLeft: "1em",
+                        }}
+                      >
+                        {artist.name}
+                      </p>
+                    </div>
+                  ))
+                : null}
+            </div>
+
+            <div
+              style={{ width: "33%", marginLeft: "2rem", marginRight: "2rem" }}
+            >
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <p>TOP TRACKS OF ALL TIME</p>
+                <p style={{ opacity: 0.5 }}>See More</p>
+              </div>
               {topTracks
                 ? topTracks.map((track, index) => (
                     <div key={index} style={trackStyles}>
-                      <p>#{index + 1}</p>
                       <img
                         style={{
-                          marginLeft: "2em",
                           width: "50px",
                           height: "50px",
                         }}
@@ -188,29 +221,27 @@ function Profile(props) {
                     </div>
                   ))
                 : null}
-              <button>See more</button>
             </div>
-            <div>
-              TOP ARTISTS OF ALL TIME
-              {topArtists
-                ? topArtists.map((artist, index) => (
-                    <div key={index} style={artistStyles}>
-                      <p>#{index + 1}</p>
-                      <img
-                        style={{
-                          marginLeft: "2em",
-                          width: "50px",
-                          height: "50px",
-                          borderRadius: "50%",
-                        }}
-                        src={artist.images[2].url}
-                        alt="album-cover"
-                      />
-                      <p style={{ marginLeft: "1em" }}>{artist.name}</p>
-                    </div>
-                  ))
-                : null}
-              <button>See more</button>
+
+            <div style={{ width: "33%", marginLeft: "2rem" }}>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <p>TOP GENRES OF ALL TIME</p>
+                <p style={{ opacity: 0.5 }}>See More</p>
+              </div>
+              {topGenres.map((genre, index) => (
+                <div key={index} style={genreStyles}>
+                  <p>{genre}</p>
+                  <div
+                    style={{
+                      height: "25px",
+                      width: "150px",
+                      background: "#1db954",
+                      borderRadius: "25px",
+                      marginLeft: "2rem",
+                    }}
+                  ></div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
