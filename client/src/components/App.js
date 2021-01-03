@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { token } from "../utils";
+import { token } from "../logic";
 import { GlobalStyle } from "../styles";
 
 // Components
