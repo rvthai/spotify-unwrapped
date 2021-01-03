@@ -19,10 +19,7 @@ Advanced features:
 Stats:
 - top artists
 - top tracks
-- recently played
-- playlists
 - top genres
-- listening patterns over the years
 
 Pages:
 - Home
@@ -33,3 +30,7 @@ Pages:
 - Recently played
 - Playlists 
 - signout
+
+Algorithm to get top genres:
+- grab top songs and artists of all time and make hashmap of genres
+- grab the top ten
