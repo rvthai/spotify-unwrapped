@@ -1,4 +1,4 @@
-import { LoginButton } from "../styles";
+import { Button } from "../styles";
 
 const container = {
   position: "absolute",
@@ -7,12 +7,15 @@ const container = {
   transform: "translate(-40%, -50%)",
   textAlign: "center",
 };
+
 const url = "http://localhost:8888/login";
 
 const Login = () => (
   <div style={container}>
     <h1 style={{ fontSize: "85px" }}>Statify</h1>
-    <LoginButton href={url}>LOG IN WITH SPOTIFY</LoginButton>
+    <Button as="a" href={url}>
+      LOG IN WITH SPOTIFY
+    </Button>
   </div>
 );
 

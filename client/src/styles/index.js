@@ -1,4 +1,4 @@
 import GlobalStyle from "./GlobalStyle";
-import LoginButton from "./LoginButton";
+import Button from "./Button";
 
-export { GlobalStyle, LoginButton };
+export { GlobalStyle, Button };
