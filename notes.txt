@@ -34,3 +34,6 @@ Pages:
 Algorithm to get top genres:
 - grab top songs and artists of all time and make hashmap of genres
 - grab the top ten
+
+To Do:
+[ ] Incorporate all fonts
