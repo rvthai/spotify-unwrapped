@@ -1,39 +1,38 @@
 To do:
-[X] Top artists 
-[X] Top tracks
-[X] User profile (image, name, followers, following, and playlists)
-[ ] Top artists from different time ranges component
-[ ] Top tracks from different time ranges component
-[ ] Sign out button and mechanism
-[ ] Incorporate home page routing 
-[ ] Component decomposition and reorganization
-[ ] Separation of logic and render
-[ ] Styles in separate directory
+[ ] Spotify authorization
+[ ] Build server-side 
+[ ] Prototype application layout
+[ ] Styled-components
+[ ] React-router
+[ ] User info for profile page 
+[ ] Top tracks for top tracks page + top tracks for each time range
+[ ] Top artists for top artists page + top artists for each time range
+[ ] Top tracks and artists of all time (top ten) for profile page
+[ ] Top 
+[ ] Logout
+
+For later:
+[ ] Styling
+[ ] Code refactoring
 
 Advanced features:
-[ ] See track info
-[ ] See artist info on click
-[ ] Display playlists, followers, and following on click 
-[ ] Top genres pie chart?
+[ ] Track details
+[ ] Artist details 
+[ ] Display playlists, followers, and following on click
+[ ] Create playlist from top tracks display 
 
-Stats:
-- top artists
+-----------------------------------------------
+
+Main info per user:
 - top tracks
-- top genres
+- top artists
+- top genres (need to come up with own algorithm)
 
 Pages:
-- Home
-- Top tracks
-- Top artists
-- Top genres
-- Audio features over the years
-- Recently played
-- Playlists 
-- signout
-
-Algorithm to get top genres:
-- grab top songs and artists of all time and make hashmap of genres
-- grab the top ten
-
-To Do:
-[ ] Incorporate all fonts
+- Login Screen
+- Home/Profile 
+- Top Tracks 
+- Top Artists 
+- Top Genres 
+- Sign out page*
+* Most likely going to be a button
