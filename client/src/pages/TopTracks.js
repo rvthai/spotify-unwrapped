@@ -17,8 +17,6 @@ function TopTracks(props) {
   const getData = async () => {
     try {
       const response = await getTopTracks();
-      console.log("HERE");
-      console.log(response.data.items);
       setTopTracks(response.data.items);
     } catch (error) {
       console.log(error);

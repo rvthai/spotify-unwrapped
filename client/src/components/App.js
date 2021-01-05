@@ -3,7 +3,7 @@ import { token } from "../logic";
 import { GlobalStyle } from "../styles";
 
 // Components
-import Profile from "./Profile";
+import Home from "./Home";
 import Login from "./Login";
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
   return (
     <div>
       <GlobalStyle />
-      {accessToken ? <Profile accessToken={accessToken} /> : <Login />}
+      {accessToken ? <Home accessToken={accessToken} /> : <Login />}
     </div>
   );
 }
