@@ -1,12 +1,12 @@
 To do:
-[ ] Spotify authorization
-[ ] Build server-side 
-[ ] Prototype application layout
-[ ] Styled-components
-[ ] React-router
-[ ] User info for profile page 
-[ ] Top tracks for top tracks page + top tracks for each time range
-[ ] Top artists for top artists page + top artists for each time range
+[X] Spotify authorization
+[X] Build server-side 
+[X] Prototype application layout
+[X] Styled-components
+[X] React-router
+[X] User info for profile page 
+[X] Top tracks for top tracks page + top tracks for each time range
+[X] Top artists for top artists page + top artists for each time range
 [ ] Top tracks and artists of all time (top ten) for profile page
 [ ] Top 
 [ ] Logout
