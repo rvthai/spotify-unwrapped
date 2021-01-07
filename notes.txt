@@ -7,8 +7,8 @@ To do:
 [X] User info for profile page 
 [X] Top tracks for top tracks page + top tracks for each time range
 [X] Top artists for top artists page + top artists for each time range
-[ ] Top tracks and artists of all time (top ten) for profile page
-[ ] Top 
+[X] Top tracks and artists of all time (top ten) for profile page
+[ ] Top Genres of all time for profile page
 [ ] Logout
 
 For later:
@@ -36,3 +36,10 @@ Pages:
 - Top Genres 
 - Sign out page*
 * Most likely going to be a button
+
+-----------------------------------------------
+Top Genres Algorithm (since Spotify does not provide an API endpoint for this feature):
+1. Get top 50 tracks per range (depending on range user wants to see)
+2. For each track, extract the artist and add it to a list if not yet added 
+3. For each artist in that list, fetch their genres and calculate sum into a map
+4. Get the top ten...
