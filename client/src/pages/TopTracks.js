@@ -17,7 +17,7 @@ function TopTracks(props) {
 
   const getData = async () => {
     try {
-      const response = await getTopTracks(timeRange);
+      const response = await getTopTracks(timeRange, 50);
       setTopTracks(response.data.items);
     } catch (error) {
       console.log(error);
@@ -47,7 +47,7 @@ function TopTracks(props) {
       {topTracks
         ? topTracks.map((track, index) => (
             <div key={index} style={trackStyles}>
-              <p style={{ marginRight: "1em" }}>{index}</p>
+              <p style={{ marginRight: "1em" }}>{index + 1}</p>
               <img
                 style={{
                   width: "50px",

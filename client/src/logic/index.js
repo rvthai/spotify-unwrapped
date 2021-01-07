@@ -73,9 +73,9 @@ export const getUserData = async () => {
   return { userData, followeesData, playlistData };
 };
 
-export const getTopTracks = (time_range) =>
+export const getTopTracks = (time_range, limit) =>
   axios.get(
-    `https://api.spotify.com/v1/me/top/tracks?limit=50&time_range=${time_range}`,
+    `https://api.spotify.com/v1/me/top/tracks?limit=${limit}&time_range=${time_range}`,
     {
       headers: {
         Authorization: "Bearer " + token.access_token,
@@ -83,12 +83,19 @@ export const getTopTracks = (time_range) =>
     }
   );
 
-export const getTopArtists = (time_range) =>
+export const getTopArtists = (time_range, limit) =>
   axios.get(
-    `https://api.spotify.com/v1/me/top/artists?limit=50&time_range=${time_range}`,
+    `https://api.spotify.com/v1/me/top/artists?limit=${limit}&time_range=${time_range}`,
     {
       headers: {
         Authorization: "Bearer " + token.access_token,
       },
     }
   );
+
+export const getSeveralArtists = (ids) =>
+  axios.get(`https://api.spotify.com/v1/artists?ids=${ids}`, {
+    headers: {
+      Authorization: "Bearer " + token.access_token,
+    },
+  });
