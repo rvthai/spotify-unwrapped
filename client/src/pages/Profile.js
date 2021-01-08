@@ -10,6 +10,9 @@ import {
 import User from "components/User";
 import TopTracksPreview from "components/TopTracksPreview";
 import TopArtistsPreview from "components/TopArtistsPreview";
+import TopGenresPreview from "components/TopGenresPreview";
+import TopTrack from "components/TopTrack";
+import TopArtist from "components/TopArtist";
 
 function Profile() {
   const [user, setUser] = useState(null);
@@ -19,12 +22,38 @@ function Profile() {
   const [topTracks, setTopTracks] = useState(null);
   const [topArtists, setTopArtists] = useState(null);
 
+  const [topTrack, setTopTrack] = useState(null);
+  const [topArtist, setTopArtist] = useState(null);
+
+  const [topGenres, setTopGenres] = useState(null);
+  const [total, setTotal] = useState(0);
+
   useEffect(() => {
     getData();
     getTopTracksData();
     getTopArtistsData();
     getTopGenres();
+    getTopTrack();
+    getTopArtist();
   }, []);
+
+  const getTopTrack = async () => {
+    try {
+      const response = await getTopTracks("short_term", 1);
+      setTopTrack(response.data.items[0]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getTopArtist = async () => {
+    try {
+      const response = await getTopArtists("short_term", 1);
+      setTopArtist(response.data.items[0]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getData = async () => {
     try {
@@ -70,8 +99,6 @@ function Profile() {
       }
     }
 
-    //console.log(artists.length);
-
     let artists_list = [];
     while (artists.length > 0) {
       if (artists.length >= 50) {
@@ -81,7 +108,6 @@ function Profile() {
       }
     }
 
-    //console.log(artists_list);
     let genresMap = {};
     for (let i = 0; i < artists_list.length; i++) {
       let ids = artists_list[i].join(",");
@@ -99,7 +125,31 @@ function Profile() {
       }
     }
 
-    console.log(genresMap);
+    let sortable = [];
+    for (let genre in genresMap) {
+      sortable.push([genre, genresMap[genre]]);
+    }
+    sortable.sort((a, b) => b[1] - a[1]);
+    let new_list = sortable.splice(0, 5);
+
+    // get sum
+    let total = 0;
+    for (let elem of new_list) {
+      total += elem[1];
+    }
+    setTotal(total);
+    // console.log(total);
+
+    let new_map = {};
+    for (let elem of new_list) {
+      let key = elem[0];
+      let value = elem[1];
+      //new_map[key] = Math.round((value / total) * 100);
+      new_map[key] = value;
+    }
+
+    console.log(new_map);
+    setTopGenres(new_map);
   };
 
   if (!user || !followees || !playlists) {
@@ -111,7 +161,7 @@ function Profile() {
       {user ? (
         <User
           username={user.display_name}
-          image={user.images[0].url}
+          image={user.images[0] ? user.images[0].url : null}
           followers={user.followers.total}
           following={followees.artists.total}
           playlists={playlists.total}
@@ -119,6 +169,11 @@ function Profile() {
       ) : null}
       {topTracks ? <TopTracksPreview data={topTracks} /> : null}
       {topArtists ? <TopArtistsPreview data={topArtists} /> : null}
+      {topTrack ? <TopTrack data={topTrack} /> : null}
+      {topArtist ? <TopArtist data={topArtist} /> : null}
+      {topGenres ? (
+        <TopGenresPreview genresData={topGenres} total={total} />
+      ) : null}
     </div>
   );
 }
