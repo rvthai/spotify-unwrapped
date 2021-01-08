@@ -11,6 +11,7 @@ To do:
 [X] Current top track front page profile
 [X] Current top artist front page profile
 [X] Top Genres of all time for profile page
+[X] Top genres page with time range option
 [ ] Logout
 
 For later:
@@ -46,3 +47,10 @@ Top Genres Algorithm (since Spotify does not provide an API endpoint for this fe
 3. For each artist in that list and count the total occurences of each genre
 4. Get the top ten most listened genres from that list
 5. Sum up the occurences from the top ten and calculate the percentages/porportions for a pie chart
+
+Authorization, Refresh Tokens, Login and Logout Algorithm:
+1. Get the token from hash params
+2. If there is an error or token has expired (i can hardset a time frame), then refresh the access token and store in local storage
+3. If local storage is missing any tokens (access or refresh) set it with the hash params value
+4. Get and return the local access token to be used 
+5. On sign out, just clear local storage of all tokens and reload the page
