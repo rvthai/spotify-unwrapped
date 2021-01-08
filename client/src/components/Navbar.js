@@ -1,6 +1,6 @@
 import SpotifyLogo from "../images/spotify-logo.png";
 import { withRouter, Link } from "react-router-dom";
-import { findByLabelText } from "@testing-library/react";
+import { logout } from "../logic";
 
 const sidebar = {
   position: "fixed",
@@ -21,7 +21,7 @@ function Navbar(props) {
       <Link to="/top-tracks">Top Tracks</Link>
       <Link to="/top-artists">Top Artists</Link>
       <Link to="/top-genres">Top Genres</Link>
-      <Link to="/sign-out">Sign Out</Link>
+      <button onClick={() => logout()}>Sign Out</button>
     </div>
   );
 }
