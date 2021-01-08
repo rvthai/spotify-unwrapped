@@ -8,7 +8,9 @@ To do:
 [X] Top tracks for top tracks page + top tracks for each time range
 [X] Top artists for top artists page + top artists for each time range
 [X] Top tracks and artists of all time (top ten) for profile page
-[ ] Top Genres of all time for profile page
+[X] Current top track front page profile
+[X] Current top artist front page profile
+[X] Top Genres of all time for profile page
 [ ] Logout
 
 For later:
@@ -41,5 +43,6 @@ Pages:
 Top Genres Algorithm (since Spotify does not provide an API endpoint for this feature):
 1. Get top 50 tracks per range (depending on range user wants to see)
 2. For each track, extract the artist and add it to a list if not yet added 
-3. For each artist in that list, fetch their genres and calculate sum into a map
-4. Get the top ten...
+3. For each artist in that list and count the total occurences of each genre
+4. Get the top ten most listened genres from that list
+5. Sum up the occurences from the top ten and calculate the percentages/porportions for a pie chart
