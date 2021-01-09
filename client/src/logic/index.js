@@ -33,7 +33,7 @@ const getLocalRefreshToken = () =>
 const refreshAccessToken = async () => {
   try {
     const { data } = await axios.get(
-      `https://api.spotify.com/v1/refresh_token?refresh_token=${getLocalRefreshToken()}`
+      `/refresh_token?refresh_token=${getLocalRefreshToken()}`
     );
     const { access_token } = data;
     setLocalAccessToken(access_token);
@@ -46,8 +46,7 @@ const refreshAccessToken = async () => {
 
 const getAccessToken = () => {
   const { error, access_token, refresh_token } = getHashParams();
-  console.log(access_token);
-  console.log(refresh_token);
+
   // hanlde on error
   if (error) {
     console.log(error);

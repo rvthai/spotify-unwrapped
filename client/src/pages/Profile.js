@@ -148,7 +148,6 @@ function Profile() {
       new_map[key] = value;
     }
 
-    console.log(new_map);
     setTopGenres(new_map);
   };
 
