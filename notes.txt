@@ -1,4 +1,4 @@
-To do:
+Implementation ToDo List:
 [X] Spotify authorization
 [X] Build server-side 
 [X] Prototype application layout
@@ -12,7 +12,10 @@ To do:
 [X] Current top artist front page profile
 [X] Top Genres of all time for profile page
 [X] Top genres page with time range option
-[ ] Logout
+[X] Logout function
+
+Styling ToDo List:
+[ ] Navbar
 
 For later:
 [ ] Styling
