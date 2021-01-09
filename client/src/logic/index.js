@@ -31,13 +31,11 @@ const getLocalRefreshToken = () =>
   window.localStorage.getItem("spotify_refresh_token");
 
 const refreshAccessToken = async () => {
-  console.log("here", getLocalRefreshToken());
   try {
     const { data } = await axios.get(
       `https://api.spotify.com/v1/refresh_token?refresh_token=${getLocalRefreshToken()}`
     );
     const { access_token } = data;
-    console.log("GAREN", access_token);
     setLocalAccessToken(access_token);
     window.location.reload();
     return;
@@ -119,20 +117,20 @@ export const logout = () => {
 
 export const getUserData = async () => {
   const userData = await axios.get(`https://api.spotify.com/v1/me`, {
-    headers: { Authorization: "Bearer " + token.access_token },
+    headers: { Authorization: "Bearer " + token }, // BECAUSE OF THIS IT DIDNT WORK
   });
 
   const followeesData = await axios.get(
     "https://api.spotify.com/v1/me/following?type=artist",
     {
-      headers: { Authorization: "Bearer " + token.access_token },
+      headers: { Authorization: "Bearer " + token },
     }
   );
 
   const playlistData = await axios.get(
     `https://api.spotify.com/v1/me/playlists`,
     {
-      headers: { Authorization: "Bearer " + token.access_token },
+      headers: { Authorization: "Bearer " + token },
     }
   );
 
@@ -144,7 +142,7 @@ export const getTopTracks = (time_range, limit) =>
     `https://api.spotify.com/v1/me/top/tracks?limit=${limit}&time_range=${time_range}`,
     {
       headers: {
-        Authorization: "Bearer " + token.access_token,
+        Authorization: "Bearer " + token,
       },
     }
   );
@@ -154,7 +152,7 @@ export const getTopArtists = (time_range, limit) =>
     `https://api.spotify.com/v1/me/top/artists?limit=${limit}&time_range=${time_range}`,
     {
       headers: {
-        Authorization: "Bearer " + token.access_token,
+        Authorization: "Bearer " + token,
       },
     }
   );
@@ -162,6 +160,6 @@ export const getTopArtists = (time_range, limit) =>
 export const getSeveralArtists = (ids) =>
   axios.get(`https://api.spotify.com/v1/artists?ids=${ids}`, {
     headers: {
-      Authorization: "Bearer " + token.access_token,
+      Authorization: "Bearer " + token,
     },
   });
