@@ -1,22 +1,24 @@
-import { Button } from "../styles";
+import { Button, Main, mixins } from "../styles";
+import styled from "styled-components";
 
-const container = {
-  position: "absolute",
-  top: "40%",
-  left: "50%",
-  transform: "translate(-40%, -50%)",
-  textAlign: "center",
-};
+const LoginContainer = styled(Main)`
+  ${mixins.flexCenter};
+  flex-direction: column;
+`;
 
-const url = "http://localhost:8888/login";
+const LoginButton = styled(Button)`
+  border-radius: 25px;
+`;
+
+const URL = "http://localhost:8888/login";
 
 const Login = () => (
-  <div style={container}>
-    <h1 style={{ fontSize: "85px" }}>Statify</h1>
-    <Button as="a" href={url}>
+  <LoginContainer>
+    <h1>Statify</h1>
+    <Button as="a" href={URL}>
       LOG IN WITH SPOTIFY
     </Button>
-  </div>
+  </LoginContainer>
 );
 
 export default Login;

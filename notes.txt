@@ -15,7 +15,8 @@ Implementation ToDo List:
 [X] Logout function
 
 Styling ToDo List:
-[ ] Navbar
+[ ] GlobalStyles
+[ ] Login Screen
 
 For later:
 [ ] Styling

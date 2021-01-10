@@ -30,23 +30,61 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
   }
 
-  body {
-    margin: 0;
-    background: #212121;
-    color: #fff;
-    font-family: "Circular Std", "sans-serif";
-    font-weight: 400;
+  html {
+    box-sizing: border-box;
   }
 
-  button {
-    font-family: "Circular Std";
-    font-weight: 700;
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit,
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  body {
+    min-height: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Circular Std", "sans-serif";
+    foint-size: 16px;
+    background-color: #212121;
     color: #fff;
+  }
+
+  h1 {
+    letter-spacing: -0.025em;
+    margin: 0 0 10px;
+    font-weight: 900;
+    font-size: 90px;
+  }
+
+  a {
+    letter-spacing: 2px;
     text-decoration: none;
-    padding: 15px 50px;
-    background: #1db954;
-    border-radius: 25px;
+    color: #fff;
   }
 `;
 
 export default GlobalStyle;
+
+/*
+  ${media.desktop`
+    padding: 60px 50px;
+  `};
+  ${media.tablet`
+    padding: 50px 40px;
+  `};
+  ${media.phablet`
+    padding: 30px 25px;
+  `};
+  h2 {
+    ${media.tablet`
+      text-align: center;
+    `};
+  }
+*/
