@@ -9,7 +9,7 @@ const IconLogout = () => (
     role="img"
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
-    class="StyledIconBase-ea9ulj-0 jZGNBW"
+    className="StyledIconBase-ea9ulj-0 jZGNBW"
   >
     <title>SignOutAlt icon</title>
     <path

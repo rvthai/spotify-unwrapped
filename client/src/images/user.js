@@ -3,13 +3,11 @@ import React from "react";
 const IconUser = () => (
   <svg
     viewBox="0 0 448 512"
-    height="25"
-    width="25"
     focusable="false"
     role="img"
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
-    class="StyledIconBase-ea9ulj-0 jZGNBW"
+    className="StyledIconBase-ea9ulj-0 jZGNBW"
   >
     <title>User icon</title>
     <path

@@ -16,7 +16,9 @@ Implementation ToDo List:
 
 Styling ToDo List:
 [ ] GlobalStyles
+[ ] Media queries, mixins, and themes
 [ ] Login Screen
+[ ] Navbar
 
 For later:
 [ ] Styling
@@ -57,4 +59,12 @@ Authorization, Refresh Tokens, Login and Logout Algorithm:
 2. If there is an error or token has expired (i can hardset a time frame), then refresh the access token and store in local storage
 3. If local storage is missing any tokens (access or refresh) set it with the hash params value
 4. Get and return the local access token to be used 
-5. On sign out, just clear local storage of all tokens and reload the page
+5. On sign out, just clear local storage of all tokens and reload the page\
+
+-----------------------------------------------
+Color Pallete:
+- Green: #1db954	(29,185,84) 
+- Dark Gray: #212121	(33,33,33)
+- Black: #121212	(18,18,18)
+- Gray: #535353	(83,83,83)
+- Light Gray: #b3b3b3	(179,179,179)

@@ -58,6 +58,7 @@ function Profile() {
   const getData = async () => {
     try {
       const { userData, followeesData, playlistData } = await getUserData();
+      // console.log(userData.data);
       setUser(userData.data);
       setFollowees(followeesData.data);
       setPlaylists(playlistData.data);
@@ -166,13 +167,13 @@ function Profile() {
           playlists={playlists.total}
         />
       ) : null}
-      {topTrack ? <TopTrack data={topTrack} /> : null}
+      {/* {topTrack ? <TopTrack data={topTrack} /> : null}
       {topArtist ? <TopArtist data={topArtist} /> : null}
       {topTracks ? <TopTracksPreview data={topTracks} /> : null}
       {topArtists ? <TopArtistsPreview data={topArtists} /> : null}
       {topGenres ? (
         <TopGenresPreview genresData={topGenres} total={total} />
-      ) : null}
+      ) : null} */}
     </div>
   );
 }

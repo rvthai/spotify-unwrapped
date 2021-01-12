@@ -6,6 +6,8 @@ import IconTrack from "./track";
 import IconGenre from "./genre";
 import IconLogout from "./logout";
 
+import UnknownIcon from "./unknown";
+
 export {
   IconSpotify,
   IconGithub,
@@ -14,4 +16,5 @@ export {
   IconTrack,
   IconGenre,
   IconLogout,
+  UnknownIcon,
 };

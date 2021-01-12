@@ -6,7 +6,7 @@ const IconSpotify = () => (
     focusable="false"
     data-prefix="fab"
     data-icon="spotify"
-    class="svg-inline--fa fa-spotify fa-w-16 bb"
+    className="svg-inline--fa fa-spotify fa-w-16 bb"
     role="img"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 496 512"

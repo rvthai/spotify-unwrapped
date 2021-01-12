@@ -35,6 +35,12 @@ const GithubIcon = styled(Icon)`
   }
 `;
 
+const UserIcon = styled(Icon)`
+  svg {
+    width: 25px;
+  }
+`;
+
 const Links = styled.div`
   display: flex;
   flex-direction: column;
@@ -67,7 +73,9 @@ function Navbar() {
       </SpotifyIcon>
       <Links>
         <RouterLink>
-          <IconUser />
+          <UserIcon>
+            <IconUser />
+          </UserIcon>
           <Link to="/">Profile</Link>
         </RouterLink>
 
