@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getSeveralArtists, getTopTracks } from "../logic";
+import { getSeveralArtists, getTopTracks } from "../api";
 
 import TopGenresPreview from "components/TopGenresPreview";
 

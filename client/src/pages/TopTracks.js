@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getTopTracks } from "../logic";
+import { getTopTracks } from "../api";
 
 const trackStyles = {
   display: "flex",

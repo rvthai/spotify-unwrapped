@@ -4,7 +4,7 @@ import {
   getTopTracks,
   getTopArtists,
   getSeveralArtists,
-} from "../logic";
+} from "../api";
 
 // Components
 import User from "components/User";
@@ -166,10 +166,10 @@ function Profile() {
           playlists={playlists.total}
         />
       ) : null}
-      {topTracks ? <TopTracksPreview data={topTracks} /> : null}
-      {topArtists ? <TopArtistsPreview data={topArtists} /> : null}
       {topTrack ? <TopTrack data={topTrack} /> : null}
       {topArtist ? <TopArtist data={topArtist} /> : null}
+      {topTracks ? <TopTracksPreview data={topTracks} /> : null}
+      {topArtists ? <TopArtistsPreview data={topArtists} /> : null}
       {topGenres ? (
         <TopGenresPreview genresData={topGenres} total={total} />
       ) : null}

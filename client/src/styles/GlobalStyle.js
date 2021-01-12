@@ -63,10 +63,10 @@ const GlobalStyle = createGlobalStyle`
     font-size: 90px;
   }
 
-  a {
-    letter-spacing: 2px;
-    text-decoration: none;
-    color: #fff;
+  h2 {
+    margin: 0 0 10px;
+    font-weight: 700;
+    font-size: 50px;
   }
 `;
 

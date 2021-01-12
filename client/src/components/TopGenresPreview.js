@@ -32,6 +32,7 @@ function TopGenresPreview(props) {
           "#00b294",
           "#bad80a",
         ],
+        borderWidth: 0,
       },
     ],
   };
@@ -57,8 +58,8 @@ function TopGenresPreview(props) {
   return (
     <div>
       Top Genres of All Time
-      <Pie data={data} width={150} height={50} options={options} />
-      {/* <Doughnut data={data} width={200} height={150} options={options} /> */}
+      {/* <Pie data={data} width={150} height={50} options={options} /> */}
+      <Doughnut data={data} width={150} height={50} options={options} />
     </div>
   );
 }

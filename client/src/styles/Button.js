@@ -10,8 +10,21 @@ const Button = styled.button`
   &:hover {
     background: #1ed760;
   }
+
+  &:focus {
+    background: #18ac4d;
+  }
+
+  &:active {
+    background: #1aa34a;
+  }
 `;
 
 export default Button;
 
-/*#1db954 to #1ED760*/
+/*
+Original: #1db954
+#4bdf80 or #1ed760 hover
+#18ac4d focus
+#1aa34a active
+*/

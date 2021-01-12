@@ -1,4 +1,4 @@
-import { token } from "../logic";
+import { token } from "../api";
 import { GlobalStyle } from "../styles";
 
 // Components

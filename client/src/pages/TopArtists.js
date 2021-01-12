@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getTopArtists } from "../logic";
+import { getTopArtists } from "../api";
 
 function TopArtists() {
   const [topArtists, setTopArtists] = useState(null);
