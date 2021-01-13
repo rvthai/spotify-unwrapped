@@ -1,6 +1,6 @@
 import React from "react";
 
-const IconTrack = () => (
+const TrackIcon = () => (
   <svg
     viewBox="0 0 20 20"
     height="25"
@@ -16,4 +16,4 @@ const IconTrack = () => (
   </svg>
 );
 
-export default IconTrack;
+export default TrackIcon;

@@ -1,6 +1,6 @@
 import React from "react";
 
-const IconSpotify = () => (
+const SpotifyIcon = () => (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -18,4 +18,4 @@ const IconSpotify = () => (
   </svg>
 );
 
-export default IconSpotify;
+export default SpotifyIcon;

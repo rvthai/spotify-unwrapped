@@ -1,76 +1,114 @@
-import {
-  IconSpotify,
-  IconGithub,
-  IconArtist,
-  IconUser,
-  IconTrack,
-  IconGenre,
-  IconLogout,
-} from "images";
-import { withRouter, Link, NavLink, useLocation } from "react-router-dom";
-import { logout } from "../api";
-import { NavbarStyle, Icon, theme, mixins } from "styles";
+import React from "react";
+import { withRouter, NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { theme, mixins, media } from "styles";
+//import { logout } from "../api";
 
-const SpotifyIcon = styled(Icon)`
-  color: #1db954;
-  margin-top: 2em;
+// Styled Components
+import { Nav } from "styles";
+
+// Icons
+import {
+  SpotifyIcon,
+  GithubIcon,
+  UserIcon,
+  TrackIcon,
+  ArtistIcon,
+  GenreIcon,
+  LogoutIcon,
+} from "icons";
+
+const Logo = styled.div`
+  margin: 2em 0;
+  cursor: pointer;
+  transition: ${theme.transition};
+  border-radius: 50%;
 
   svg {
-    width: 60px;
+    display: block;
+  }
+
+  ${media.tablet`
+    display: none;
+  `}
+`;
+
+const SpotifyLogo = styled(Logo)`
+  color: ${theme.color.green};
+  width: 60px;
+
+  &:hover {
+    color: ${theme.color.lightGreen};
   }
 `;
 
-const GithubIcon = styled(Icon)`
-  color: ${theme.color.lightGray3};
-  margin-bottom: 2em;
-  transition: all 0.3s;
+const GithubLogo = styled(Logo)`
+  color: ${theme.color.gray};
+  width: 40px;
 
   &:hover {
     color: ${theme.color.white};
   }
-
-  svg {
-    width: 40px;
-  }
 `;
 
-const Menu = styled.ul`
-  list-style: none;
-  padding-left: 0;
+const Menu = styled.div`
+  ${mixins.flexColumnCenter}
 `;
 
 const MenuItem = styled(NavLink)`
   ${mixins.flexColumnCenter}
-  color: ${theme.color.lightGray3};
-  transition: all 0.2s;
+  color: ${theme.color.lightGray};
+  transition: ${theme.transition}
   cursor: pointer;
   padding: 1.5em;
   text-decoration: none;
-  border-left: 5px solid transparent;
   font-size: 12px;
 
   &:hover {
     color: ${theme.color.white};
-    background-color: ${theme.color.gray};
+    background-color: ${theme.color.darkGray};
   }
 
   svg {
     width: 20px;
     margin-bottom: 0.5em;
   }
+
+  ${media.widescreen`
+    border-left: 5px solid transparent;
+  `}
+
+  ${media.tablet`
+    border-bottom: 5px solid transparent;
+  `}
 `;
 
-const activeClass = {
-  backgroundColor: `${theme.color.gray}`,
-  borderLeft: `solid 5px ${theme.color.green}`,
+const activeStyle = {
+  backgroundColor: `${theme.color.darkGray}`,
+  borderColor: `${theme.color.green}`,
   color: `${theme.color.white}`,
 };
 
 function Navbar() {
   return (
-    <NavbarStyle>
-      <SpotifyIcon>
+    <Nav>
+      <SpotifyLogo>
+        <SpotifyIcon />
+      </SpotifyLogo>
+
+      <Menu>
+        <MenuItem exact to="/" activeStyle={activeStyle}>
+          Profile
+        </MenuItem>
+        <MenuItem exact to="/top-tracks" activeStyle={activeStyle}>
+          Top Tracks
+        </MenuItem>
+      </Menu>
+
+      <GithubLogo>
+        <GithubIcon />
+      </GithubLogo>
+      {/* <SpotifyIcon>
         <IconSpotify />
       </SpotifyIcon>
       <Menu>
@@ -107,8 +145,8 @@ function Navbar() {
       </Menu>
       <GithubIcon as="a" href="https://github.com/rvthai/spotify-profile">
         <IconGithub />
-      </GithubIcon>
-    </NavbarStyle>
+      </GithubIcon> */}
+    </Nav>
   );
 }
 

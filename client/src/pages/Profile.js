@@ -158,7 +158,7 @@ function Profile() {
 
   return (
     <div style={{ marginLeft: "200px" }}>
-      {user ? (
+      {/* {user ? (
         <User
           username={user.display_name}
           image={user.images[0] ? user.images[0].url : null}
@@ -166,7 +166,7 @@ function Profile() {
           following={followees.artists.total}
           playlists={playlists.total}
         />
-      ) : null}
+      ) : null} */}
       {/* {topTrack ? <TopTrack data={topTrack} /> : null}
       {topArtist ? <TopArtist data={topArtist} /> : null}
       {topTracks ? <TopTracksPreview data={topTracks} /> : null}

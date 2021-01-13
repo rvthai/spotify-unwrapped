@@ -19,20 +19,3 @@ Landscape phones: 480px
 Smartphones: 376px
 Tiny phones: 320px
 */
-
-/*
-  ${media.desktop`
-    padding: 60px 50px;
-  `};
-  ${media.tablet`
-    padding: 50px 40px;
-  `};
-  ${media.phablet`
-    padding: 30px 25px;
-  `};
-  h2 {
-    ${media.tablet`
-      text-align: center;
-    `};
-  }
-  */

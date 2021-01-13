@@ -1,16 +1,22 @@
 import styled from "styled-components";
 
-const NavbarStyle = styled.nav`
+const Nav = styled.nav`
   position: fixed;
-  top: 0;
+  min-height: 100vh;
   left: 0;
   background: #121212;
-  min-height: 100vh;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   box-shadow: -3px 0 5px 0 #000;
+
+  @media screen and (max-width: 768px) {
+    min-height: 0;
+    bottom: 0;
+    width: 100%;
+  }
 `;
 
-export default NavbarStyle;
+export default Nav;

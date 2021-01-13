@@ -1,10 +1,8 @@
 import React from "react";
 
-const IconArtist = () => (
+const ArtistIcon = () => (
   <svg
     viewBox="0 0 20 20"
-    height="25"
-    width="25"
     focusable="false"
     role="img"
     fill="currentColor"
@@ -15,4 +13,4 @@ const IconArtist = () => (
   </svg>
 );
 
-export default IconArtist;
+export default ArtistIcon;

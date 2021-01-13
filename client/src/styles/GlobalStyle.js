@@ -71,20 +71,3 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export default GlobalStyle;
-
-/*
-  ${media.desktop`
-    padding: 60px 50px;
-  `};
-  ${media.tablet`
-    padding: 50px 40px;
-  `};
-  ${media.phablet`
-    padding: 30px 25px;
-  `};
-  h2 {
-    ${media.tablet`
-      text-align: center;
-    `};
-  }
-*/
