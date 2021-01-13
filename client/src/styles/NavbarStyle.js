@@ -10,6 +10,7 @@ const NavbarStyle = styled.nav`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  box-shadow: -3px 0 5px 0 #000;
 `;
 
 export default NavbarStyle;
