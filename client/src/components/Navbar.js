@@ -9,7 +9,7 @@ import {
 } from "images";
 import { withRouter, Link } from "react-router-dom";
 import { logout } from "../api";
-import { NavbarStyle, Icon } from "styles";
+import { NavbarStyle, Icon, theme, mixins } from "styles";
 import styled from "styled-components";
 
 const SpotifyIcon = styled(Icon)`
@@ -35,33 +35,35 @@ const GithubIcon = styled(Icon)`
   }
 `;
 
-const UserIcon = styled(Icon)`
-  svg {
-    width: 25px;
-  }
+const Menu = styled.ul`
+  list-style: none;
+  padding-left: 0;
 `;
 
-const Links = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const RouterLink = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1em 0;
-  width: 100%;
+const MenuItem = styled.li`
+  ${mixins.flexColumnCenter}
+  color: ${theme.color.lightGray};
+  transition: all 0.2s;
+  cursor: pointer;
+  padding: 1em 1em;
 
   a {
+    color: ${theme.color.lightGray};
+    transition: all 0.2s;
     text-decoration: none;
-    color: #9b9b9b;
-    transition: all 0.3s;
   }
 
-  a:hover {
-    color: #fff;
+  &:hover {
+    color: ${theme.color.white};
+    background-color: #212121;
+
+    a {
+      color: ${theme.color.white};
+    }
+  }
+
+  svg {
+    width: 25px;
   }
 `;
 
@@ -71,36 +73,34 @@ function Navbar() {
       <SpotifyIcon>
         <IconSpotify />
       </SpotifyIcon>
-      <Links>
-        <RouterLink>
-          <UserIcon>
-            <IconUser />
-          </UserIcon>
+      <Menu>
+        <MenuItem>
+          <IconUser />
           <Link to="/">Profile</Link>
-        </RouterLink>
+        </MenuItem>
 
-        <RouterLink>
+        <MenuItem>
           <IconTrack />
           <Link to="/top-tracks">Top Tracks</Link>
-        </RouterLink>
+        </MenuItem>
 
-        <RouterLink>
+        <MenuItem>
           <IconArtist />
           <Link to="/top-artists">Top Artists</Link>
-        </RouterLink>
+        </MenuItem>
 
-        <RouterLink>
+        <MenuItem>
           <IconGenre />
           <Link to="/top-genres">Top Genres</Link>
-        </RouterLink>
+        </MenuItem>
 
-        <RouterLink>
+        <MenuItem>
           <IconLogout />
           <Link to="/">Sign Out</Link>
-        </RouterLink>
+        </MenuItem>
 
         {/* <button onClick={() => logout()}>Sign Out</button> */}
-      </Links>
+      </Menu>
       <GithubIcon>
         <IconGithub />
       </GithubIcon>

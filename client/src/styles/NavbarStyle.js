@@ -8,7 +8,6 @@ const NavbarStyle = styled.nav`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 0 1em;
   justify-content: space-between;
   align-items: center;
 `;

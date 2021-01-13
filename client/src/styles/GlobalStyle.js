@@ -51,7 +51,7 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-family: "Circular Std", "sans-serif";
-    foint-size: 16px;
+    font-size: 16px;
     background-color: #212121;
     color: #fff;
   }
