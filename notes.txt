@@ -68,3 +68,13 @@ Color Pallete:
 - Black: #121212	(18,18,18)
 - Gray: #535353	(83,83,83)
 - Light Gray: #b3b3b3	(179,179,179)
+
+Displays:
+- Big desktops : 1440px
+- Desktops: 1200 px
+- Laptops: 1000 px
+- Tablets: 768 px
+- Portrait tablets: 600 px
+- Landscape phones: 480px
+- Smartphones: 376px
+- Tiny phones: 320px
