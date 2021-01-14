@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { theme, mixins, media } from "styles";
-//import { logout } from "../api";
+import { logout } from "../api";
 
 // Styled Components
 import { Nav } from "styles";
@@ -60,18 +60,7 @@ const Menu = styled.div`
   `}
 `;
 
-const MenuLink = styled(NavLink)`
-  text-decoration: none;
-  color: red;
-
-  active {
-    border-color: ${theme.color.lightGreen};
-    color: blue;
-    background-color: ${theme.color.darkGray};
-  }
-`;
-
-const MenuItem = styled.div`
+const MenuItem = styled(NavLink)`
   max-height: 40px;
   ${mixins.flexColumn}
   ${mixins.flexCenter}
@@ -82,6 +71,12 @@ const MenuItem = styled.div`
   text-decoration: none;
   font-size: 11px;
   border-left: 5px solid transparent;
+
+  &.active {
+    border-color: ${theme.color.lightGreen};
+    color: ${theme.color.white};
+    background-color: ${theme.color.darkGray};
+  }
 
   &:hover {
     color: ${theme.color.white};
@@ -103,6 +98,12 @@ const MenuItem = styled.div`
   `}
 `;
 
+const handleLogout = (e) => {
+  e.preventDefault();
+  console.log("ya");
+  logout();
+};
+
 function Navbar() {
   return (
     <Nav>
@@ -111,13 +112,11 @@ function Navbar() {
       </SpotifyLogo>
 
       <Menu>
-        <MenuItem>
-          <MenuLink exact to="/">
-            <UserIcon />
-            Profile
-          </MenuLink>
+        <MenuItem exact to="/">
+          <UserIcon />
+          Profile
         </MenuItem>
-        {/* <MenuItem exact to="/top-tracks">
+        <MenuItem exact to="/top-tracks">
           <TrackIcon />
           Top Tracks
         </MenuItem>
@@ -128,8 +127,8 @@ function Navbar() {
         <MenuItem exact to="/top-genres">
           <GenreIcon />
           Top Genres
-        </MenuItem> */}
-        <MenuItem>
+        </MenuItem>
+        <MenuItem exact to="/sign-out" onClick={handleLogout}>
           <LogoutIcon />
           Logout
         </MenuItem>
