@@ -1,4 +1,4 @@
-import { IconUser } from "images";
+import { UserIcon } from "icons";
 import styled from "styled-components";
 
 const UnknownProfile = styled.div`
@@ -28,7 +28,7 @@ function User(props) {
         />
       ) : (
         <UnknownProfile>
-          <IconUser />
+          <UserIcon />
         </UnknownProfile>
       )}
       <h2>{props.username}</h2>

@@ -7,11 +7,24 @@ const mixins = {
     align-items: center;
   `,
 
-  flexColumnCenter: css`
+  flexAlignCenter: css`
+    display: flex;
+    align-items: center;
+  `,
+
+  flexSpaceBetween: css`
+    display: flex;
+    justify-content: space-between;
+  `,
+
+  flexColumn: css`
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  `,
+
+  flexRow: css`
+    display: flex;
+    flex-direction: row;
   `,
 };
 

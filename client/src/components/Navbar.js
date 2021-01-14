@@ -35,7 +35,7 @@ const Logo = styled.div`
 
 const SpotifyLogo = styled(Logo)`
   color: ${theme.color.green};
-  width: 60px;
+  width: 50px;
 
   &:hover {
     color: ${theme.color.lightGreen};
@@ -44,7 +44,7 @@ const SpotifyLogo = styled(Logo)`
 
 const GithubLogo = styled(Logo)`
   color: ${theme.color.gray};
-  width: 40px;
+  width: 30px;
 
   &:hover {
     color: ${theme.color.white};
@@ -52,17 +52,36 @@ const GithubLogo = styled(Logo)`
 `;
 
 const Menu = styled.div`
-  ${mixins.flexColumnCenter}
+  ${mixins.flexColumn}
+  ${media.tablet`
+    width: 100%;
+    ${mixins.flexRow}
+    ${mixins.flexSpaceBetween}
+  `}
 `;
 
-const MenuItem = styled(NavLink)`
-  ${mixins.flexColumnCenter}
-  color: ${theme.color.lightGray};
-  transition: ${theme.transition}
-  cursor: pointer;
-  padding: 1.5em;
+const MenuLink = styled(NavLink)`
   text-decoration: none;
-  font-size: 12px;
+  color: red;
+
+  active {
+    border-color: ${theme.color.lightGreen};
+    color: blue;
+    background-color: ${theme.color.darkGray};
+  }
+`;
+
+const MenuItem = styled.div`
+  max-height: 40px;
+  ${mixins.flexColumn}
+  ${mixins.flexCenter}
+  color: ${theme.color.lightGray};
+  transition: ${theme.transition};
+  cursor: pointer;
+  padding: 1.25em;
+  text-decoration: none;
+  font-size: 11px;
+  border-left: 5px solid transparent;
 
   &:hover {
     color: ${theme.color.white};
@@ -71,23 +90,18 @@ const MenuItem = styled(NavLink)`
 
   svg {
     width: 20px;
+    height: 20px;
     margin-bottom: 0.5em;
   }
 
-  ${media.widescreen`
-    border-left: 5px solid transparent;
-  `}
-
   ${media.tablet`
-    border-bottom: 5px solid transparent;
+    flex: 1 1 0;
+    padding: 1em 0;
+    max-height: 100%;
+    border-top: 5px solid transparent;
+    border-left: 0;
   `}
 `;
-
-const activeStyle = {
-  backgroundColor: `${theme.color.darkGray}`,
-  borderColor: `${theme.color.green}`,
-  color: `${theme.color.white}`,
-};
 
 function Navbar() {
   return (
@@ -97,55 +111,33 @@ function Navbar() {
       </SpotifyLogo>
 
       <Menu>
-        <MenuItem exact to="/" activeStyle={activeStyle}>
-          Profile
+        <MenuItem>
+          <MenuLink exact to="/">
+            <UserIcon />
+            Profile
+          </MenuLink>
         </MenuItem>
-        <MenuItem exact to="/top-tracks" activeStyle={activeStyle}>
+        {/* <MenuItem exact to="/top-tracks">
+          <TrackIcon />
           Top Tracks
+        </MenuItem>
+        <MenuItem exact to="/top-artists">
+          <ArtistIcon />
+          Top Artists
+        </MenuItem>
+        <MenuItem exact to="/top-genres">
+          <GenreIcon />
+          Top Genres
+        </MenuItem> */}
+        <MenuItem>
+          <LogoutIcon />
+          Logout
         </MenuItem>
       </Menu>
 
       <GithubLogo>
         <GithubIcon />
       </GithubLogo>
-      {/* <SpotifyIcon>
-        <IconSpotify />
-      </SpotifyIcon>
-      <Menu>
-        <li>
-          <MenuItem exact to="/" activeStyle={activeClass}>
-            <IconUser />
-            Profile
-          </MenuItem>
-        </li>
-        <li>
-          <MenuItem exact to="/top-tracks" activeStyle={activeClass}>
-            <IconTrack />
-            Top Tracks
-          </MenuItem>
-        </li>
-        <li>
-          <MenuItem exact to="/top-artists" activeStyle={activeClass}>
-            <IconArtist />
-            Top Artists
-          </MenuItem>
-        </li>
-        <li>
-          <MenuItem exact to="/top-genres" activeStyle={activeClass}>
-            <IconGenre />
-            Top Genres
-          </MenuItem>
-        </li>
-        <li>
-          <MenuItem exact to="/logout" activeStyle={activeClass}>
-            <IconLogout />
-            Sign Out
-          </MenuItem>
-        </li>
-      </Menu>
-      <GithubIcon as="a" href="https://github.com/rvthai/spotify-profile">
-        <IconGithub />
-      </GithubIcon> */}
     </Nav>
   );
 }

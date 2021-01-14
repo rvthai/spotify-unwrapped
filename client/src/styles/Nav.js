@@ -1,22 +1,23 @@
 import styled from "styled-components";
+import media from "./media";
+import mixins from "./mixins";
 
 const Nav = styled.nav`
   position: fixed;
   min-height: 100vh;
   left: 0;
   background: #121212;
+  ${mixins.flexColumn};
+  ${mixins.flexSpaceBetween};
+  ${mixins.flexAlignCenter};
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: -3px 0 5px 0 #000;
-
-  @media screen and (max-width: 768px) {
+  ${media.tablet`
     min-height: 0;
     bottom: 0;
-    width: 100%;
-  }
+    right: 0;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
+  `};
 `;
 
 export default Nav;
