@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getTopArtists } from "../api";
+import { getTopArtists } from "../utils";
 
 function TopArtists() {
   const [topArtists, setTopArtists] = useState(null);

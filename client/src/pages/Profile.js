@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   getUserData,
   getTopTracks,
   getTopArtists,
   getSeveralArtists,
-} from "../api";
+} from "utils";
+
+import { Main } from "styles";
 
 // Components
 import User from "components/User";
-import TopTracksPreview from "components/TopTracksPreview";
-import TopArtistsPreview from "components/TopArtistsPreview";
-import TopGenresPreview from "components/TopGenresPreview";
-import TopTrack from "components/TopTrack";
-import TopArtist from "components/TopArtist";
+// import TopTracksPreview from "components/TopTracksPreview";
+// import TopArtistsPreview from "components/TopArtistsPreview";
+// import TopGenresPreview from "components/TopGenresPreview";
+// import TopTrack from "components/TopTrack";
+// import TopArtist from "components/TopArtist";
 
 function Profile() {
   const [user, setUser] = useState(null);
@@ -152,13 +154,9 @@ function Profile() {
     setTopGenres(new_map);
   };
 
-  if (!user || !followees || !playlists) {
-    return null;
-  }
-
   return (
-    <div style={{ marginLeft: "200px" }}>
-      {/* {user ? (
+    <Main>
+      {user && followees && playlists ? (
         <User
           username={user.display_name}
           image={user.images[0] ? user.images[0].url : null}
@@ -166,7 +164,7 @@ function Profile() {
           following={followees.artists.total}
           playlists={playlists.total}
         />
-      ) : null} */}
+      ) : null}
       {/* {topTrack ? <TopTrack data={topTrack} /> : null}
       {topArtist ? <TopArtist data={topArtist} /> : null}
       {topTracks ? <TopTracksPreview data={topTracks} /> : null}
@@ -174,7 +172,7 @@ function Profile() {
       {topGenres ? (
         <TopGenresPreview genresData={topGenres} total={total} />
       ) : null} */}
-    </div>
+    </Main>
   );
 }
 

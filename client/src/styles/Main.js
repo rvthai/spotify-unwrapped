@@ -1,10 +1,13 @@
 import styled from "styled-components";
+import media from "./media";
 
 const Main = styled.main`
   width: 100%;
-  margin: 0 auto;
-  max-width: 1400px;
   min-height: 100vh;
+
+  ${media.tablet`
+    margin-left: 0;
+  `}
 `;
 
 export default Main;

@@ -1,5 +1,7 @@
+import React from "react";
 import { UserIcon } from "icons";
 import styled from "styled-components";
+import { Section } from "styles";
 
 const UnknownProfile = styled.div`
   display: flex;
@@ -16,27 +18,24 @@ const UnknownProfile = styled.div`
   }
 `;
 
-function User(props) {
-  console.log(props.image);
-  return (
-    <div>
-      {props.image ? (
-        <img
-          src={props.image}
-          alt="profile-pic"
-          style={{ width: "200px", height: "200px", borderRadius: "50%" }}
-        />
-      ) : (
-        <UnknownProfile>
-          <UserIcon />
-        </UnknownProfile>
-      )}
-      <h2>{props.username}</h2>
-      <p>Followers: {props.followers}</p>
-      <p>Following: {props.following}</p>
-      <p>Playlists: {props.playlists}</p>
-    </div>
-  );
-}
+const User = (props) => (
+  <Section>
+    {props.image ? (
+      <img
+        src={props.image}
+        alt="profile-pic"
+        style={{ width: "200px", height: "200px", borderRadius: "50%" }}
+      />
+    ) : (
+      <UnknownProfile>
+        <UserIcon />
+      </UnknownProfile>
+    )}
+    <h2>{props.username}</h2>
+    <p>Followers: {props.followers}</p>
+    <p>Following: {props.following}</p>
+    <p>Playlists: {props.playlists}</p>
+  </Section>
+);
 
 export default User;

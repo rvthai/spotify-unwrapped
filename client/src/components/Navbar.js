@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { theme, mixins, media } from "styles";
-import { logout } from "../api";
+import { logout } from "../utils";
 
 // Styled Components
 import { Nav } from "styles";
@@ -52,6 +52,7 @@ const GithubLogo = styled(Logo)`
 `;
 
 const Menu = styled.div`
+  width: 100%;
   ${mixins.flexColumn}
   ${media.tablet`
     width: 100%;

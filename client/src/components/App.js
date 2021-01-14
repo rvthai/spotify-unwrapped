@@ -1,4 +1,5 @@
-import { token } from "../api";
+import React from "react";
+import { token } from "utils";
 import { GlobalStyle } from "../styles";
 
 // Components
