@@ -2,12 +2,8 @@ import styled from "styled-components";
 import media from "./media";
 
 const Main = styled.main`
-  width: 100%;
-  min-height: 100vh;
-
-  ${media.tablet`
-    margin-left: 0;
-  `}
+  text-align: center;
+  padding: 50px 0;
 `;
 
 export default Main;

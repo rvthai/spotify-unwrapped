@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import font from "../fonts";
+import theme from "./theme";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -56,17 +57,36 @@ const GlobalStyle = createGlobalStyle`
     color: #fff;
   }
 
-  h1 {
+  h1, h2 {
     letter-spacing: -0.025em;
-    margin: 0 0 10px;
+    margin: 10px 0 10px 0;
+  }
+
+  h1 {
     font-weight: 900;
     font-size: 90px;
   }
 
   h2 {
-    margin: 0 0 10px;
     font-weight: 700;
-    font-size: 50px;
+    font-size: 40px;
+  }
+
+  @media screen and (max-width: 768px) {
+    h2 {
+      font-size: 8vw;
+    }
+  }
+
+  h3 {
+    font-weight: 500;
+  }
+
+  p {
+    font-weight: 400;
+    margin: 0;
+    color: ${theme.color.lightGray};
+    font-size: 12px;
   }
 `;
 

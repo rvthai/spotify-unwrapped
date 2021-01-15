@@ -1,24 +1,30 @@
 import React, { useEffect, useState } from "react";
 import {
-  getUserData,
+  getUser,
+  getFollowing,
+  getPlaylists,
   getTopTracks,
   getTopArtists,
   getSeveralArtists,
 } from "utils";
-
-import { Main } from "styles";
+import styled from "styled-components";
+import { Main, Section, mixins } from "styles";
 
 // Components
 import User from "components/User";
-// import TopTracksPreview from "components/TopTracksPreview";
-// import TopArtistsPreview from "components/TopArtistsPreview";
-// import TopGenresPreview from "components/TopGenresPreview";
-// import TopTrack from "components/TopTrack";
-// import TopArtist from "components/TopArtist";
+import TopTracksPreview from "components/TopTracksPreview";
+import TopArtistsPreview from "components/TopArtistsPreview";
+import TopGenresPreview from "components/TopGenresPreview";
+
+const BottomSection = styled(Section)`
+  ${mixins.flexRow}
+  ${mixins.flexCenter}
+  flex-wrap: wrap;
+`;
 
 function Profile() {
   const [user, setUser] = useState(null);
-  const [followees, setFollowees] = useState(null);
+  const [following, setFollowing] = useState(null);
   const [playlists, setPlaylists] = useState(null);
 
   const [topTracks, setTopTracks] = useState(null);
@@ -31,13 +37,28 @@ function Profile() {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    getData();
+    getUserData();
+
     getTopTracksData();
     getTopArtistsData();
     getTopGenres();
     getTopTrack();
     getTopArtist();
   }, []);
+
+  const getUserData = async () => {
+    try {
+      const userData = await getUser();
+      const followingData = await getFollowing();
+      const playlistsData = await getPlaylists();
+
+      setUser(userData.data);
+      setFollowing(followingData.data);
+      setPlaylists(playlistsData.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getTopTrack = async () => {
     try {
@@ -52,18 +73,6 @@ function Profile() {
     try {
       const response = await getTopArtists("short_term", 1);
       setTopArtist(response.data.items[0]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getData = async () => {
-    try {
-      const { userData, followeesData, playlistData } = await getUserData();
-      // console.log(userData.data);
-      setUser(userData.data);
-      setFollowees(followeesData.data);
-      setPlaylists(playlistData.data);
     } catch (error) {
       console.log(error);
     }
@@ -156,22 +165,26 @@ function Profile() {
 
   return (
     <Main>
-      {user && followees && playlists ? (
+      {user && following && playlists ? (
         <User
-          username={user.display_name}
-          image={user.images[0] ? user.images[0].url : null}
+          avatar={user.images[0] ? user.images[0].url : null}
+          name={user.display_name}
           followers={user.followers.total}
-          following={followees.artists.total}
+          following={following.artists.total}
           playlists={playlists.total}
         />
       ) : null}
-      {/* {topTrack ? <TopTrack data={topTrack} /> : null}
-      {topArtist ? <TopArtist data={topArtist} /> : null}
-      {topTracks ? <TopTracksPreview data={topTracks} /> : null}
-      {topArtists ? <TopArtistsPreview data={topArtists} /> : null}
-      {topGenres ? (
-        <TopGenresPreview genresData={topGenres} total={total} />
-      ) : null} */}
+      <BottomSection>
+        {topTracks ? <TopTracksPreview data={topTracks} /> : null}
+        {topArtists ? <TopArtistsPreview data={topTracks} /> : null}
+        {topGenres ? (
+          <TopGenresPreview
+            genresData={topGenres}
+            data={topTracks}
+            total={total}
+          />
+        ) : null}
+      </BottomSection>
     </Main>
   );
 }

@@ -1,6 +1,9 @@
+import React from "react";
+import { Card } from "styles";
+
 function TopTracksPreview(props) {
   return (
-    <div>
+    <Card>
       Top Tracks of All Time
       <div>
         {props.data.map((track, index) => (
@@ -24,7 +27,7 @@ function TopTracksPreview(props) {
           </div>
         ))}
       </div>
-    </div>
+    </Card>
   );
 }
 

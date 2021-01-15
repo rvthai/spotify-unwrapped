@@ -114,27 +114,42 @@ export const logout = () => {
 //   setUserProfile(results);
 // };
 
-export const getUserData = async () => {
-  const userData = await axios.get(`https://api.spotify.com/v1/me`, {
-    headers: { Authorization: "Bearer " + token }, // BECAUSE OF THIS IT DIDNT WORK
+export const getUser = () =>
+  axios.get(`https://api.spotify.com/v1/me`, {
+    headers: { Authorization: "Bearer " + token },
   });
 
-  const followeesData = await axios.get(
-    "https://api.spotify.com/v1/me/following?type=artist",
-    {
-      headers: { Authorization: "Bearer " + token },
-    }
-  );
+export const getFollowing = () =>
+  axios.get("https://api.spotify.com/v1/me/following?type=artist", {
+    headers: { Authorization: "Bearer " + token },
+  });
 
-  const playlistData = await axios.get(
-    `https://api.spotify.com/v1/me/playlists`,
-    {
-      headers: { Authorization: "Bearer " + token },
-    }
-  );
+export const getPlaylists = () =>
+  axios.get(`https://api.spotify.com/v1/me/playlists`, {
+    headers: { Authorization: "Bearer " + token },
+  });
 
-  return { userData, followeesData, playlistData };
-};
+// export const getUserData = async () => {
+//   const userData = await axios.get(`https://api.spotify.com/v1/me`, {
+//     headers: { Authorization: "Bearer " + token }, // BECAUSE OF THIS IT DIDNT WORK
+//   });
+
+//   const followeesData = await axios.get(
+//     "https://api.spotify.com/v1/me/following?type=artist",
+//     {
+//       headers: { Authorization: "Bearer " + token },
+//     }
+//   );
+
+//   const playlistData = await axios.get(
+//     `https://api.spotify.com/v1/me/playlists`,
+//     {
+//       headers: { Authorization: "Bearer " + token },
+//     }
+//   );
+
+//   return { userData, followeesData, playlistData };
+// };
 
 export const getTopTracks = (time_range, limit) =>
   axios.get(

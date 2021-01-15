@@ -1,24 +1,35 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import styled from "styled-components";
+import { media } from "styles";
 
 // Components
 import Navbar from "./Navbar";
-import Profile from "../pages/Profile";
-import TopTracks from "../pages/TopTracks";
-import TopArtists from "../pages/TopArtists";
-import TopGenres from "../pages/TopGenres";
+import Profile from "pages/Profile";
+import TopTracks from "pages/TopTracks";
+import TopArtists from "pages/TopArtists";
+import TopGenres from "pages/TopGenres";
+
+const Content = styled.div`
+  min-height: 100vh;
+  margin-left: 100px;
+
+  ${media.tablet`
+    margin-left: 0;
+  `}
+`;
 
 const Home = () => (
   <Router>
-    <div style={{ paddingLeft: "100px" }}>
-      <Navbar />
+    <Navbar />
+    <Content>
       <Switch>
         <Route exact path="/" component={Profile} />
         <Route exact path="/top-tracks" component={TopTracks} />
         <Route exact path="/top-artists" component={TopArtists} />
         <Route exact path="/top-genres" component={TopGenres} />
-      </Switch>{" "}
-    </div>
+      </Switch>
+    </Content>
   </Router>
 );
 

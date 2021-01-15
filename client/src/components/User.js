@@ -1,7 +1,12 @@
 import React from "react";
-import { UserIcon } from "icons";
 import styled from "styled-components";
+import { mixins, theme } from "styles";
+
+// Styled Components
 import { Section } from "styles";
+
+// Icons
+import { UserIcon } from "icons";
 
 const UnknownProfile = styled.div`
   display: flex;
@@ -18,24 +23,54 @@ const UnknownProfile = styled.div`
   }
 `;
 
-const User = (props) => (
-  <Section>
-    {props.image ? (
-      <img
-        src={props.image}
-        alt="profile-pic"
-        style={{ width: "200px", height: "200px", borderRadius: "50%" }}
-      />
-    ) : (
-      <UnknownProfile>
-        <UserIcon />
-      </UnknownProfile>
-    )}
-    <h2>{props.username}</h2>
-    <p>Followers: {props.followers}</p>
-    <p>Following: {props.following}</p>
-    <p>Playlists: {props.playlists}</p>
-  </Section>
-);
+const ProfileStats = styled.div`
+  ${mixins.flexRow}
+  ${mixins.flexCenter}
+`;
+
+const Stats = styled.div`
+  ${mixins.flexColumn}
+  ${mixins.flexCenter}
+  padding: 0 2em;
+`;
+
+const Stat = styled.span`
+  color: ${theme.color.green};
+`;
+
+function User(props) {
+  const { avatar, name, followers, following, playlists } = props;
+
+  return (
+    <Section>
+      {avatar ? (
+        <img
+          src={avatar}
+          alt="avatar"
+          style={{ width: "150px", height: "150px", borderRadius: "50%" }}
+        />
+      ) : (
+        <UnknownProfile>
+          <UserIcon />
+        </UnknownProfile>
+      )}
+      <h2>{name}</h2>
+      <ProfileStats>
+        <Stats>
+          <Stat>{followers}</Stat>
+          <p>Followers</p>
+        </Stats>
+        <Stats>
+          <Stat>{following}</Stat>
+          <p>Following</p>
+        </Stats>
+        <Stats>
+          <Stat>{playlists}</Stat>
+          <p>Playlists</p>
+        </Stats>
+      </ProfileStats>
+    </Section>
+  );
+}
 
 export default User;
