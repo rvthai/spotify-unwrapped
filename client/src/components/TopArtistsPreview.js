@@ -1,58 +1,45 @@
 import React from "react";
 import { Card } from "styles";
 
+import styled from "styled-components";
+
+const PreviewHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 function TopArtistsPreview(props) {
-  // return (
-  //   <div>
-  //     Top Artists of All Time
-  //     <div style={{ display: "flex", flexWrap: "wrap" }}>
-  //       {props.data.map((artist, index) => (
-  //         <div
-  //           key={index}
-  //           style={{
-  //             display: "flex",
-  //             flexDirection: "column",
-  //             alignItems: "center",
-  //             margin: "1rem",
-  //           }}
-  //         >
-  //           <img
-  //             style={{
-  //               width: "100px",
-  //               height: "100px",
-  //               borderRadius: "50%",
-  //             }}
-  //             src={artist.images[2].url}
-  //             alt="artist-profile-pic"
-  //           />
-  //           <p>{artist.name}</p>
-  //         </div>
-  //       ))}
-  //     </div>
-  //   </div>
-  // );
   return (
     <Card>
-      Top Tracks of All Time
+      <PreviewHeader>
+        <h3>Top Artists of All Time</h3>
+        <p>See more</p>
+      </PreviewHeader>
       <div>
-        {props.data.map((track, index) => (
+        {props.data.map((artist, index) => (
           <div
             key={index}
             style={{
               display: "flex",
               margin: "1rem",
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              alignItems: "center",
             }}
           >
-            <p style={{ marginRight: "1em" }}>{index + 1}</p>
             <img
               style={{
                 width: "50px",
                 height: "50px",
+                borderRadius: "50%",
+                marginRight: "1em",
               }}
-              src={track.album.images[2].url}
-              alt="album-cover"
+              src={artist.images[2].url}
+              alt="artist-profile-pic"
             />
-            <p style={{ marginLeft: "1em", cursor: "pointer" }}>{track.name}</p>
+            <p>{artist.name}</p>
           </div>
         ))}
       </div>

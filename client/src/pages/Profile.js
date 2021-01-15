@@ -16,10 +16,11 @@ import TopTracksPreview from "components/TopTracksPreview";
 import TopArtistsPreview from "components/TopArtistsPreview";
 import TopGenresPreview from "components/TopGenresPreview";
 
-const BottomSection = styled(Section)`
+const Preview = styled(Section)`
   ${mixins.flexRow}
   ${mixins.flexCenter}
   flex-wrap: wrap;
+  align-items: stretch;
 `;
 
 function Profile() {
@@ -29,21 +30,15 @@ function Profile() {
 
   const [topTracks, setTopTracks] = useState(null);
   const [topArtists, setTopArtists] = useState(null);
-
-  const [topTrack, setTopTrack] = useState(null);
-  const [topArtist, setTopArtist] = useState(null);
-
   const [topGenres, setTopGenres] = useState(null);
+
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
     getUserData();
-
     getTopTracksData();
     getTopArtistsData();
     getTopGenres();
-    getTopTrack();
-    getTopArtist();
   }, []);
 
   const getUserData = async () => {
@@ -60,28 +55,12 @@ function Profile() {
     }
   };
 
-  const getTopTrack = async () => {
-    try {
-      const response = await getTopTracks("short_term", 1);
-      setTopTrack(response.data.items[0]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getTopArtist = async () => {
-    try {
-      const response = await getTopArtists("short_term", 1);
-      setTopArtist(response.data.items[0]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const getTopTracksData = async () => {
     try {
-      const response = await getTopTracks("long_term", 10);
-      //console.log("tracks", response.data.items);
+      const response = await getTopTracks({
+        time_range: "long_term",
+        limit: 10,
+      });
       setTopTracks(response.data.items);
     } catch (error) {
       console.log(error);
@@ -90,8 +69,10 @@ function Profile() {
 
   const getTopArtistsData = async () => {
     try {
-      const response = await getTopArtists("long_term", 10);
-      //console.log("artists", response.data.items);
+      const response = await getTopArtists({
+        time_range: "long_term",
+        limit: 10,
+      });
       setTopArtists(response.data.items);
     } catch (error) {
       console.log(error);
@@ -174,9 +155,9 @@ function Profile() {
           playlists={playlists.total}
         />
       ) : null}
-      <BottomSection>
+      <Preview>
         {topTracks ? <TopTracksPreview data={topTracks} /> : null}
-        {topArtists ? <TopArtistsPreview data={topTracks} /> : null}
+        {topArtists ? <TopArtistsPreview data={topArtists} /> : null}
         {topGenres ? (
           <TopGenresPreview
             genresData={topGenres}
@@ -184,7 +165,7 @@ function Profile() {
             total={total}
           />
         ) : null}
-      </BottomSection>
+      </Preview>
     </Main>
   );
 }

@@ -1,10 +1,21 @@
 import React from "react";
 import { Card } from "styles";
 
+import styled from "styled-components";
+
+const PreviewHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 function TopTracksPreview(props) {
   return (
     <Card>
-      Top Tracks of All Time
+      <PreviewHeader>
+        <h3>Top Tracks of all Time</h3>
+        <p>See more</p>
+      </PreviewHeader>
       <div>
         {props.data.map((track, index) => (
           <div
@@ -12,6 +23,9 @@ function TopTracksPreview(props) {
             style={{
               display: "flex",
               margin: "1rem",
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
             }}
           >
             <p style={{ marginRight: "1em" }}>{index + 1}</p>

@@ -34,7 +34,7 @@ const Stats = styled.div`
   padding: 0 2em;
 `;
 
-const Stat = styled.span`
+const Stat = styled.h3`
   color: ${theme.color.green};
 `;
 

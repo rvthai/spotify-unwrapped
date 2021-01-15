@@ -86,34 +86,6 @@ export const logout = () => {
 
 /* API CALLS -------------------------------------------------------------*/
 
-// const getUserPlaylists = async () => {
-//   const data = await fetch(`	https://api.spotify.com/v1/me/playlists`, {
-//     headers: { Authorization: "Bearer " + props.accessToken },
-//   });
-//   const results = await data.json();
-//   setUserPlaylists(results);
-// };
-
-// const getUserFollows = async () => {
-//   const data = await fetch(
-//     `https://api.spotify.com/v1/me/following?type=artist`,
-//     {
-//       headers: { Authorization: "Bearer " + props.accessToken },
-//     }
-//   );
-//   const results = await data.json();
-//   setUserFollows(results);
-// };
-
-// const getUserProfile = async () => {
-//   const data = await fetch(`https://api.spotify.com/v1/me`, {
-//     headers: { Authorization: "Bearer " + props.accessToken },
-//   });
-//   const results = await data.json();
-//   console.log(results);
-//   setUserProfile(results);
-// };
-
 export const getUser = () =>
   axios.get(`https://api.spotify.com/v1/me`, {
     headers: { Authorization: "Bearer " + token },
@@ -129,29 +101,7 @@ export const getPlaylists = () =>
     headers: { Authorization: "Bearer " + token },
   });
 
-// export const getUserData = async () => {
-//   const userData = await axios.get(`https://api.spotify.com/v1/me`, {
-//     headers: { Authorization: "Bearer " + token }, // BECAUSE OF THIS IT DIDNT WORK
-//   });
-
-//   const followeesData = await axios.get(
-//     "https://api.spotify.com/v1/me/following?type=artist",
-//     {
-//       headers: { Authorization: "Bearer " + token },
-//     }
-//   );
-
-//   const playlistData = await axios.get(
-//     `https://api.spotify.com/v1/me/playlists`,
-//     {
-//       headers: { Authorization: "Bearer " + token },
-//     }
-//   );
-
-//   return { userData, followeesData, playlistData };
-// };
-
-export const getTopTracks = (time_range, limit) =>
+export const getTopTracks = ({ time_range, limit }) =>
   axios.get(
     `https://api.spotify.com/v1/me/top/tracks?limit=${limit}&time_range=${time_range}`,
     {
@@ -161,7 +111,7 @@ export const getTopTracks = (time_range, limit) =>
     }
   );
 
-export const getTopArtists = (time_range, limit) =>
+export const getTopArtists = ({ time_range, limit }) =>
   axios.get(
     `https://api.spotify.com/v1/me/top/artists?limit=${limit}&time_range=${time_range}`,
     {
