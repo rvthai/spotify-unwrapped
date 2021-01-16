@@ -47,7 +47,12 @@ function User(props) {
         <img
           src={avatar}
           alt="avatar"
-          style={{ width: "150px", height: "150px", borderRadius: "50%" }}
+          style={{
+            width: "150px",
+            height: "150px",
+            borderRadius: "50%",
+            boxShadow: "rgba(0, 0, 0, 0.5) -3px 0px 10px",
+          }}
         />
       ) : (
         <UnknownProfile>
@@ -58,15 +63,15 @@ function User(props) {
       <ProfileStats>
         <Stats>
           <Stat>{followers}</Stat>
-          <p>Followers</p>
+          <p>FOLLOWERS</p>
         </Stats>
         <Stats>
           <Stat>{following}</Stat>
-          <p>Following</p>
+          <p>FOLLOWING</p>
         </Stats>
         <Stats>
           <Stat>{playlists}</Stat>
-          <p>Playlists</p>
+          <p>PLAYLISTS</p>
         </Stats>
       </ProfileStats>
     </Section>

@@ -23,6 +23,10 @@ const Preview = styled(Section)`
   align-items: stretch;
 `;
 
+const Preview2 = styled(Section)`
+  ${mixins.flexCenter}
+`;
+
 function Profile() {
   const [user, setUser] = useState(null);
   const [following, setFollowing] = useState(null);
@@ -33,6 +37,7 @@ function Profile() {
   const [topGenres, setTopGenres] = useState(null);
 
   const [total, setTotal] = useState(0);
+  const [max, setMax] = useState(0);
 
   useEffect(() => {
     getUserData();
@@ -46,7 +51,6 @@ function Profile() {
       const userData = await getUser();
       const followingData = await getFollowing();
       const playlistsData = await getPlaylists();
-
       setUser(userData.data);
       setFollowing(followingData.data);
       setPlaylists(playlistsData.data);
@@ -80,7 +84,10 @@ function Profile() {
   };
 
   const getTopGenres = async () => {
-    const response = await getTopTracks("long_term", 50);
+    const response = await getTopTracks({
+      time_range: "long_term",
+      limit: 50,
+    });
     const tracks = response.data.items;
     const artists = [];
     for (let i = 0; i < tracks.length; i++) {
@@ -123,7 +130,8 @@ function Profile() {
       sortable.push([genre, genresMap[genre]]);
     }
     sortable.sort((a, b) => b[1] - a[1]);
-    let new_list = sortable.splice(0, 5);
+    let new_list = sortable.splice(0, 5); // change here for number of genres
+    setMax(new_list[0][1]);
 
     // get sum
     let total = 0;
@@ -131,7 +139,6 @@ function Profile() {
       total += elem[1];
     }
     setTotal(total);
-    // console.log(total);
 
     let new_map = {};
     for (let elem of new_list) {
@@ -155,16 +162,17 @@ function Profile() {
           playlists={playlists.total}
         />
       ) : null}
+      <Preview2>
+        {topGenres ? (
+          <TopGenresPreview genresData={topGenres} total={total} max={max} />
+        ) : null}
+      </Preview2>
       <Preview>
         {topTracks ? <TopTracksPreview data={topTracks} /> : null}
         {topArtists ? <TopArtistsPreview data={topArtists} /> : null}
-        {topGenres ? (
-          <TopGenresPreview
-            genresData={topGenres}
-            data={topTracks}
-            total={total}
-          />
-        ) : null}
+        {/* {topGenres ? (
+          <TopGenresPreview genresData={topGenres} total={total} max={max} />
+        ) : null} */}
       </Preview>
     </Main>
   );

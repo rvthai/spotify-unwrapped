@@ -1,109 +1,94 @@
-import { Pie, Doughnut } from "react-chartjs-2";
-import "chartjs-plugin-datalabels"; // https://chartjs-plugin-datalabels.netlify.app/
-// https://www.chartjs.org/docs/latest/charts/doughnut.html
-// https://github.com/reactchartjs/react-chartjs-2
-import { Card } from "styles";
+import React from "react";
+import { Card, theme } from "styles";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 function TopGenresPreview(props) {
-  // const makeLabels = () => {
-  //   let labels = [];
-  //   for (let key in props.genresData) {
-  //     labels.push(key);
-  //   }
-  //   return labels;
-  // };
+  const Card2 = styled(Card)`
+    width: 765px;
+  `;
 
-  // const makeData = () => {
-  //   let dataList = [];
-  //   for (let key in props.genresData) {
-  //     dataList.push(props.genresData[key]);
-  //   }
-  //   return dataList;
-  // };
+  const thing = Math.round(((props.max / props.total) * 100) / 10) * 10;
 
-  // const data = {
-  //   labels: makeLabels(),
-  //   datasets: [
-  //     {
-  //       data: makeData(),
-  //       backgroundColor: [
-  //         "#fff100",
-  //         "#ec008c",
-  //         "#68217a",
-  //         "#00b294",
-  //         "#bad80a",
-  //       ],
-  //       borderWidth: 0,
-  //     },
-  //   ],
-  // };
+  const PreviewHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+  `;
 
-  // const options = {
-  //   // maintainAspectRatio: false,
-  //   // legend: {
-  //   //   position: "right",
-  //   //   labels: {
-  //   //     boxWidth: 10,
-  //   //   },
-  //   // },
-  //   plugins: {
-  //     datalabels: {
-  //       formatter: (value, context) =>
-  //         "Genre" + Math.round((value / props.total) * 100) + "%",
-  //       display: true,
-  //       color: "white",
-  //     },
-  //   },
-  // };
+  const Bars = styled.div`
+    display: flex;
+    flex-direction: column;
+  `;
 
-  // return (
-  //   <div>
-  //     Top Genres of All Time
-  //     {/* <Pie data={data} width={150} height={50} options={options} /> */}
-  //     <Doughnut data={data} width={150} height={50} options={options} />
-  //   </div>
-  // );
+  const Bar = styled.div`
+    width: ${(props) => props.percentage}%;
+    height: 25px;
+    background-color: ${theme.color.green};
+    margin: 0 1rem 1rem 1rem;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    display: flex;
+    align-items: center;
+  `;
+
+  const Axis = styled.div`
+    height: 2px;
+    background-color: white;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  `;
+
+  const { genresData } = props;
+
   return (
-    <Card>
-      Top Tracks of All Time
-      <div>
-        {props.data.map((track, index) => (
-          <div
-            key={index}
-            style={{
-              display: "flex",
-              margin: "1rem",
-            }}
-          >
-            <p style={{ marginRight: "1em" }}>{index + 1}</p>
-            <img
-              style={{
-                width: "50px",
-                height: "50px",
-              }}
-              src={track.album.images[2].url}
-              alt="album-cover"
-            />
-            <p style={{ marginLeft: "1em", cursor: "pointer" }}>{track.name}</p>
+    <Card2>
+      <PreviewHeader>
+        <h3>Top Genres of all Time</h3>
+        <Link style={{ textDecoration: "none" }} to="/top-genres">
+          <p>SEE MORE</p>
+        </Link>
+      </PreviewHeader>
+      <Bars>
+        {Object.keys(genresData).map((genre, index) => (
+          <div key={index}>
+            {/* <p
+              style={{ color: "white", marginLeft: "1rem", textAlign: "left" }}
+            >
+              {genre}
+            </p> */}
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <Bar
+                percentage={
+                  (Math.round((genresData[genre] / props.total) * 100) /
+                    thing) *
+                  70
+                }
+              >
+                <p
+                  style={{
+                    color: "#fff",
+                    marginLeft: "0.5em",
+                    textAlign: "left",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                  }}
+                >
+                  {genre}
+                </p>
+              </Bar>
+              <p>{Math.round((genresData[genre] / props.total) * 100)}%</p>
+            </div>
           </div>
         ))}
-      </div>
-    </Card>
+      </Bars>
+      <Axis></Axis>
+    </Card2>
   );
 }
 
 export default TopGenresPreview;
-
-/*
-data: (PropTypes.object | PropTypes.func).isRequired,
-width: PropTypes.number,
-height: PropTypes.number,
-id: PropTypes.string,
-legend: PropTypes.object,
-options: PropTypes.object,
-redraw: PropTypes.bool,
-getDatasetAtEvent: PropTypes.func,
-getElementAtEvent: PropTypes.func,
-getElementsAtEvent: PropTypes.func
-onElementsClick: PropTypes.func, // alias for getElementsAtEvent (backward compatibility)
-*/

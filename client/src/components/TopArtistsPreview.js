@@ -1,5 +1,6 @@
 import React from "react";
 import { Card } from "styles";
+import { Link } from "react-router-dom";
 
 import styled from "styled-components";
 
@@ -7,6 +8,7 @@ const PreviewHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 1rem;
 `;
 
 function TopArtistsPreview(props) {
@@ -14,7 +16,9 @@ function TopArtistsPreview(props) {
     <Card>
       <PreviewHeader>
         <h3>Top Artists of All Time</h3>
-        <p>See more</p>
+        <Link style={{ textDecoration: "none" }} to="/top-artists">
+          <p>SEE MORE</p>
+        </Link>
       </PreviewHeader>
       <div>
         {props.data.map((artist, index) => (
