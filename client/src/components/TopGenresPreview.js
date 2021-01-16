@@ -35,12 +35,12 @@ function TopGenresPreview(props) {
     align-items: center;
   `;
 
-  const Axis = styled.div`
-    height: 2px;
-    background-color: white;
-    margin-right: 1rem;
-    margin-left: 1rem;
-  `;
+  // const Axis = styled.div`
+  //   height: 2px;
+  //   background-color: white;
+  //   margin-right: 1rem;
+  //   margin-left: 1rem;
+  // `;
 
   const { genresData } = props;
 
@@ -86,7 +86,7 @@ function TopGenresPreview(props) {
           </div>
         ))}
       </Bars>
-      <Axis></Axis>
+      {/* <Axis></Axis> */}
     </Card2>
   );
 }

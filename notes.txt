@@ -69,6 +69,13 @@ Color Pallete:
 - Gray: #535353	(83,83,83)
 - Light Gray: #b3b3b3	(179,179,179)
 
+- Nav: #000
+- Background: #121212
+- Card: #181818
+- Normal Text: #b3b3b3
+- Special Text: #fff
+- Other gray: #282828
+
 Displays:
 - Big desktops : 1440px
 - Desktops: 1200 px
@@ -78,3 +85,9 @@ Displays:
 - Landscape phones: 480px
 - Smartphones: 376px
 - Tiny phones: 320px
+
+Text:
+- .015 em for regular p text
+- normal letter spacing for nav links
+- -.04em for headers
+- .1em for links and labels

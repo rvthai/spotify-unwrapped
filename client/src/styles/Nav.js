@@ -7,7 +7,7 @@ const Nav = styled.nav`
   min-height: 100vh;
   width: 100px;
   left: 0;
-  background: #121212;
+  background: #000;
   ${mixins.flexColumn};
   ${mixins.flexSpaceBetween};
   ${mixins.flexAlignCenter};
