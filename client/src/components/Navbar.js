@@ -16,6 +16,7 @@ import {
   ArtistIcon,
   GenreIcon,
   LogoutIcon,
+  TrendsIcon,
 } from "icons";
 
 const Logo = styled.div`
@@ -62,40 +63,46 @@ const Menu = styled.div`
 `;
 
 const MenuItem = styled(NavLink)`
-  max-height: 40px;
-  ${mixins.flexColumn}
-  ${mixins.flexCenter}
+  max-height: 25px;
+  /*${mixins.flexColumn}*/
+  /*${mixins.flexCenter}*/
+  display: flex;
+  align-items: center;
   color: ${theme.color.lightGray};
   transition: ${theme.transition};
   cursor: pointer;
-  padding: 1.25em;
+  margin: 1em 0em 1em 1em;
   text-decoration: none;
   font-size: 11px;
-  border-left: 5px solid transparent;
+  border-right: 2px solid transparent;
 
   &.active {
     border-color: ${theme.color.lightGreen};
     color: ${theme.color.white};
-    background-color: ${theme.color.darkGray};
+    color: ${theme.color.green};
+    /*background-color: #18181b;*/
   }
 
   &:hover {
     color: ${theme.color.white};
-    background-color: ${theme.color.darkGray};
+    color: ${theme.color.green};
+    /*background-color: #18181b;*/
   }
 
   svg {
     width: 20px;
     height: 20px;
     margin-bottom: 0.5em;
+    margin-left: 2em;
+    margin-right: 2em;
   }
 
   ${media.tablet`
     flex: 1 1 0;
     padding: 1em 0;
     max-height: 100%;
-    border-top: 5px solid transparent;
-    border-left: 0;
+    border-top: 2px solid transparent;
+    border-right: 0;
   `}
 `;
 
@@ -129,10 +136,14 @@ function Navbar() {
           <GenreIcon />
           Top Genres
         </MenuItem>
-        <MenuItem exact to="/sign-out" onClick={handleLogout}>
+        <MenuItem exact to="/trends">
+          <TrendsIcon />
+          Trends
+        </MenuItem>
+        {/* <MenuItem exact to="/sign-out" onClick={handleLogout}>
           <LogoutIcon />
           Logout
-        </MenuItem>
+        </MenuItem> */}
       </Menu>
 
       <GithubLogo>

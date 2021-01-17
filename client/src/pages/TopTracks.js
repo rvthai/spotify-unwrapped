@@ -17,7 +17,7 @@ function TopTracks(props) {
 
   const getData = async () => {
     try {
-      const response = await getTopTracks(timeRange, 50);
+      const response = await getTopTracks({ time_range: timeRange, limit: 50 });
       setTopTracks(response.data.items);
     } catch (error) {
       console.log(error);

@@ -91,3 +91,20 @@ Text:
 - normal letter spacing for nav links
 - -.04em for headers
 - .1em for links and labels
+
+Features with See More Pages:
+Top Tracks
+Top Artists
+Top Genres -> doughnut with green and shades of gray and black (5 colors) then explode the top?
+Audio Trends -> preview with horizontal bar chart then show line chart trends - your top songs, top spotify songs, get average song from both
+
+Other:
+Current top track
+Current top artist
+
+DARK MODE toggle???? EXTRA EXTRA
+
+What to tackle first...
+[ ] Add  current top track and artist to the top
+[ ] Add the doughnut chart preview for genres semi-styled 
+  - includes cleaning up and solidifying the genre calculating algorithms

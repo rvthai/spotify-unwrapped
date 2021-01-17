@@ -4,6 +4,7 @@ import UserIcon from "./UserIcon";
 import TrackIcon from "./TrackIcon";
 import ArtistIcon from "./ArtistIcon";
 import GenreIcon from "./GenreIcon";
+import TrendsIcon from "./TrendsIcon";
 import LogoutIcon from "./LogoutIcon";
 
 export {
@@ -13,5 +14,6 @@ export {
   TrackIcon,
   ArtistIcon,
   GenreIcon,
+  TrendsIcon,
   LogoutIcon,
 };

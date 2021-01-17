@@ -10,7 +10,7 @@ function TopArtists() {
   }, [timeRange]);
 
   const getData = async () => {
-    const response = await getTopArtists(timeRange, 50);
+    const response = await getTopArtists({ time_range: timeRange, limit: 50 });
     setTopArtists(response.data.items);
   };
 

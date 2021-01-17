@@ -35,6 +35,7 @@ const TopTracksPreview = (props) => (
             style={{
               width: "50px",
               height: "50px",
+              borderRadius: "5px",
             }}
             src={track.album.images[2].url}
             alt="album-cover"

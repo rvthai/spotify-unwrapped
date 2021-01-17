@@ -9,6 +9,14 @@ function TopGenresPreview(props) {
     height: 345px;
   `;
 
+  const Pie = styled.div`
+    margin-top: 20px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: ${theme.color.green};
+  `;
+
   const thing = Math.round(((props.max / props.total) * 100) / 10) * 10;
 
   const PreviewHeader = styled.div`
@@ -53,41 +61,15 @@ function TopGenresPreview(props) {
           <p>SEE MORE</p>
         </Link>
       </PreviewHeader>
-      <Bars>
-        {Object.keys(genresData).map((genre, index) => (
-          <div key={index}>
-            {/* <p
-              style={{ color: "white", marginLeft: "1rem", textAlign: "left" }}
-            >
-              {genre}
-            </p> */}
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <Bar
-                percentage={
-                  (Math.round((genresData[genre] / props.total) * 100) /
-                    thing) *
-                  70
-                }
-              >
-                <p
-                  style={{
-                    color: "#fff",
-                    marginLeft: "0.5em",
-                    textAlign: "left",
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                  }}
-                >
-                  {genre}
-                </p>
-              </Bar>
-              <p>{Math.round((genresData[genre] / props.total) * 100)}%</p>
-            </div>
-          </div>
-        ))}
-      </Bars>
-      {/* <Axis></Axis> */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Pie />
+      </div>
     </Card2>
   );
 }

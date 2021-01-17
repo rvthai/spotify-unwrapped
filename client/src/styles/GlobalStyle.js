@@ -53,7 +53,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     font-family: "Circular Std", "sans-serif";
     font-size: 16px;
-    background-color: #121212;
+    background-color: #18181c;
     color: #fff;
   }
 
