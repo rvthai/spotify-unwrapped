@@ -1,74 +1,53 @@
 import React from "react";
-import { Card, theme } from "styles";
 import styled from "styled-components";
+import { Card, theme } from "styles";
 import { Link } from "react-router-dom";
 
+const PreviewHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+`;
+
+const Card2 = styled(Card)`
+  width: 350px;
+`;
+
+const Bars = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Bar = styled.div`
+  width: ${(props) => props.percentage}%;
+  height: 25px;
+  background-color: ${theme.color.green};
+  margin: 0 1rem 1rem 1rem;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  display: flex;
+  align-items: center;
+`;
+
 function TopGenresPreview(props) {
-  const Card2 = styled(Card)`
-    /*width: 765px;*/
-    height: 345px;
-  `;
-
-  const thing = Math.round(((props.max / props.total) * 100) / 10) * 10;
-
-  const PreviewHeader = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 1rem;
-  `;
-
-  const Bars = styled.div`
-    display: flex;
-    flex-direction: column;
-  `;
-
-  const Bar = styled.div`
-    width: ${(props) => props.percentage}%;
-    height: 25px;
-    background-color: ${theme.color.green};
-    margin: 0 1rem 1rem 1rem;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
-    display: flex;
-    align-items: center;
-  `;
-
-  // const Axis = styled.div`
-  //   height: 2px;
-  //   background-color: white;
-  //   margin-right: 1rem;
-  //   margin-left: 1rem;
-  // `;
-
-  const { genresData } = props;
+  const ratio = Math.round(props.max / 10) * 10;
 
   return (
     <Card2>
       <PreviewHeader>
-        <h3>{props.header}</h3>
+        <h3>Top Genres of All Time</h3>
         <Link style={{ textDecoration: "none" }} to="/top-genres">
           <p>SEE MORE</p>
         </Link>
       </PreviewHeader>
       <Bars>
-        {Object.keys(genresData).map((genre, index) => (
+        {Object.keys(props.data).map((genre, index) => (
           <div key={index}>
-            {/* <p
-              style={{ color: "white", marginLeft: "1rem", textAlign: "left" }}
-            >
-              {genre}
-            </p> */}
             <div style={{ display: "flex", alignItems: "center" }}>
-              <Bar
-                percentage={
-                  (Math.round((genresData[genre] / props.total) * 100) /
-                    thing) *
-                  70
-                }
-              >
+              <Bar percentage={(props.data[genre] / ratio) * 75}>
                 <p
                   style={{
                     color: "#fff",
@@ -82,12 +61,11 @@ function TopGenresPreview(props) {
                   {genre}
                 </p>
               </Bar>
-              <p>{Math.round((genresData[genre] / props.total) * 100)}%</p>
+              <p>{props.data[genre]}%</p>
             </div>
           </div>
         ))}
       </Bars>
-      {/* <Axis></Axis> */}
     </Card2>
   );
 }

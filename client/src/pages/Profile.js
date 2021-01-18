@@ -10,19 +10,20 @@ import {
   getTopTracks,
   getTopArtists,
   getSeveralArtists,
+  getRecentlyPlayed,
 } from "utils";
 
 // Styled Components
-import { Main, Section, Card } from "styles";
+import { Main, Section } from "styles";
 
 // Components
 import User from "components/User";
+import CurrentTopTrack from "components/CurentTopTrack";
+import CurrentTopArtist from "components/CurrentTopArtist";
 import TopTracksPreview from "components/TopTracksPreview";
 import TopArtistsPreview from "components/TopArtistsPreview";
 import TopGenresPreview from "components/TopGenresPreview";
-import TopGenresPreview3 from "components/TopGenresPreview3";
-import CurrentTopTrack from "components/CurentTopTrack";
-import CurrentTopArtist from "components/CurrentTopArtist";
+import ActivityPreview from "components/ActivityPreview";
 
 const Preview = styled(Section)`
   ${mixins.flexRow}
@@ -31,12 +32,9 @@ const Preview = styled(Section)`
   align-items: stretch;
 `;
 
-const Preview2 = styled(Section)`
-  ${mixins.flexCenter}
-`;
-
 function Profile() {
   // Data for User component
+  // NEED TO SET THESE TO ONE OBJECT LATER FOR SINGLE RENDERING
   const [user, setUser] = useState(null);
   const [following, setFollowing] = useState(null);
   const [playlists, setPlaylists] = useState(null);
@@ -45,12 +43,17 @@ function Profile() {
   const [currentTopTrack, setCurrentTopTrack] = useState(null);
   const [currentTopArtist, setCurrentTopArtist] = useState(null);
 
+  // Data for the previews
   const [topTracks, setTopTracks] = useState(null);
   const [topArtists, setTopArtists] = useState(null);
-  const [topGenres, setTopGenres] = useState(null);
 
+  // Data for genre data
+  const [topGenres, setTopGenres] = useState(null);
   const [total, setTotal] = useState(0);
   const [max, setMax] = useState(0);
+
+  // Data for activity
+  const [playback, setPlayback] = useState(null);
 
   useEffect(() => {
     getUserData();
@@ -58,8 +61,8 @@ function Profile() {
     getCurrentTopArtist();
     getTopTracksData();
     getTopArtistsData();
-
     getTopGenres();
+    getPlaybackData();
   }, []);
 
   const getUserData = async () => {
@@ -177,85 +180,42 @@ function Profile() {
     entries = entries.splice(0, 5);
 
     // Get the total needed to calculate the percentages for the chart
-    const total = entries.reduce(
-      (accumulator, entry) => accumulator + entry[1],
+    const t = entries.reduce((accumulator, entry) => accumulator + entry[1], 0);
+    //setTotal(total);
+    const m = entries.reduce(
+      (accumulator, entry) => Math.max(accumulator, entry[1]),
       0
     );
+    //setMax((m / t) * 100);
 
     // Remake map with top five genres and their respective percentages
     genresMap = entries.reduce((accumulator, entry) => {
       const key = entry[0];
-      const value = Math.round((entry[1] / total) * 100); // Convert to a percentage
+      const value = Math.round((entry[1] / t) * 100); // Convert to a percentage
       accumulator[key] = value;
       return accumulator;
     }, {});
 
     // Change state
     setTopGenres(genresMap);
-    // for (let genre in genresMap) {
-    //   sortable.push([genre, genresMap[genre]]);
-    // }
-    // sortable.sort((a, b) => b[1] - a[1]);
-    // let new_list = sortable.splice(0, 5);
+    setMax((m / t) * 100);
+    setTotal(total);
+  };
 
-    //   for (let j = 0; j < tracks[i].artists.length; j++) {
-    //     const artist = tracks[i].artists[j];
-    //     if (!artists.includes(artist)) {
-    //       artists.push(artist.id);
-    //     }
-    //   }
-    // }
+  const getPlaybackData = async () => {
+    const date = new Date(Date.UTC(2021, 0, 18, 20, 0, 0));
+    console.log("Date in UTC:", date);
+    const timestamp = date.getTime();
+    console.log("Timestamp in milliseconds:", timestamp);
 
-    // let artists_list = [];
-    // while (artists.length > 0) {
-    //   if (artists.length >= 50) {
-    //     artists_list.push(artists.splice(0, 50));
-    //   } else {
-    //     artists_list.push(artists.splice(0, artists.length));
-    //   }
-    // }
-
-    // let genresMap = {};
-    // for (let i = 0; i < artists_list.length; i++) {
-    //   let ids = artists_list[i].join(",");
-    //   let response = await getSeveralArtists(ids);
-    //   let data = response.data.artists;
-    //   for (let j = 0; j < data.length; j++) {
-    //     let genres = data[j].genres;
-    //     for (let k = 0; k < genres.length; k++) {
-    //       let genre = genres[k];
-    //       if (!genresMap[genre]) {
-    //         genresMap[genre] = 0;
-    //       }
-    //       genresMap[genre] += 1;
-    //     }
-    //   }
-    // }
-
-    //   let sortable = [];
-    //   for (let genre in genresMap) {
-    //     sortable.push([genre, genresMap[genre]]);
-    //   }
-    //   sortable.sort((a, b) => b[1] - a[1]);
-    //   let new_list = sortable.splice(0, 5); // change here for number of genres
-    //   setMax(new_list[0][1]);
-
-    //   // get sum
-    //   let total = 0;
-    //   for (let elem of new_list) {
-    //     total += elem[1];
-    //   }
-    //   setTotal(total);
-
-    //   let new_map = {};
-    //   for (let elem of new_list) {
-    //     let key = elem[0];
-    //     let value = elem[1];
-    //     //new_map[key] = Math.round((value / total) * 100);
-    //     new_map[key] = value;
-    //   }
-
-    //   setTopGenres(new_map);
+    try {
+      const response = await getRecentlyPlayed(timestamp);
+      const a = new Date(response.data.items[0].played_at);
+      console.log(a.toUTCString());
+      setPlayback(response.data.items);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -269,11 +229,6 @@ function Profile() {
           playlists={playlists.total}
         />
       ) : null}
-      {/* <Preview2>
-        {topGenres ? (
-          <TopGenresPreview genresData={topGenres} total={total} max={max} />
-        ) : null}
-      </Preview2> */}
       <Preview>
         {currentTopTrack ? (
           <CurrentTopTrack artist={currentTopArtist} track={currentTopTrack} />
@@ -281,48 +236,19 @@ function Profile() {
         {currentTopArtist ? (
           <CurrentTopArtist artist={currentTopArtist} track={currentTopTrack} />
         ) : null}
-        {/* {currentTopArtist ? <MiniCard>{currentTopArtist.name}</MiniCard> : null} */}
       </Preview>
       <Preview>
         {topTracks ? <TopTracksPreview data={topTracks} /> : null}
         {topArtists ? <TopArtistsPreview data={topArtists} /> : null}
         <div>
           {topGenres ? (
-            <TopGenresPreview3 data={topGenres}></TopGenresPreview3>
-          ) : null}
-          {/* {topGenres ? (
-            <TopGenresPreview2
-              header="Top Genres of All Time"
-              genresData={topGenres}
-              total={total}
-              max={max}
-            />
-          ) : null}
-          {topGenres ? (
             <TopGenresPreview
-              header="Listening Trends"
-              genresData={topGenres}
-              total={total}
+              data={topGenres}
               max={max}
-            />
-          ) : null} */}
-
-          {/* {topGenres ? (
-            <TopGenresPreview2
-              header="Current Top Artist"
-              genresData={topGenres}
               total={total}
-              max={max}
-            />
+            ></TopGenresPreview>
           ) : null}
-          {topGenres ? (
-            <TopGenresPreview2
-              header="Current Top Track"
-              genresData={topGenres}
-              total={total}
-              max={max}
-            />
-          ) : null} */}
+          {playback ? <ActivityPreview data={playback} /> : null}
         </div>
       </Preview>
     </Main>

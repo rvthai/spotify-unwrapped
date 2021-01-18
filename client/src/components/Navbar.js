@@ -138,7 +138,7 @@ function Navbar() {
         </MenuItem>
         <MenuItem exact to="/trends">
           <TrendsIcon />
-          Trends
+          Activity
         </MenuItem>
         {/* <MenuItem exact to="/sign-out" onClick={handleLogout}>
           <LogoutIcon />

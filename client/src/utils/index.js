@@ -97,7 +97,7 @@ export const getFollowing = () =>
   });
 
 export const getPlaylists = () =>
-  axios.get(`https://api.spotify.com/v1/me/playlists`, {
+  axios.get(`https://api.spotify.com/v1/me/playlists?limit=3`, {
     headers: { Authorization: "Bearer " + token },
   });
 
@@ -127,3 +127,13 @@ export const getSeveralArtists = (ids) =>
       Authorization: "Bearer " + token,
     },
   });
+
+export const getRecentlyPlayed = (timestamp) =>
+  axios.get(
+    `https://api.spotify.com/v1/me/player/recently-played?limit=10&before=${timestamp}`,
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  );

@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { getSeveralArtists, getTopTracks } from "../utils";
 
-import TopGenresPreview from "components/TopGenresPreview";
-
 const TopGenres = () => <div>Top Genres</div>;
 
 export default TopGenres;
