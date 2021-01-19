@@ -2,7 +2,8 @@ import React from "react";
 import { withRouter, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { theme, mixins, media } from "styles";
-import { logout } from "../utils";
+import { logout } from "utils";
+// import SpotifyLogo from "./SpotifyLogo.png";
 
 // Styled Components
 import { Nav } from "styles";
@@ -15,8 +16,6 @@ import {
   TrackIcon,
   ArtistIcon,
   GenreIcon,
-  LogoutIcon,
-  TrendsIcon,
 } from "icons";
 
 const Logo = styled.div`
@@ -24,6 +23,7 @@ const Logo = styled.div`
   cursor: pointer;
   transition: ${theme.transition};
   border-radius: 50%;
+  margin-left: 2em;
 
   svg {
     display: block;
@@ -36,7 +36,7 @@ const Logo = styled.div`
 
 const SpotifyLogo = styled(Logo)`
   color: ${theme.color.green};
-  width: 50px;
+  width: 100px;
 
   &:hover {
     color: ${theme.color.lightGreen};
@@ -71,28 +71,23 @@ const MenuItem = styled(NavLink)`
   color: ${theme.color.lightGray};
   transition: ${theme.transition};
   cursor: pointer;
-  margin: 1em 0em 1em 1em;
+  margin: 1em 0em 1em 0em;
   text-decoration: none;
-  font-size: 11px;
-  border-right: 2px solid transparent;
+  font-size: 14px;
+  border-right: 3px solid transparent;
 
   &.active {
     border-color: ${theme.color.lightGreen};
     color: ${theme.color.white};
-    color: ${theme.color.green};
-    /*background-color: #18181b;*/
   }
 
   &:hover {
     color: ${theme.color.white};
-    color: ${theme.color.green};
-    /*background-color: #18181b;*/
   }
 
   svg {
     width: 20px;
     height: 20px;
-    margin-bottom: 0.5em;
     margin-left: 2em;
     margin-right: 2em;
   }
@@ -101,7 +96,7 @@ const MenuItem = styled(NavLink)`
     flex: 1 1 0;
     padding: 1em 0;
     max-height: 100%;
-    border-top: 2px solid transparent;
+    border-top: 3px solid transparent;
     border-right: 0;
   `}
 `;
@@ -118,6 +113,11 @@ function Navbar() {
       <SpotifyLogo>
         <SpotifyIcon />
       </SpotifyLogo>
+      {/* <img
+        src={SpotifyLogo}
+        width="100px"
+        style={{ marginTop: "2em", marginLeft: "-6em" }}
+      /> */}
 
       <Menu>
         <MenuItem exact to="/">

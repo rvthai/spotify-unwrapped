@@ -5,13 +5,12 @@ import mixins from "./mixins";
 const Nav = styled.nav`
   position: fixed;
   min-height: 100vh;
-  width: 200px;
+  width: 250px;
+  top: 0;
   left: 0;
   background: #222229;
-  border-right: 1px solid #222229;
   ${mixins.flexColumn};
   ${mixins.flexSpaceBetween};
-  ${mixins.flexAlignCenter};
 
   ${media.tablet`
     min-height: 0;

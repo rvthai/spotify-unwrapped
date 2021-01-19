@@ -208,6 +208,10 @@ function Profile() {
         />
       ) : null}
       <div style={{ marginBottom: "5em" }}></div>
+
+      <h3 style={{ marginTop: "1em", marginBottom: "1em", fontSize: "30px" }}>
+        Your Latest Listening Trends
+      </h3>
       <Preview>
         {currentTopTrack && currentTopArtist ? (
           <CurrentTopTrack artist={currentTopArtist} track={currentTopTrack} />
@@ -216,7 +220,7 @@ function Profile() {
           <CurrentTopArtist artist={currentTopArtist} track={currentTopTrack} />
         ) : null}
       </Preview>
-      <Preview>
+      {/* <Preview>
         {topTracks ? <TopTracksPreview data={topTracks} /> : null}
         {topArtists ? <TopArtistsPreview data={topArtists} /> : null}
 
@@ -227,7 +231,7 @@ function Profile() {
             total={total}
           ></TopGenresPreview>
         ) : null}
-      </Preview>
+      </Preview> */}
     </Main>
   );
 }

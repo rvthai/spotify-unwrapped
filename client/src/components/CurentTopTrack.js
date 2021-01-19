@@ -45,6 +45,7 @@ const CurrentTopTrack = (props) => (
         <h2 style={{ marginRight: "2em", fontSize: "55px" }}>
           {props.track.name}
         </h2>
+        <p>See More</p>
       </div>
     </Category>
   </MiniCard>

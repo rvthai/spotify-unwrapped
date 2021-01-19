@@ -45,6 +45,7 @@ const CurrentTopArtist = (props) => (
         <h2 style={{ marginRight: "2em", fontSize: "40px" }}>
           {props.artist.name}
         </h2>
+        <p>See More</p>
       </div>
     </Category>
   </MiniCard>
