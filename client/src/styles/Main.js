@@ -3,7 +3,7 @@ import media from "./media";
 
 const Main = styled.main`
   text-align: center;
-  padding: 50px 0;
+  padding: 80px 0;
 `;
 
 export default Main;

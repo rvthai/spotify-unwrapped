@@ -4,8 +4,8 @@ import styled from "styled-components";
 import { Card } from "styles";
 
 const MiniCard = styled(Card)`
-  width: 555px;
-  height: 150px;
+  width: 475px;
+  height: 125px;
 `;
 
 const Content = styled.div`
@@ -16,25 +16,37 @@ const Content = styled.div`
 const Category = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
 `;
 
 const CurrentTopTrack = (props) => (
   <MiniCard>
-    <h3>Your Current Top Track</h3>
-    <Content>
-      <Category>
-        <h3>{props.track.name}</h3>
-        <img
-          style={{
-            width: "150px",
-            height: "150px",
-            borderRadius: "5px",
-          }}
-          src={props.track.album.images[0].url}
-          alt="album-cover"
-        />
-      </Category>
-    </Content>
+    <Category>
+      <img
+        style={{
+          width: "125px",
+          height: "125px",
+          borderRadius: "5px",
+        }}
+        src={props.track.album.images[0].url}
+        alt="album-cover"
+      />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          marginLeft: "2em",
+        }}
+      >
+        <p style={{ color: "white", fontSize: "14px" }}>
+          Your Current Top Track
+        </p>
+        <h2 style={{ marginRight: "2em", fontSize: "55px" }}>
+          {props.track.name}
+        </h2>
+      </div>
+    </Category>
   </MiniCard>
 );
 

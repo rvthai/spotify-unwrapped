@@ -207,26 +207,26 @@ function Profile() {
           playlists={playlists.total}
         />
       ) : null}
+      <div style={{ marginBottom: "5em" }}></div>
       <Preview>
-        {/* {currentTopTrack ? (
+        {currentTopTrack && currentTopArtist ? (
           <CurrentTopTrack artist={currentTopArtist} track={currentTopTrack} />
         ) : null}
-        {currentTopArtist ? (
+        {currentTopTrack && currentTopArtist ? (
           <CurrentTopArtist artist={currentTopArtist} track={currentTopTrack} />
-        ) : null} */}
+        ) : null}
       </Preview>
       <Preview>
         {topTracks ? <TopTracksPreview data={topTracks} /> : null}
         {topArtists ? <TopArtistsPreview data={topArtists} /> : null}
-        <div>
-          {topGenres ? (
-            <TopGenresPreview
-              data={topGenres}
-              max={max}
-              total={total}
-            ></TopGenresPreview>
-          ) : null}
-        </div>
+
+        {topGenres ? (
+          <TopGenresPreview
+            data={topGenres}
+            max={max}
+            total={total}
+          ></TopGenresPreview>
+        ) : null}
       </Preview>
     </Main>
   );

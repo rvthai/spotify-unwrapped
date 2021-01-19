@@ -4,8 +4,8 @@ import styled from "styled-components";
 import { Card } from "styles";
 
 const MiniCard = styled(Card)`
-  width: 555px;
-  height: 150px;
+  width: 475px;
+  height: 125px;
 `;
 
 const Content = styled.div`
@@ -16,26 +16,37 @@ const Content = styled.div`
 const Category = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
 `;
 
 const CurrentTopArtist = (props) => (
   <MiniCard>
-    <h3>Your Current Top Artist</h3>
-    <Content>
-      <Category>
-        <h3>{props.artist.name}</h3>
-        <img
-          style={{
-            width: "150px",
-            height: "150px",
-            borderRadius: "5px",
-            alignSelf: "flex-end",
-          }}
-          src={props.artist.images[1].url}
-          alt="album-cover"
-        />
-      </Category>
-    </Content>
+    <Category>
+      <img
+        style={{
+          width: "125px",
+          height: "125px",
+          borderRadius: "5px",
+        }}
+        src={props.artist.images[0].url}
+        alt="album-cover"
+      />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          marginLeft: "2em",
+        }}
+      >
+        <p style={{ color: "white", fontSize: "14px" }}>
+          Your Current Top Artist
+        </p>
+        <h2 style={{ marginRight: "2em", fontSize: "40px" }}>
+          {props.artist.name}
+        </h2>
+      </div>
+    </Category>
   </MiniCard>
 );
 

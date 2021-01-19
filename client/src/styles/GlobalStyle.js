@@ -88,7 +88,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     margin: 0;
     color: ${theme.color.lightGray};
-    font-size: 12px;
+    font-size: 16px;
   }
 `;
 

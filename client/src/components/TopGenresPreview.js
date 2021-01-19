@@ -11,7 +11,7 @@ const PreviewHeader = styled.div`
 `;
 
 const Card2 = styled(Card)`
-  width: 350px;
+  width: 300px;
 `;
 
 const Bars = styled.div`
@@ -36,7 +36,7 @@ function TopGenresPreview(props) {
   const ratio = Math.round(props.max / 10) * 10;
 
   return (
-    <Card2>
+    <Card>
       <PreviewHeader>
         <h3>Top Genres of All Time</h3>
         <Link style={{ textDecoration: "none" }} to="/top-genres">
@@ -66,7 +66,7 @@ function TopGenresPreview(props) {
           </div>
         ))}
       </Bars>
-    </Card2>
+    </Card>
   );
 }
 

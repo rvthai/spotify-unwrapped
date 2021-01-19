@@ -26,7 +26,7 @@ function TopArtistsPreview(props) {
             key={index}
             style={{
               display: "flex",
-              margin: "1rem",
+              margin: "1.5em",
               whiteSpace: "nowrap",
               overflow: "hidden",
               textOverflow: "ellipsis",

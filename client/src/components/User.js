@@ -26,6 +26,7 @@ const UnknownProfile = styled.div`
 const ProfileStats = styled.div`
   ${mixins.flexRow}
   ${mixins.flexCenter}
+  margin-top: 2em;
 `;
 
 const Stats = styled.div`
@@ -51,7 +52,7 @@ function User(props) {
             width: "150px",
             height: "150px",
             borderRadius: "50%",
-            boxShadow: "rgba(0, 0, 0, 0.5) -3px 0px 10px",
+            marginBottom: "1em",
           }}
         />
       ) : (
@@ -59,7 +60,7 @@ function User(props) {
           <UserIcon />
         </UnknownProfile>
       )}
-      <h2>{name}</h2>
+      <h2 style={{ fontSize: "60px" }}>{name}</h2>
       <ProfileStats>
         <Stats>
           <Stat>{followers}</Stat>
