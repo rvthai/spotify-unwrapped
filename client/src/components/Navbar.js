@@ -136,10 +136,6 @@ function Navbar() {
           <GenreIcon />
           Top Genres
         </MenuItem>
-        <MenuItem exact to="/trends">
-          <TrendsIcon />
-          Activity
-        </MenuItem>
         {/* <MenuItem exact to="/sign-out" onClick={handleLogout}>
           <LogoutIcon />
           Logout

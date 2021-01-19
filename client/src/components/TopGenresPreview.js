@@ -23,7 +23,7 @@ const Bar = styled.div`
   width: ${(props) => props.percentage}%;
   height: 25px;
   background-color: ${theme.color.green};
-  margin: 0 1rem 1rem 1rem;
+  margin: 0 1rem 1.5em 1rem;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   border-top-left-radius: 2px;
@@ -46,21 +46,21 @@ function TopGenresPreview(props) {
       <Bars>
         {Object.keys(props.data).map((genre, index) => (
           <div key={index}>
+            <p
+              style={{
+                color: "#fff",
+                marginLeft: "1.1em",
+                textAlign: "left",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                fontSize: "14px",
+              }}
+            >
+              {genre}
+            </p>
             <div style={{ display: "flex", alignItems: "center" }}>
-              <Bar percentage={(props.data[genre] / ratio) * 75}>
-                <p
-                  style={{
-                    color: "#fff",
-                    marginLeft: "0.5em",
-                    textAlign: "left",
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                  }}
-                >
-                  {genre}
-                </p>
-              </Bar>
+              <Bar percentage={(props.data[genre] / ratio) * 75}></Bar>
               <p>{props.data[genre]}%</p>
             </div>
           </div>

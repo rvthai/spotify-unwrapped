@@ -10,7 +10,6 @@ import {
   getTopTracks,
   getTopArtists,
   getSeveralArtists,
-  getRecentlyPlayed,
 } from "utils";
 
 // Styled Components
@@ -23,7 +22,6 @@ import CurrentTopArtist from "components/CurrentTopArtist";
 import TopTracksPreview from "components/TopTracksPreview";
 import TopArtistsPreview from "components/TopArtistsPreview";
 import TopGenresPreview from "components/TopGenresPreview";
-import ActivityPreview from "components/ActivityPreview";
 
 const Preview = styled(Section)`
   ${mixins.flexRow}
@@ -52,9 +50,6 @@ function Profile() {
   const [total, setTotal] = useState(0);
   const [max, setMax] = useState(0);
 
-  // Data for activity
-  const [playback, setPlayback] = useState(null);
-
   useEffect(() => {
     getUserData();
     getCurrentTopTrack();
@@ -62,7 +57,6 @@ function Profile() {
     getTopTracksData();
     getTopArtistsData();
     getTopGenres();
-    getPlaybackData();
   }, []);
 
   const getUserData = async () => {
@@ -106,7 +100,7 @@ function Profile() {
     try {
       const response = await getTopTracks({
         time_range: "long_term",
-        limit: 10,
+        limit: 5,
       });
       setTopTracks(response.data.items);
     } catch (error) {
@@ -118,7 +112,7 @@ function Profile() {
     try {
       const response = await getTopArtists({
         time_range: "long_term",
-        limit: 10,
+        limit: 5,
       });
       setTopArtists(response.data.items);
     } catch (error) {
@@ -202,22 +196,6 @@ function Profile() {
     setTotal(total);
   };
 
-  const getPlaybackData = async () => {
-    const date = new Date(Date.UTC(2021, 0, 18, 20, 0, 0));
-    console.log("Date in UTC:", date);
-    const timestamp = date.getTime();
-    console.log("Timestamp in milliseconds:", timestamp);
-
-    try {
-      const response = await getRecentlyPlayed(timestamp);
-      const a = new Date(response.data.items[0].played_at);
-      console.log(a.toUTCString());
-      setPlayback(response.data.items);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <Main>
       {user && following && playlists ? (
@@ -230,12 +208,12 @@ function Profile() {
         />
       ) : null}
       <Preview>
-        {currentTopTrack ? (
+        {/* {currentTopTrack ? (
           <CurrentTopTrack artist={currentTopArtist} track={currentTopTrack} />
         ) : null}
         {currentTopArtist ? (
           <CurrentTopArtist artist={currentTopArtist} track={currentTopTrack} />
-        ) : null}
+        ) : null} */}
       </Preview>
       <Preview>
         {topTracks ? <TopTracksPreview data={topTracks} /> : null}
@@ -248,7 +226,6 @@ function Profile() {
               total={total}
             ></TopGenresPreview>
           ) : null}
-          {playback ? <ActivityPreview data={playback} /> : null}
         </div>
       </Preview>
     </Main>

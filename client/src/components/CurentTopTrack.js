@@ -5,7 +5,7 @@ import { Card } from "styles";
 
 const MiniCard = styled(Card)`
   width: 555px;
-  height: 200px;
+  height: 150px;
 `;
 
 const Content = styled.div`
