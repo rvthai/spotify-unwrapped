@@ -2,6 +2,8 @@ import { createGlobalStyle } from "styled-components";
 import font from "../fonts";
 import theme from "./theme";
 
+const { color, fontSize } = theme;
+
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: "Circular Std";
@@ -60,16 +62,15 @@ const GlobalStyle = createGlobalStyle`
   h1, h2 {
     letter-spacing: -0.025em;
     margin: 10px 0 10px 0;
+    font-size: ${fontSize.xxl}
   }
 
   h1 {
     font-weight: 900;
-    font-size: 90px;
   }
 
   h2 {
     font-weight: 700;
-    font-size: 40px;
   }
 
   @media screen and (max-width: 768px) {
@@ -87,8 +88,13 @@ const GlobalStyle = createGlobalStyle`
   p {
     font-weight: 400;
     margin: 0;
-    color: ${theme.color.lightGray};
-    font-size: 16px;
+    color: ${color.lightGray};
+    font-size: ${fontSize.xs};
+  }
+
+  button {
+    font-family: "Circular Std", "sans-serif";
+    font-weight: 500;
   }
 `;
 

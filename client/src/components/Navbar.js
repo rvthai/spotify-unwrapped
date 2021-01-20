@@ -55,6 +55,7 @@ const GithubLogo = styled(Logo)`
 const Menu = styled.div`
   width: 100%;
   ${mixins.flexColumn}
+
   ${media.tablet`
     width: 100%;
     ${mixins.flexRow}
@@ -73,7 +74,7 @@ const MenuItem = styled(NavLink)`
   cursor: pointer;
   margin: 1em 0em 1em 0em;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 11px;
   border-right: 3px solid transparent;
 
   &.active {
@@ -98,14 +99,15 @@ const MenuItem = styled(NavLink)`
     max-height: 100%;
     border-top: 3px solid transparent;
     border-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    flex-direction: column;
+    svg {
+      margin-bottom: 0.5em;
+    }
+
   `}
 `;
-
-const handleLogout = (e) => {
-  e.preventDefault();
-  console.log("ya");
-  logout();
-};
 
 function Navbar() {
   return (
@@ -113,11 +115,6 @@ function Navbar() {
       <SpotifyLogo>
         <SpotifyIcon />
       </SpotifyLogo>
-      {/* <img
-        src={SpotifyLogo}
-        width="100px"
-        style={{ marginTop: "2em", marginLeft: "-6em" }}
-      /> */}
 
       <Menu>
         <MenuItem exact to="/">

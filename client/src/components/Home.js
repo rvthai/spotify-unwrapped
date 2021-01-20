@@ -12,7 +12,7 @@ import TopGenres from "pages/TopGenres";
 
 const Content = styled.div`
   min-height: 100vh;
-  margin-left: 200px;
+  margin-left: 250px;
 
   ${media.tablet`
     margin-left: 0;

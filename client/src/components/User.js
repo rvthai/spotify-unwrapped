@@ -1,80 +1,92 @@
 import React from "react";
+
+import Logout from "components/Logout";
+import { NoUserIcon } from "icons";
+
 import styled from "styled-components";
+import { Section } from "styles";
 import { mixins, theme } from "styles";
 
-// Styled Components
-import { Section } from "styles";
+const { color, fontSize } = theme;
 
-// Icons
-import { UserIcon } from "icons";
+const Avatar = styled.img`
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+`;
 
 const UnknownProfile = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${mixins.flexCenter}
   border-radius: 50%;
-  border: solid 2px #fff;
+  background: ${color.lightSlateGray};
   width: 200px;
   height: 200px;
 
   svg {
-    width: 85px;
-    color: #fff;
+    width: 100px;
+    height: 100px;
+    color: ${color.lightGray};
   }
 `;
 
-const ProfileStats = styled.div`
+const Overview = styled.div`
   ${mixins.flexRow}
-  ${mixins.flexCenter}
   margin-top: 2em;
 `;
 
-const Stats = styled.div`
-  ${mixins.flexColumn}
-  ${mixins.flexCenter}
-  padding: 0 2em;
+const OverviewItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 1em;
 `;
 
-const Stat = styled.h3`
-  color: ${theme.color.green};
+const Stat = styled.p`
+  color: ${color.green};
+  font-size: ${fontSize.md};
+`;
+
+const Label = styled.p`
+  letter-spacing: 2px;
 `;
 
 function User(props) {
-  const { avatar, name, followers, following, playlists } = props;
+  const { data } = props;
+
+  const avatar = data.user.images[0] ? data.user.images[0].url : null;
+  const name = data.user.display_name;
+
+  const followers = data.user.followers.total;
+  const following = data.following.artists.total;
+  const playlists = data.playlists.total;
 
   return (
     <Section>
       {avatar ? (
-        <img
-          src={avatar}
-          alt="avatar"
-          style={{
-            width: "150px",
-            height: "150px",
-            borderRadius: "50%",
-            marginBottom: "1em",
-          }}
-        />
+        <Avatar src={avatar} alt="avatar" />
       ) : (
         <UnknownProfile>
-          <UserIcon />
+          <NoUserIcon />
         </UnknownProfile>
       )}
-      <h2 style={{ fontSize: "60px" }}>{name}</h2>
-      <ProfileStats>
-        <Stats>
-          <Stat>{followers}</Stat>
-          <p>FOLLOWERS</p>
-        </Stats>
-        <Stats>
-          <Stat>{following}</Stat>
-          <p>FOLLOWING</p>
-        </Stats>
-        <Stats>
+      <h2>{name}</h2>
+
+      <Logout />
+
+      <Overview>
+        <OverviewItem>
           <Stat>{playlists}</Stat>
-          <p>PLAYLISTS</p>
-        </Stats>
-      </ProfileStats>
+          <Label>PLAYLISTS</Label>
+        </OverviewItem>
+        <OverviewItem>
+          <Stat>{followers}</Stat>
+          <Label>FOLLOWERS</Label>
+        </OverviewItem>
+        <OverviewItem>
+          <Stat>{following}</Stat>
+          <Label>FOLLOWING</Label>
+        </OverviewItem>
+      </Overview>
     </Section>
   );
 }

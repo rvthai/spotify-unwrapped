@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import media from "./media";
 import mixins from "./mixins";
+import theme from "./theme";
+
+const { color } = theme;
 
 const Nav = styled.nav`
   position: fixed;
   min-height: 100vh;
   width: 250px;
-  top: 0;
   left: 0;
-  background: #222229;
+  background: ${color.slateGray};
   ${mixins.flexColumn};
   ${mixins.flexSpaceBetween};
 

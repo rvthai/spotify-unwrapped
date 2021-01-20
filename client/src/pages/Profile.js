@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import { mixins } from "styles";
-
-// API
 import {
   getUser,
   getFollowing,
@@ -12,9 +8,6 @@ import {
   getSeveralArtists,
 } from "utils";
 
-// Styled Components
-import { Main, Section } from "styles";
-
 // Components
 import User from "components/User";
 import CurrentTopTrack from "components/CurentTopTrack";
@@ -22,6 +15,10 @@ import CurrentTopArtist from "components/CurrentTopArtist";
 import TopTracksPreview from "components/TopTracksPreview";
 import TopArtistsPreview from "components/TopArtistsPreview";
 import TopGenresPreview from "components/TopGenresPreview";
+
+import styled from "styled-components";
+import { Main, Section } from "styles";
+import { mixins } from "styles";
 
 const Preview = styled(Section)`
   ${mixins.flexRow}
@@ -31,11 +28,7 @@ const Preview = styled(Section)`
 `;
 
 function Profile() {
-  // Data for User component
-  // NEED TO SET THESE TO ONE OBJECT LATER FOR SINGLE RENDERING
   const [user, setUser] = useState(null);
-  const [following, setFollowing] = useState(null);
-  const [playlists, setPlaylists] = useState(null);
 
   // Data for current top track and artist
   const [currentTopTrack, setCurrentTopTrack] = useState(null);
@@ -64,9 +57,14 @@ function Profile() {
       const userData = await getUser();
       const followingData = await getFollowing();
       const playlistsData = await getPlaylists();
-      setUser(userData.data);
-      setFollowing(followingData.data);
-      setPlaylists(playlistsData.data);
+
+      const data = {
+        user: userData.data,
+        following: followingData.data,
+        playlists: playlistsData.data,
+      };
+
+      setUser(data);
     } catch (error) {
       console.log(error);
     }
@@ -198,18 +196,9 @@ function Profile() {
 
   return (
     <Main>
-      {user && following && playlists ? (
-        <User
-          avatar={user.images[0] ? user.images[0].url : null}
-          name={user.display_name}
-          followers={user.followers.total}
-          following={following.artists.total}
-          playlists={playlists.total}
-        />
-      ) : null}
-      <div style={{ marginBottom: "5em" }}></div>
+      {user ? <User data={user} /> : null}
 
-      <h3 style={{ marginTop: "1em", marginBottom: "1em", fontSize: "30px" }}>
+      {/* <h3 style={{ marginTop: "1em", marginBottom: "1em", fontSize: "30px" }}>
         Your Latest Listening Trends
       </h3>
       <Preview>
@@ -220,6 +209,9 @@ function Profile() {
           <CurrentTopArtist artist={currentTopArtist} track={currentTopTrack} />
         ) : null}
       </Preview>
+      <h3 style={{ marginTop: "1em", marginBottom: "1em", fontSize: "30px" }}>
+        Recently Played
+      </h3> */}
       {/* <Preview>
         {topTracks ? <TopTracksPreview data={topTracks} /> : null}
         {topArtists ? <TopArtistsPreview data={topArtists} /> : null}

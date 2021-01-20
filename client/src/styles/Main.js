@@ -2,8 +2,7 @@ import styled from "styled-components";
 import media from "./media";
 
 const Main = styled.main`
-  text-align: center;
-  padding: 80px 0;
+  padding: 100px 0;
 `;
 
 export default Main;

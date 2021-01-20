@@ -25,3 +25,23 @@ const Login = () => (
 );
 
 export default Login;
+/*
+Original: #1db954
+#4bdf80 or #1ed760 hover
+#18ac4d focus
+#1aa34a active
+*/
+
+/*
+
+  &:hover {
+    background: #1ed760;
+  }
+
+  &:focus {
+    background: #18ac4d;
+  }
+
+  &:active {
+    background: #1aa34a;
+  }*/
