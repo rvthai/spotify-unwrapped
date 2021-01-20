@@ -10,11 +10,12 @@ import {
 
 // Components
 import User from "components/User";
+import Trends from "components/Trends";
 import CurrentTopTrack from "components/CurentTopTrack";
-import CurrentTopArtist from "components/CurrentTopArtist";
-import TopTracksPreview from "components/TopTracksPreview";
-import TopArtistsPreview from "components/TopArtistsPreview";
-import TopGenresPreview from "components/TopGenresPreview";
+import CurrentTopArtist from "components/TopArtist";
+// import TopTracksPreview from "components/TopTracksPreview";
+// import TopArtistsPreview from "components/TopArtistsPreview";
+// import TopGenresPreview from "components/TopGenresPreview";
 
 import styled from "styled-components";
 import { Main, Section } from "styles";
@@ -197,6 +198,7 @@ function Profile() {
   return (
     <Main>
       {user ? <User data={user} /> : null}
+      {currentTopArtist ? <Trends artist={currentTopArtist} /> : null}
 
       {/* <h3 style={{ marginTop: "1em", marginBottom: "1em", fontSize: "30px" }}>
         Your Latest Listening Trends

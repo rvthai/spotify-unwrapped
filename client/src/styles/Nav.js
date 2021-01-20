@@ -8,7 +8,7 @@ const { color } = theme;
 const Nav = styled.nav`
   position: fixed;
   min-height: 100vh;
-  width: 250px;
+  width: 200px;
   left: 0;
   background: ${color.slateGray};
   ${mixins.flexColumn};

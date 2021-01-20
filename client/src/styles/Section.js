@@ -6,6 +6,7 @@ const Section = styled.section`
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding: 20px 0;
 `;
 
 export default Section;

@@ -77,16 +77,16 @@ function User(props) {
 
       <Overview>
         <OverviewItem>
-          <Stat>{playlists}</Stat>
-          <Label>PLAYLISTS</Label>
-        </OverviewItem>
-        <OverviewItem>
           <Stat>{followers}</Stat>
           <Label>FOLLOWERS</Label>
         </OverviewItem>
         <OverviewItem>
           <Stat>{following}</Stat>
           <Label>FOLLOWING</Label>
+        </OverviewItem>
+        <OverviewItem>
+          <Stat>{playlists}</Stat>
+          <Label>PLAYLISTS</Label>
         </OverviewItem>
       </Overview>
     </Section>
