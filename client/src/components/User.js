@@ -39,11 +39,13 @@ const OverviewItem = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 0 1em;
+  width: 100px;
 `;
 
 const Stat = styled.p`
   color: ${color.green};
-  font-size: ${fontSize.md};
+  font-size: ${fontSize.lg};
+  line-height: 1.5em;
 `;
 
 const Label = styled.p`
