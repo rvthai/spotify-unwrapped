@@ -12,7 +12,6 @@ const Button = styled.button`
   text-decoration: none;
   font-size: ${fontSize.xs};
   letter-spacing: 2px;
-  transition: all 0.2s;
 `;
 
 export default Button;

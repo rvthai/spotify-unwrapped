@@ -3,6 +3,10 @@ import media from "./media";
 
 const Main = styled.main`
   padding: 80px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export default Main;

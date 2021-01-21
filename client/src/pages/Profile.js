@@ -11,21 +11,18 @@ import {
 // Components
 import User from "components/User";
 import Trends from "components/Trends";
-import CurrentTopTrack from "components/CurentTopTrack";
-import CurrentTopArtist from "components/TopArtist";
-// import TopTracksPreview from "components/TopTracksPreview";
-// import TopArtistsPreview from "components/TopArtistsPreview";
-// import TopGenresPreview from "components/TopGenresPreview";
+import TopTracksPreview from "components/TopTracksPreview";
+import TopArtistsPreview from "components/TopArtistsPreview";
+import TopGenresPreview from "components/TopGenresPreview";
 
 import styled from "styled-components";
 import { Main, Section } from "styles";
 import { mixins } from "styles";
 
 const Preview = styled(Section)`
-  ${mixins.flexRow}
-  ${mixins.flexCenter}
-  flex-wrap: wrap;
-  align-items: stretch;
+  width: 1200px;
+  ${mixins.flexColumn}
+  ${mixins.flexCenter};
 `;
 
 function Profile() {
@@ -194,30 +191,21 @@ function Profile() {
     setMax((m / t) * 100);
     setTotal(total);
   };
-
+  if (user) {
+    console.log(user.playlists.items[2]);
+  }
   return (
     <Main>
       {user ? <User data={user} /> : null}
-      {currentTopArtist ? <Trends artist={currentTopArtist} /> : null}
-
-      {/* <h3 style={{ marginTop: "1em", marginBottom: "1em", fontSize: "30px" }}>
-        Your Latest Listening Trends
-      </h3>
-      <Preview>
-        {currentTopTrack && currentTopArtist ? (
-          <CurrentTopTrack artist={currentTopArtist} track={currentTopTrack} />
-        ) : null}
-        {currentTopTrack && currentTopArtist ? (
-          <CurrentTopArtist artist={currentTopArtist} track={currentTopTrack} />
-        ) : null}
-      </Preview>
-      <h3 style={{ marginTop: "1em", marginBottom: "1em", fontSize: "30px" }}>
-        Recently Played
-      </h3> */}
+      {currentTopArtist && currentTopTrack ? (
+        <Trends artist={currentTopArtist} track={currentTopTrack} />
+      ) : null}
       {/* <Preview>
+        <h3 style={{ marginBottom: "1em", marginTop: "1em", fontSize: "24px" }}>
+          Your top of all time
+        </h3>
         {topTracks ? <TopTracksPreview data={topTracks} /> : null}
         {topArtists ? <TopArtistsPreview data={topArtists} /> : null}
-
         {topGenres ? (
           <TopGenresPreview
             data={topGenres}
@@ -226,6 +214,23 @@ function Profile() {
           ></TopGenresPreview>
         ) : null}
       </Preview> */}
+      {/* <Preview>
+        {topTracks ? <TopTracksPreview data={topTracks} /> : null}
+        {topArtists ? <TopArtistsPreview data={topArtists} /> : null}
+        {topGenres ? (
+          <TopGenresPreview
+            data={topGenres}
+            max={max}
+            total={total}
+          ></TopGenresPreview>
+        ) : null}
+      </Preview> */}
+
+      {/* <div style={{ width: "250px", height: "250px", overflow: "hidden" }}>
+        {user ? (
+          <img src={user.playlists.items[2].images[0].url} width="100%" />
+        ) : null}
+      </div> */}
     </Main>
   );
 }

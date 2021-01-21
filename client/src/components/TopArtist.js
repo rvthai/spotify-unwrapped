@@ -1,98 +1,135 @@
 import React from "react";
 
 import styled from "styled-components";
-import { theme } from "styles";
+import { theme, media } from "styles";
 
 const { color } = theme;
 
 const Container = styled.div`
+  margin: 1em;
   position: relative;
+  /*background: ${color.slateGray};*/
+  width: 600px;
+  height: 250px;
+  /*border-radius: 15px;*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /*box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);*/
+  position: relative;
+  overflow: hidden;
+`;
+
+const Glass = styled.div`
+  position: absolute;
+  background: ${color.slateGray};
+  width: 600px;
+  height: 200px;
+  z-index: -1;
+  top: 15%;
+  left: 8%;
+  display: flex;
+  /*box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow: 1px 1px 16px -2px rgba(0, 0, 0, 0.3);*/
 `;
 
 const Image = styled.img`
   width: 250px;
-  height: 250px;
+  overflow: hidden;
   display: block;
   position: relative;
-
-  /* box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); */
+  border-radius: "15px";
+  /*border-top-right-radius: 15px;*/
+  /*border-bottom-right-radius: 15px;*/
 `;
 
-const Label = styled.h3`
-  padding: 1em 2em;
+const Text = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 275px;
-  background: ${color.green};
-  position: absolute;
-  top: 30%;
-  left: -120%;
+  justify-content: space-between;
+  margin: 1em;
 `;
 
-const Label2 = styled.h1`
-  background: ${color.green};
-  text-align: center;
-  width: 400px;
-  position: absolute;
-  top: 90%;
-  left: -30%;
-  font-size: 50px;
-`;
-
-const MiniLabel2 = styled.p`
+const Category = styled.p`
   color: white;
-  position: absolute;
-  top: -15%;
-  left: 25%;
-  background: ${color.lightSlateGray};
-  padding: 0.5em 3em;
+  font-size: 12px;
+  background: ${color.black};
+  padding: 0.5em;
+  margin: 0 auto;
+  width: 75px;
 `;
 
-const MiniLabel = styled.p`
-  padding: 0.5em 1em;
-  width: 60px;
-  text-align: center;
-  background: ${color.lightSlateGray};
-  position: absolute;
-  top: 15%;
-  left: -120%;
+const Name = styled.h1`
+  font-size: 24px;
 `;
 
-const Glass = styled.div`
-  width: 500px;
+const PlayNow = styled.p`
+  font-size: 14px;
+  color: ${color.green};
+  letter-spacing: 2px;
+`;
+
+const ImageWrapper = styled.div`
+  width: 250px;
   height: 250px;
-  position: absolute;
-  z-index: -1;
-  top: 25px;
-  left: -110%;
-  background: ${color.slateGray};
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 `;
+/* box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); */
 
-const Glass2 = styled.div`
-  width: 300px;
-  height: 300px;
-  position: absolute;
-  z-index: -1;
-  top: 50px;
-  left: -10%;
-  background: ${color.slateGray};
-`;
+// const Label2 = styled.h1`;
+//   background: ${color.lightSlateGray};
+//   width: 400px;
+//   text-align: center;
+//   position: absolute;
+//   left: -30%;
+//   font-size: 40px;
+//   padding: 0.5em 0;
+// `;
+
+// const MiniLabel2 = styled.p`
+//   color: white;
+//   position: absolute;
+//   top: -15%;
+//   left: 25%;
+//   background: ${color.lightSlateGray};
+//   padding: 0.5em 3em;
+// `;
 
 function TopArtist(props) {
   const { artist } = props;
 
-  const artistImg = artist.images[0].url;
-  const artistName = artist.name;
+  const image = artist.images[0].url;
+  const name = artist.name;
 
   return (
-    <Container>
-      {/* <Glass />
-      <Image src={artistImg} alt="artist-avatar" />
-      <Label>{artistName}</Label>
-      <MiniLabel>Top Artist</MiniLabel> */}
-      <Glass2></Glass2>
-      <Image src={artistImg} alt="artist-avatar" />
-      <Label2>{artistName}</Label2>
-      <MiniLabel2>Top Artist</MiniLabel2>
-    </Container>
+    <div style={{ position: "relative", marginRight: "3em" }}>
+      <Glass>
+        <Text>
+          <Category>Top Artist</Category>
+          {/* <Name>
+              First Time (feat. Dylan Matthew) by Seven Lions, SLANDER & Dabin
+              feat. Dylan Matthew
+            </Name> */}
+          <Name>{name}</Name>
+          <PlayNow>PLAY NOW</PlayNow>
+        </Text>
+      </Glass>
+      <Container>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            width: "250px",
+            padding: "1em",
+            alignItems: "center",
+          }}
+        ></div>
+        <ImageWrapper>
+          <Image src={image} alt="artist-avatar" />
+        </ImageWrapper>
+      </Container>
+    </div>
   );
 }
 

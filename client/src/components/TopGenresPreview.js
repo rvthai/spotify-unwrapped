@@ -1,13 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import { Card, theme } from "styles";
+import { Card } from "styles";
 import { Link } from "react-router-dom";
+import { theme } from "styles";
+
+const { color } = theme;
 
 const PreviewHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 1rem;
+  border-bottom: 1px solid ${color.lightGray};
+  padding-bottom: 1em;
 `;
 
 const Card2 = styled(Card)`

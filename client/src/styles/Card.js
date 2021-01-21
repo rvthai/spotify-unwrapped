@@ -1,11 +1,15 @@
 import styled from "styled-components";
 
 const Card = styled.div`
-  border-radius: 15px;
-  width: 300px;
+  width: 100%;
   padding: 1em;
   margin: 1em;
-  /*background: #222229;*/
 `;
 
 export default Card;
+
+/*
+  border-radius: 10px;
+  background: #222229;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
+*/

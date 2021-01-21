@@ -10,7 +10,6 @@ const { color } = theme;
 const LogoutButton = styled(Button)`
   color: ${color.lightGray};
   background: ${color.lightSlateGray};
-  transition: all 0.2s;
 
   &:hover {
     color: ${color.white};

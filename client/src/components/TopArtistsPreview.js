@@ -3,12 +3,17 @@ import { Card } from "styles";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
+import { theme } from "styles";
+
+const { color } = theme;
 
 const PreviewHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 1rem;
+  border-bottom: 1px solid ${color.lightGray};
+  padding-bottom: 1em;
 `;
 
 function TopArtistsPreview(props) {
@@ -43,7 +48,17 @@ function TopArtistsPreview(props) {
               src={artist.images[2].url}
               alt="artist-profile-pic"
             />
-            <p>{artist.name}</p>
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <p>{artist.name}</p>
+              <p>4,545,245</p>
+            </div>
           </div>
         ))}
       </div>
