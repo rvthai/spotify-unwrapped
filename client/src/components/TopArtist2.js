@@ -5,62 +5,39 @@ import { theme } from "styles";
 const { color } = theme;
 
 const Container = styled.div`
-  margin: 2em 4em;
   display: flex;
-`;
-
-const Image = styled.img`
-  width: 150px;
-  height: 150px;
-  overflow: hidden;
-  display: block;
-  position: relative;
-`;
-
-const RightSide = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin: 1em;
-`;
-
-const FirstHalf = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
-const Label = styled.p`
-  color: white;
-`;
-
-const Name = styled.h1`
-  font-size: 24px;
-  text-align: left;
+  border: 1px solid pink;
+  width: 500px;
+  height: 200px;
 `;
 
 const ImageWrapper = styled.div`
-  width: 150px;
-  height: 150px;
-  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border: 1px solid red;
 `;
 
-const Background = styled.div`
-  width: 150px;
-  height: 150px;
-  background: ${color.lightSlateGray};
-  position: absolute;
-  top: 10%;
-  left: -10%;
-  z-index: -1;
+const Image = styled.img`
+  display: block;
+  width: 200px;
 `;
 
-const PlayNow = styled.p`
-  font-size: 14px;
-  color: ${color.green};
+const InfoWrapper = styled.div`
+  padding: 1em;
+  text-align: left;
+  border: 1px solid blue;
+`;
+
+const Label = styled.p`
   letter-spacing: 2px;
 `;
+
+const Content = styled.h1`
+  font-size: 24px;
+  color: ${color.white};
+`;
+
 function TopArtist2(props) {
   const { artist } = props;
 
@@ -71,15 +48,11 @@ function TopArtist2(props) {
     <Container>
       <ImageWrapper>
         <Image src={image} alt="artist-avatar" />
-        <Background />
       </ImageWrapper>
-      <RightSide>
-        <FirstHalf>
-          <Label>Top Artist</Label>
-          <Name>Panic At The Disco!</Name>
-        </FirstHalf>
-        <PlayNow>PLAY NOW</PlayNow>
-      </RightSide>
+      <InfoWrapper>
+        <Label>TOP ARTIST</Label>
+        <Content>Super duper long artist name will it fit?</Content>
+      </InfoWrapper>
     </Container>
   );
 }

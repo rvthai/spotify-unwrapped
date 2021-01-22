@@ -14,9 +14,10 @@ function Trends(props) {
         Your latest listening trends
       </h3>
       <div style={{ display: "flex", flexWrap: "wrap" }}>
-        <TopArtist2 artist={props.artist} />
-        <TopTrack2 track={props.track} />
-        {/* <TopTrack track={props.track} /> */}
+        {/* <TopArtist2 artist={props.artist} /> */}
+        {/* <TopTrack2 track={props.track} /> */}
+        <TopArtist artist={props.artist} />
+        <TopTrack track={props.track} />
       </div>
     </Section>
   );

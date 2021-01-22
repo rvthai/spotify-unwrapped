@@ -7,21 +7,30 @@ const { color } = theme;
 const Container = styled.div`
   margin: 2em 4em;
   display: flex;
+  width: 500px;
+  height: 200px;
+  border: 2px solid green;
 `;
 
 const Image = styled.img`
-  width: 150px;
-  overflow: hidden;
+  width: 200px;
   display: block;
-  position: relative;
+`;
+
+const ImageWrapper = styled.div`
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border: 2px solid pink;
 `;
 
 const RightSide = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   justify-content: space-between;
+  align-items: flex-start;
   margin: 1em;
+  border: 1px solid orange;
 `;
 
 const FirstHalf = styled.div`
@@ -31,17 +40,13 @@ const FirstHalf = styled.div`
 `;
 
 const Label = styled.p`
-  color: white;
+  font-size: 11px;
+  letter-spacing: 2px;
 `;
 
 const Name = styled.h1`
   font-size: 24px;
   text-align: left;
-`;
-
-const ImageWrapper = styled.div`
-  width: 150px;
-  position: relative;
 `;
 
 const Background = styled.div`
@@ -69,17 +74,14 @@ function TopTrack2(props) {
     <Container>
       <ImageWrapper>
         <Image src={image} alt="artist-avatar" />
-        <Background />
+        {/* <Background /> */}
       </ImageWrapper>
       <RightSide>
-        <FirstHalf>
-          <Label>Top Track</Label>
-          <Name>
-            If I aint got you (feat. Kanye west) asdkjf;klasdjfkljasdl;kfjs asdf
-            asdf f
-          </Name>
-        </FirstHalf>
-        <PlayNow>PLAY NOW</PlayNow>
+        {/* <FirstHalf>
+          <Label>TOP TRACK</Label>
+          <Name>{name}</Name>
+        </FirstHalf> */}
+        {/* <PlayNow>PLAY NOW</PlayNow> */}
       </RightSide>
     </Container>
   );
