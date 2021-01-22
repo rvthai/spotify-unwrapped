@@ -1,7 +1,9 @@
 import React from "react";
 
 import TopArtist from "components/TopArtist";
+import TopArtist2 from "components/TopArtist2";
 import TopTrack from "components/TopTrack";
+import TopTrack2 from "components/TopTrack2";
 
 import { Section } from "styles";
 
@@ -12,7 +14,8 @@ function Trends(props) {
         Your latest listening trends
       </h3>
       <div style={{ display: "flex", flexWrap: "wrap" }}>
-        <TopArtist artist={props.artist} />
+        <TopArtist2 artist={props.artist} />
+        <TopTrack2 track={props.track} />
         {/* <TopTrack track={props.track} /> */}
       </div>
     </Section>

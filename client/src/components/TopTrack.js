@@ -1,4 +1,5 @@
 import React from "react";
+import { ReactFitty } from "react-fitty";
 
 import styled from "styled-components";
 import { theme, media } from "styles";
@@ -23,12 +24,15 @@ const Container = styled.div`
 const Glass = styled.div`
   position: absolute;
   background: ${color.slateGray};
-  width: 600px;
-  height: 200px;
   z-index: -1;
   top: 15%;
   left: 8%;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  width: 600px;
+  height: 200px;
+  /*box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);*/
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 const Image = styled.img`
@@ -39,9 +43,6 @@ const Image = styled.img`
   border-radius: "15px";
   /*border-top-right-radius: 15px;*/
   /*border-bottom-right-radius: 15px;*/
-  mix-blend-mode: multiply;
-  filter: grayscale(100%) contrast(1);
-  transition: all 0.3s;
 `;
 
 const Category = styled.p`
@@ -51,29 +52,53 @@ const Category = styled.p`
 const ImageWrapper = styled.div`
   width: 250px;
   height: 250px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  background-color: ${color.green};
-
-  &:hover {
-    background: transparent;
-    img {
-      filter: none;
-      mix-blend-mode: normal;
-    }
-  }
+  /*box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);*/
 `;
 
-const Name = styled.h1``;
+const Name = styled(ReactFitty)`
+  font-weight: 900;
+  color: white;
+`;
+
+const PlayNow = styled.p`
+  font-size: 14px;
+  color: ${color.green};
+  letter-spacing: 2px;
+  margin: 1em;
+`;
 
 function TopTrack(props) {
   const { track } = props;
 
   const trackImg = track.album.images[0].url;
-  const trackName = track.name;
+  const name = track.name;
 
   return (
     <div style={{ position: "relative", marginRight: "3em" }}>
-      <Glass />
+      <Glass>
+        <div
+          style={{
+            margin: "1em",
+            display: "flex",
+            flexDirection: "column",
+            width: "275px",
+          }}
+        >
+          <Category>Top Track</Category>
+          <div
+            style={{
+              width: "275px",
+              height: "100px",
+            }}
+          >
+            <Name wrapText={true} maxSize={50} minSize={16}>
+              This is a really long track name hopefully it will fit in its
+              box/container
+            </Name>
+          </div>
+          <PlayNow>PLAY NOW</PlayNow>
+        </div>
+      </Glass>
       <Container>
         <div
           style={{
@@ -83,11 +108,7 @@ function TopTrack(props) {
             padding: "1em",
             alignItems: "center",
           }}
-        >
-          <Category>Top Track</Category>
-          <Name>{trackName}</Name>
-          PLAY NOW
-        </div>
+        ></div>
         <ImageWrapper>
           <Image src={trackImg} alt="artist-avatar" />
         </ImageWrapper>
