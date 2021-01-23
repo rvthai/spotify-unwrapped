@@ -45,9 +45,9 @@ const Name = styled.h1`
   -webkit-line-clamp: ${(props) => props.clamp};
   -webkit-box-orient: vertical;
   overflow: hidden;
+  overflow-wrap: break-word;
   /*word-break: ${(props) => props.break || "default"};*/
   /*hyphens: ${(props) => props.break || "none"};*/
-  hyphens: auto;
 `;
 const PlayButton = styled.p`
   letter-spacing: 2px;
@@ -96,13 +96,12 @@ function TopArtist(props) {
               justifyContent: "space-between",
               width: "280px",
               height: "100%",
-              //border: "solid 1px pink",
+              border: "solid 1px pink",
             }}
           >
             <Label>Top Artist</Label>
             {/* <Name clamp={X} break={Y} id="el">
-              ALl I want for christmas is you (feat justin beiber
-              bab)asjdfklajsdklfjaklsdjf;lksadasdjflksadjfklasjdkfjklsda;jfkl;adsj;kfl
+              All I Want For Christmas Is You (feat Justin Bieber)
             </Name> */}
             {/* <Name clamp={X} break={Y} id="el">
               idontwannabeyouanymore
