@@ -1,88 +1,124 @@
-import React, { useEffect } from "react";
-import styled from "styled-components";
-import { theme, media } from "styles";
+import React, { useEffect, useState } from "react";
+import styled, { css } from "styled-components";
+import { theme } from "styles";
 
 const { color } = theme;
 
 const Container = styled.div`
-  position: relative;
-`;
-
-const Glass = styled.div`
-  position: absolute;
-  z-index: 2;
-  top: 25%;
-  left: -125%;
-  width: 550px;
-  /*box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);*/
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
+  align-items: center;
+  margin: 2em 10em;
+  text-align: center;
 `;
 
-const Image = styled.img`
-  width: 250px;
-  overflow: hidden;
-  display: block;
-  position: relative;
-  border-radius: 5px;
-`;
-
-const Category = styled.p`
-  color: white;
-  margin-bottom: 1em;
-`;
-
-const Text = styled.div`
-  width: 55%;
-  overflow: hidden;
+const Background = styled.div`
+  position: absolute;
   background: ${color.slateGray};
-  padding: 0.5em 1em;
-  border-radius: 5px;
-`;
-
-const Name = styled.h1`
-  font-size: 24px;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  width: 600px;
+  height: 200px;
+  left: -120%;
+  top: 11%;
+  z-index: -1;
 `;
 
 const ImageWrapper = styled.div`
   width: 250px;
   height: 250px;
-  /*box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);*/
-  border-radius: 5px;
   overflow: hidden;
 `;
-
-const PlayNow = styled.p`
-  font-size: 14px;
-  color: ${color.green};
-  letter-spacing: 2px;
-  margin-top: 1em;
+const Image = styled.img`
+  width: 250px;
+  display: block;
 `;
+
+const Label = styled.p`
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: ${color.lightGray};
+  margin: 0.5em;
+`;
+const Name = styled.h1`
+  font-size: 24px;
+  margin: 1em;
+  display: -webkit-box;
+  -webkit-line-clamp: ${(props) => props.clamp};
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  /*word-break: ${(props) => props.break || "default"};*/
+  /*hyphens: ${(props) => props.break || "none"};*/
+  hyphens: auto;
+`;
+const PlayButton = styled.p`
+  letter-spacing: 2px;
+  color: ${color.green};
+  margin: 1em;
+  cursor: pointer;
+`;
+
 function TopArtist(props) {
   const { artist } = props;
 
   const image = artist.images[0].url;
   const name = artist.name;
 
+  const [X, setX] = useState();
+  const [Y, setY] = useState();
+
+  // console.log(
+  //   window.getComputedStyle(test, null).getPropertyValue("line-height")
+  // );
+  useEffect(() => {
+    const el = document.getElementById("el");
+    const lines = Math.round(el.offsetHeight / 28.8);
+    console.log("# of lines in name:", lines);
+
+    if (lines > 3) {
+      setX(3);
+      // setY("none");
+    } else if (lines === 1) {
+      setY("auto");
+    } else {
+      // setY("none");
+      setX(lines);
+    }
+  }, []);
+
   return (
     <Container>
-      <Glass>
-        <Category>Top Artist</Category>
-        <Text>
-          <Name>{name}</Name>
-        </Text>
-        <PlayNow>PLAY NOW</PlayNow>
-      </Glass>
-
-      <ImageWrapper>
-        <Image src={image} alt="artist-avatar" />
-      </ImageWrapper>
+      <div style={{ position: "relative" }}>
+        <Background>
+          {" "}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              width: "280px",
+              height: "100%",
+              //border: "solid 1px pink",
+            }}
+          >
+            <Label>Top Artist</Label>
+            {/* <Name clamp={X} break={Y} id="el">
+              ALl I want for christmas is you (feat justin beiber
+              bab)asjdfklajsdklfjaklsdjf;lksadasdjflksadjfklasjdkfjklsda;jfkl;adsj;kfl
+            </Name> */}
+            {/* <Name clamp={X} break={Y} id="el">
+              idontwannabeyouanymore
+            </Name> */}
+            <Name clamp={X} break={Y} id="el">
+              i idontwannabeyouanymore b
+            </Name>
+            <PlayButton>PLAY NOW</PlayButton>
+          </div>
+        </Background>
+        <div style={{ display: "flex" }}>
+          <ImageWrapper>
+            <Image src={image} alt="artist" />
+          </ImageWrapper>
+        </div>
+      </div>
     </Container>
   );
 }

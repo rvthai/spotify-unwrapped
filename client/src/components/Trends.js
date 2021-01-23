@@ -22,9 +22,9 @@ function Trends(props) {
           alignItems: "stretch",
         }}
       >
-        <TopArtist2 artist={props.artist} />
+        {/* <TopArtist2 artist={props.artist} /> */}
         <TopTrack2 track={props.track} />
-        {/* <TopArtist artist={props.artist} /> */}
+        <TopArtist artist={props.artist} />
         {/* <TopTrack track={props.track} /> */}
       </div>
     </Section>
