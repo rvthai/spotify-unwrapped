@@ -1,36 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { theme, media } from "styles";
 
 const { color } = theme;
 
 const Container = styled.div`
-  margin: 1em;
   position: relative;
-  /*background: ${color.slateGray};*/
-  width: 600px;
-  height: 250px;
-  /*border-radius: 15px;*/
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  /*box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);*/
-  position: relative;
-  overflow: hidden;
 `;
 
 const Glass = styled.div`
   position: absolute;
-  background: ${color.slateGray};
-  z-index: -1;
-  top: 15%;
-  left: 8%;
-  width: 600px;
-  height: 200px;
+  z-index: 2;
+  top: 25%;
+  left: -125%;
+  width: 550px;
   /*box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);*/
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  text-align: left;
 `;
 
 const Image = styled.img`
@@ -38,32 +26,43 @@ const Image = styled.img`
   overflow: hidden;
   display: block;
   position: relative;
-  border-radius: "15px";
-  /*border-top-right-radius: 15px;*/
-  /*border-bottom-right-radius: 15px;*/
+  border-radius: 5px;
 `;
 
 const Category = styled.p`
   color: white;
+  margin-bottom: 1em;
+`;
+
+const Text = styled.div`
+  width: 55%;
+  overflow: hidden;
+  background: ${color.slateGray};
+  padding: 0.5em 1em;
+  border-radius: 5px;
+`;
+
+const Name = styled.h1`
+  font-size: 24px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 
 const ImageWrapper = styled.div`
   width: 250px;
   height: 250px;
   /*box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);*/
+  border-radius: 5px;
+  overflow: hidden;
 `;
-
-// const Name = styled(ReactFitText)`
-//   font-weight: 900;
-//   color: white;
-//   border: solid 2px green;
-// `;
 
 const PlayNow = styled.p`
   font-size: 14px;
   color: ${color.green};
   letter-spacing: 2px;
-  margin: 1em;
+  margin-top: 1em;
 `;
 function TopArtist(props) {
   const { artist } = props;
@@ -72,46 +71,19 @@ function TopArtist(props) {
   const name = artist.name;
 
   return (
-    <div style={{ position: "relative", marginRight: "3em" }}>
+    <Container>
       <Glass>
-        <div
-          style={{
-            margin: "1em",
-            display: "flex",
-            flexDirection: "column",
-            width: "275px",
-          }}
-        >
-          <Category>Top Artist</Category>
-          <div
-            style={{
-              width: "275px",
-              height: "100px",
-              border: "solid 1px pink",
-            }}
-          >
-            {/* <ScaleText>
-              <p>Mac Miller</p>
-            </ScaleText> */}
-          </div>
-          <PlayNow>PLAY NOW</PlayNow>
-        </div>
+        <Category>Top Artist</Category>
+        <Text>
+          <Name>{name}</Name>
+        </Text>
+        <PlayNow>PLAY NOW</PlayNow>
       </Glass>
-      <Container>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "250px",
-            padding: "1em",
-            alignItems: "center",
-          }}
-        ></div>
-        <ImageWrapper>
-          <Image src={image} alt="artist-avatar" />
-        </ImageWrapper>
-      </Container>
-    </div>
+
+      <ImageWrapper>
+        <Image src={image} alt="artist-avatar" />
+      </ImageWrapper>
+    </Container>
   );
 }
 

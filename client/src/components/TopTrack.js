@@ -92,8 +92,7 @@ function TopTrack(props) {
             }}
           >
             <Name wrapText={true} maxSize={50} minSize={16}>
-              This is a really long track name hopefully it will fit in its
-              box/container
+              Pussycatdolls
             </Name>
           </div>
           <PlayNow>PLAY NOW</PlayNow>

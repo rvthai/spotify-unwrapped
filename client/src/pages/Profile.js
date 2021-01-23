@@ -191,9 +191,7 @@ function Profile() {
     setMax((m / t) * 100);
     setTotal(total);
   };
-  if (user) {
-    console.log(user.playlists.items[2]);
-  }
+
   return (
     <Main>
       {user ? <User data={user} /> : null}
@@ -225,7 +223,6 @@ function Profile() {
           ></TopGenresPreview>
         ) : null}
       </Preview> */}
-
       {/* <div style={{ width: "250px", height: "250px", overflow: "hidden" }}>
         {user ? (
           <img src={user.playlists.items[2].images[0].url} width="100%" />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { theme } from "styles";
 
@@ -6,36 +6,47 @@ const { color } = theme;
 
 const Container = styled.div`
   display: flex;
-  border: 1px solid pink;
-  width: 500px;
+  flex-direction: column;
+  align-items: center;
+  margin: 2em 10em;
+  text-align: center;
+`;
+
+const Background = styled.div`
+  position: absolute;
+  background: ${color.slateGray};
+  width: 325px;
   height: 200px;
+  left: -15%;
+  top: 11%;
+  z-index: -1;
 `;
 
 const ImageWrapper = styled.div`
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   overflow: hidden;
-  border: 1px solid red;
 `;
-
 const Image = styled.img`
+  width: 250px;
   display: block;
-  width: 200px;
-`;
-
-const InfoWrapper = styled.div`
-  padding: 1em;
-  text-align: left;
-  border: 1px solid blue;
 `;
 
 const Label = styled.p`
+  font-size: 11px;
   letter-spacing: 2px;
+  color: ${color.lightGray};
+  margin: 0.5em;
 `;
-
-const Content = styled.h1`
+const Name = styled.h1`
   font-size: 24px;
-  color: ${color.white};
+  width: 250px;
+`;
+const PlayButton = styled.p`
+  letter-spacing: 2px;
+  color: ${color.green};
+  margin: 1em;
+  cursor: pointer;
 `;
 
 function TopArtist2(props) {
@@ -46,13 +57,15 @@ function TopArtist2(props) {
 
   return (
     <Container>
-      <ImageWrapper>
-        <Image src={image} alt="artist-avatar" />
-      </ImageWrapper>
-      <InfoWrapper>
-        <Label>TOP ARTIST</Label>
-        <Content>Super duper long artist name will it fit?</Content>
-      </InfoWrapper>
+      <Label>Top Artist</Label>
+      <Name>{name}</Name>
+      <div style={{ position: "relative" }}>
+        <Background />
+        <ImageWrapper>
+          <Image src={image} alt="artist" />
+        </ImageWrapper>
+      </div>
+      <PlayButton>PLAY NOW</PlayButton>
     </Container>
   );
 }

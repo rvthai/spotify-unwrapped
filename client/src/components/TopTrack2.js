@@ -5,65 +5,50 @@ import { theme } from "styles";
 const { color } = theme;
 
 const Container = styled.div`
-  margin: 2em 4em;
   display: flex;
-  width: 500px;
-  height: 200px;
-  border: 2px solid green;
+  flex-direction: column;
+  align-items: center;
+  margin: 2em 10em;
+  text-align: center;
 `;
 
-const Image = styled.img`
-  width: 200px;
-  display: block;
+const Background = styled.div`
+  position: absolute;
+  background: ${color.slateGray};
+  width: 325px;
+  height: 200px;
+  left: -15%;
+  top: 11%;
+  z-index: -1;
 `;
 
 const ImageWrapper = styled.div`
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   overflow: hidden;
-  border: 2px solid pink;
 `;
-
-const RightSide = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin: 1em;
-  border: 1px solid orange;
-`;
-
-const FirstHalf = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+const Image = styled.img`
+  width: 250px;
+  display: block;
 `;
 
 const Label = styled.p`
   font-size: 11px;
   letter-spacing: 2px;
+  color: ${color.lightGray};
+  margin: 0.5em;
 `;
-
 const Name = styled.h1`
   font-size: 24px;
-  text-align: left;
+  width: 250px;
 `;
-
-const Background = styled.div`
-  width: 150px;
-  height: 150px;
-  background: ${color.lightSlateGray};
-  position: absolute;
-  top: 10%;
-  left: -10%;
-  z-index: -1;
-`;
-
-const PlayNow = styled.p`
-  font-size: 14px;
-  color: ${color.green};
+const PlayButton = styled.p`
   letter-spacing: 2px;
+  color: ${color.green};
+  margin: 1em;
+  cursor: pointer;
 `;
+
 function TopTrack2(props) {
   const { track } = props;
 
@@ -72,17 +57,15 @@ function TopTrack2(props) {
 
   return (
     <Container>
-      <ImageWrapper>
-        <Image src={image} alt="artist-avatar" />
-        {/* <Background /> */}
-      </ImageWrapper>
-      <RightSide>
-        {/* <FirstHalf>
-          <Label>TOP TRACK</Label>
-          <Name>{name}</Name>
-        </FirstHalf> */}
-        {/* <PlayNow>PLAY NOW</PlayNow> */}
-      </RightSide>
+      <Label>Top Track</Label>
+      <Name>A super uneccessaryilt long name for a fucking artist</Name>
+      <div style={{ position: "relative" }}>
+        <Background />
+        <ImageWrapper>
+          <Image src={image} alt="track" />
+        </ImageWrapper>
+      </div>
+      <PlayButton>PLAY NOW</PlayButton>
     </Container>
   );
 }
