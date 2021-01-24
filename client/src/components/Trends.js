@@ -20,12 +20,13 @@ function Trends(props) {
           width: "100%",
           justifyContent: "center",
           alignItems: "stretch",
+          // border: "1px solid pink",
         }}
       >
-        {/* <TopArtist2 artist={props.artist} /> */}
-        <TopTrack2 track={props.track} />
-        <TopArtist artist={props.artist} />
-        {/* <TopTrack track={props.track} /> */}
+        <TopArtist2 artist={props.artist} />
+        {/* <TopTrack2 track={props.track} /> */}
+        {/* <TopArtist artist={props.artist} /> */}
+        <TopTrack track={props.track} />
       </div>
     </Section>
   );
