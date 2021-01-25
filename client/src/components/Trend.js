@@ -14,6 +14,7 @@ const Container = styled.div`
 
   ${media.tablet`
     ${mixins.flexColumn}
+    ${mixins.flexCenter}
   `}
 `;
 
@@ -22,6 +23,7 @@ const ImageWrapper = styled.div`
   height: 150px;
   flex-shrink: 0;
   overflow: hidden;
+  box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.5);
 
   ${media.tablet`
     order: 2;
@@ -40,6 +42,9 @@ const Info = styled.div`
 
   ${media.tablet`
     order: 1;
+    text-align: center;
+    margin-bottom: 0.5em;
+    margin-left: 0;
   `}
 `;
 
@@ -51,7 +56,6 @@ const Name = styled.h1`
   color: ${color.white};
   font-size: 30px;
   width: calc(350px - 1.25em);
-  margin: 0;
   overflow: hidden;
 
   ${(props) =>
@@ -64,16 +68,38 @@ const Name = styled.h1`
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
-    `}
+  `}
+
+  ${media.tablet`
+    font-size: 24px;
+    width: 300px;
+  `}
 `;
 
 const Buttons = styled.div`
   ${mixins.flexRow}
+
+  ${media.tablet`
+    display: none;
+  `}
+`;
+
+const ButtonsMobile = styled.div`
+  display: none;
+
+  ${media.tablet`
+    ${mixins.flexRow} 
+    order: 3;
+  `}
 `;
 
 const PrimaryButton = styled(Button)`
   color: ${color.white};
   background: ${color.green};
+
+  ${media.tablet`
+    margin-top: 1em;
+  `}
 
   &:hover {
     background: ${color.lightGreen};
@@ -92,6 +118,10 @@ const SecondaryButton = styled(Button)`
   background: transparent;
   border: 1px solid ${color.lightGray};
   margin-left: 1.25em;
+
+  ${media.tablet`
+    display: none;
+  `}
 
   &:hover {
     border: 1px solid ${color.white};
@@ -133,6 +163,9 @@ function Trend(props) {
           <SecondaryButton>SHARE</SecondaryButton>
         </Buttons>
       </Info>
+      <ButtonsMobile>
+        <PrimaryButton>PLAY</PrimaryButton>
+      </ButtonsMobile>
     </Container>
   );
 }

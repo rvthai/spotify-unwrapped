@@ -13,13 +13,13 @@ const Nav = styled.nav`
   background: ${color.slateGray};
   ${mixins.flexColumn};
   ${mixins.flexSpaceBetween};
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
 
   ${media.tablet`
     min-height: 0;
     width: 100%;
     bottom: 0;
     right: 0;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
   `};
 `;
 
