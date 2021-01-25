@@ -1,59 +1,104 @@
 import React, { useEffect, useState } from "react";
-import styled, { css } from "styled-components";
-import { theme } from "styles";
+
+import styled from "styled-components";
+import { Button } from "styles";
+import { theme, mixins, media } from "styles";
 
 const { color } = theme;
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2em 10em;
-  text-align: center;
-`;
-
-const Background = styled.div`
-  position: absolute;
-  background: ${color.slateGray};
-  width: 600px;
-  height: 200px;
-  left: -120%;
-  top: 11%;
-  z-index: -1;
+  width: 500px;
+  margin: 1em;
+  border: 1px solid pink;
 `;
 
 const ImageWrapper = styled.div`
-  width: 250px;
-  height: 250px;
+  flex-shrink: 0;
+  width: 150px;
+  height: 150px;
   overflow: hidden;
+  /*border-radius: 5px;*/
 `;
 const Image = styled.img`
-  width: 250px;
+  width: 150px;
   display: block;
 `;
 
+const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  /*justify-content: center;*/
+  justify-content: space-between;
+  text-align: left;
+  margin-left: 1.25em;
+`;
+
+const Text = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const Label = styled.p`
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 2px;
   color: ${color.lightGray};
-  margin: 0.5em;
+  margin-bottom: 0.5em;
 `;
-const Name = styled.h1`
-  font-size: 24px;
-  margin: 1em;
-  display: -webkit-box;
-  -webkit-line-clamp: ${(props) => props.clamp};
-  -webkit-box-orient: vertical;
+
+const Name = styled.p`
+  font-size: 36px;
+  font-weight: 900;
+  color: ${color.white};
+  width: calc(350px - 1.25em);
+
+  ${(props) =>
+    props.one
+      ? `
+  white-space: nowrap;
+  text-overflow: ellipsis;
   overflow: hidden;
-  overflow-wrap: break-word;
-  /*word-break: ${(props) => props.break || "default"};*/
-  /*hyphens: ${(props) => props.break || "none"};*/
+  `
+      : `display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow:hidden;`}
 `;
-const PlayButton = styled.p`
-  letter-spacing: 2px;
-  color: ${color.green};
-  margin: 1em;
-  cursor: pointer;
+
+const PlayButton = styled(Button)`
+  color: ${color.white};
+  background: ${color.green};
+
+  &:hover {
+    background: ${color.lightGreen};
+    transform: scale(1.05);
+  }
+
+  &:active,
+  &:focus {
+    background-color: ${color.darkGreen};
+    color: #e6e6e6;
+    transform: scale(1);
+  }
+`;
+
+const SeeMoreButton = styled(Button)`
+  color: ${color.white};
+  background: transparent;
+  border: 1px solid ${color.lightGray};
+  margin-left: 1.25em;
+
+  &:hover {
+    border: 1px solid ${color.white};
+    transform: scale(1.05);
+  }
+
+  &:active,
+  &:focus {
+    border: 1px solid ${color.gray};
+    color: ${color.lightGray};
+    transform: scale(1);
+  }
 `;
 
 function TopArtist(props) {
@@ -61,63 +106,38 @@ function TopArtist(props) {
 
   const image = artist.images[0].url;
   const name = artist.name;
-
   const [X, setX] = useState();
-  const [Y, setY] = useState();
 
-  // console.log(
-  //   window.getComputedStyle(test, null).getPropertyValue("line-height")
-  // );
   useEffect(() => {
     const el = document.getElementById("el");
     const lines = Math.round(el.offsetHeight / 28.8);
-    console.log("# of lines in name:", lines);
+    // console.log("# of lines in name:", lines);
 
-    if (lines > 3) {
-      setX(3);
-      // setY("none");
-    } else if (lines === 1) {
-      setY("auto");
+    if (lines === 1) {
+      console.log("truuuuu");
+      setX(true);
     } else {
-      // setY("none");
-      setX(lines);
+      setX(false);
     }
   }, []);
 
   return (
     <Container>
-      <div style={{ position: "relative" }}>
-        <Background>
-          {" "}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              width: "280px",
-              height: "100%",
-              border: "solid 1px pink",
-            }}
-          >
-            <Label>Top Artist</Label>
-            {/* <Name clamp={X} break={Y} id="el">
-              All I Want For Christmas Is You (feat Justin Bieber)
-            </Name> */}
-            {/* <Name clamp={X} break={Y} id="el">
-              idontwannabeyouanymore
-            </Name> */}
-            <Name clamp={X} break={Y} id="el">
-              i idontwannabeyouanymore b
-            </Name>
-            <PlayButton>PLAY NOW</PlayButton>
-          </div>
-        </Background>
+      <ImageWrapper>
+        <Image src={image} alt="artist" />
+      </ImageWrapper>
+      <TextWrapper>
+        <Text>
+          <Label>Top Artist</Label>
+          <Name id="el" one={X}>
+            idontwannabeyouanymore
+          </Name>
+        </Text>
         <div style={{ display: "flex" }}>
-          <ImageWrapper>
-            <Image src={image} alt="artist" />
-          </ImageWrapper>
+          <PlayButton>PLAY</PlayButton>
+          <SeeMoreButton>SHARE</SeeMoreButton>
         </div>
-      </div>
+      </TextWrapper>
     </Container>
   );
 }

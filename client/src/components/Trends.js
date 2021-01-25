@@ -1,18 +1,18 @@
 import React from "react";
 
 import TopArtist from "components/TopArtist";
-import TopArtist2 from "components/TopArtist2";
 import TopTrack from "components/TopTrack";
-import TopTrack2 from "components/TopTrack2";
 
 import { Section } from "styles";
 
 function Trends(props) {
   return (
     <Section>
-      <h3 style={{ marginBottom: "1em", fontSize: "24px" }}>
-        Your latest listening trends
-      </h3>
+      <h2
+        style={{ textAlign: "left", marginBottom: "0.5em", fontSize: "16px" }}
+      >
+        Your Latest Listening Trends
+      </h2>
       <div
         style={{
           display: "flex",
@@ -23,9 +23,7 @@ function Trends(props) {
           // border: "1px solid pink",
         }}
       >
-        <TopArtist2 artist={props.artist} />
-        {/* <TopTrack2 track={props.track} /> */}
-        {/* <TopArtist artist={props.artist} /> */}
+        <TopArtist artist={props.artist} />
         <TopTrack track={props.track} />
       </div>
     </Section>
