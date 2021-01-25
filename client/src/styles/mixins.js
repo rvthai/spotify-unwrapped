@@ -17,6 +17,11 @@ const mixins = {
     justify-content: space-between;
   `,
 
+  flexWrap: css`
+    display: flex;
+    flex-wrap: wrap;
+  `,
+
   flexColumn: css`
     display: flex;
     flex-direction: column;

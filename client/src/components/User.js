@@ -31,7 +31,7 @@ const UnknownProfile = styled.div`
 
 const Overview = styled.div`
   ${mixins.flexRow}
-  margin-top: 2em;
+  margin: 2em 0;
 `;
 
 const OverviewItem = styled.div`

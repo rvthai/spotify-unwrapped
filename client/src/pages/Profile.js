@@ -10,7 +10,7 @@ import {
 
 // Components
 import User from "components/User";
-import Trends from "components/Trends";
+import TrendsPreview from "components/TrendsPreview";
 import TopTracksPreview from "components/TopTracksPreview";
 import TopArtistsPreview from "components/TopArtistsPreview";
 import TopGenresPreview from "components/TopGenresPreview";
@@ -196,7 +196,7 @@ function Profile() {
     <Main>
       {user ? <User data={user} /> : null}
       {currentTopArtist && currentTopTrack ? (
-        <Trends artist={currentTopArtist} track={currentTopTrack} />
+        <TrendsPreview artist={currentTopArtist} track={currentTopTrack} />
       ) : null}
       {/* <Preview>
         <h3 style={{ marginBottom: "1em", marginTop: "1em", fontSize: "24px" }}>

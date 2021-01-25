@@ -127,3 +127,28 @@ export const getSeveralArtists = (ids) =>
       Authorization: "Bearer " + token,
     },
   });
+
+/* Helper Functions -------------------------------------------------------------*/
+export const isSingleLine = (el) => {
+  let singleLine = false;
+
+  const height = el.offsetHeight;
+  const fontSize = parseFloat(
+    window.getComputedStyle(el, null).getPropertyValue("font-size")
+  );
+  let lineHeight = window
+    .getComputedStyle(el, null)
+    .getPropertyValue("line-height");
+
+  if (lineHeight === "normal") {
+    lineHeight = fontSize + fontSize * 0.2;
+  }
+
+  const numOfLines = Math.round(height / lineHeight);
+
+  if (numOfLines === 1) {
+    singleLine = true;
+  }
+
+  return singleLine;
+};

@@ -60,16 +60,16 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1, h2 {
+    font-size: ${fontSize.xxl};
     letter-spacing: -0.025em;
     margin: 10px 0 10px 0;
-    font-size: ${fontSize.xxl}
   }
 
   h1 {
     font-weight: 900;
   }
 
-  h2 {
+  h2, h3 {
     font-weight: 700;
   }
 
@@ -80,16 +80,14 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h3 {
-    margin: 0;
-    font-weight: 500;
-    font-size: 16px;
+    font-size: ${fontSize.lg};
   }
 
   p {
-    font-weight: 400;
-    margin: 0;
     color: ${color.lightGray};
     font-size: ${fontSize.xs};
+    font-weight: 400;
+    margin: 0;
   }
 
   button {

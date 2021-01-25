@@ -2,8 +2,6 @@ import React from "react";
 import { withRouter, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { theme, mixins, media } from "styles";
-import { logout } from "utils";
-// import SpotifyLogo from "./SpotifyLogo.png";
 
 // Styled Components
 import { Nav } from "styles";
