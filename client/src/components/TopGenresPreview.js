@@ -1,7 +1,8 @@
 import React from "react";
-import styled from "styled-components";
-import { Card } from "styles";
 import { Link } from "react-router-dom";
+
+import styled from "styled-components";
+import { Section } from "styles";
 import { theme } from "styles";
 
 const { color } = theme;
@@ -10,25 +11,22 @@ const PreviewHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1rem;
-  border-bottom: 1px solid ${color.lightGray};
-  padding-bottom: 1em;
-`;
-
-const Card2 = styled(Card)`
-  width: 300px;
+  border-bottom: 1px solid ${color.darkGray};
+  width: 100%;
 `;
 
 const Bars = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  margin-top: 1em;
 `;
 
 const Bar = styled.div`
   width: ${(props) => props.percentage}%;
   height: 25px;
   background-color: ${theme.color.green};
-  margin: 0 1rem 1.5em 1rem;
+  margin: 0 0.5em 1em 0;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   border-top-left-radius: 2px;
@@ -41,9 +39,9 @@ function TopGenresPreview(props) {
   const ratio = Math.round(props.max / 10) * 10;
 
   return (
-    <Card>
+    <Section>
       <PreviewHeader>
-        <h3>Top Genres of All Time</h3>
+        <h3 style={{ margin: "10px 0 10px 0" }}>Top Genres of All Time</h3>
         <Link style={{ textDecoration: "none" }} to="/top-genres">
           <p>SEE MORE</p>
         </Link>
@@ -54,7 +52,6 @@ function TopGenresPreview(props) {
             <p
               style={{
                 color: "#fff",
-                marginLeft: "1.1em",
                 textAlign: "left",
                 whiteSpace: "nowrap",
                 overflow: "hidden",
@@ -71,7 +68,7 @@ function TopGenresPreview(props) {
           </div>
         ))}
       </Bars>
-    </Card>
+    </Section>
   );
 }
 

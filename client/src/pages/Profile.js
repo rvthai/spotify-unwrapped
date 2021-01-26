@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+
+// API
 import {
   getUser,
   getFollowing,
@@ -15,15 +18,9 @@ import TopTracksPreview from "components/TopTracksPreview";
 import TopArtistsPreview from "components/TopArtistsPreview";
 import TopGenresPreview from "components/TopGenresPreview";
 
-import styled from "styled-components";
-import { Main, Section } from "styles";
+// Styles
+import { Main } from "styles";
 import { mixins } from "styles";
-
-const Preview = styled(Section)`
-  width: 1200px;
-  ${mixins.flexColumn}
-  ${mixins.flexCenter};
-`;
 
 function Profile() {
   const [user, setUser] = useState(null);
@@ -194,40 +191,13 @@ function Profile() {
 
   return (
     <Main>
-      {user ? <User data={user} /> : null}
-      {currentTopArtist && currentTopTrack ? (
+      {/* {user ? <User data={user} /> : null} */}
+      {/* {currentTopArtist && currentTopTrack ? (
         <TrendsPreview artist={currentTopArtist} track={currentTopTrack} />
-      ) : null}
-      {/* <Preview>
-        <h3 style={{ marginBottom: "1em", marginTop: "1em", fontSize: "24px" }}>
-          Your top of all time
-        </h3>
-        {topTracks ? <TopTracksPreview data={topTracks} /> : null}
-        {topArtists ? <TopArtistsPreview data={topArtists} /> : null}
-        {topGenres ? (
-          <TopGenresPreview
-            data={topGenres}
-            max={max}
-            total={total}
-          ></TopGenresPreview>
-        ) : null}
-      </Preview> */}
-      {/* <Preview>
-        {topTracks ? <TopTracksPreview data={topTracks} /> : null}
-        {topArtists ? <TopArtistsPreview data={topArtists} /> : null}
-        {topGenres ? (
-          <TopGenresPreview
-            data={topGenres}
-            max={max}
-            total={total}
-          ></TopGenresPreview>
-        ) : null}
-      </Preview> */}
-      {/* <div style={{ width: "250px", height: "250px", overflow: "hidden" }}>
-        {user ? (
-          <img src={user.playlists.items[2].images[0].url} width="100%" />
-        ) : null}
-      </div> */}
+      ) : null} */}
+      {/* {topTracks ? <TopTracksPreview data={topTracks} /> : null}
+      {topArtists ? <TopArtistsPreview data={topArtists} /> : null}
+      {topGenres ? <TopGenresPreview data={topGenres} max={max} /> : null} */}
     </Main>
   );
 }

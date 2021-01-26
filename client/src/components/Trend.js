@@ -9,13 +9,9 @@ const { color } = theme;
 
 const Container = styled.div`
   ${mixins.flexRow}
-  width: 500px;
-  margin: 1em;
-
-  ${media.tablet`
-    ${mixins.flexColumn}
-    ${mixins.flexCenter}
-  `}
+  align-items: center;
+  width: 100%;
+  margin: 1em 0;
 `;
 
 const ImageWrapper = styled.div`
@@ -26,12 +22,17 @@ const ImageWrapper = styled.div`
   box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.5);
 
   ${media.tablet`
-    order: 2;
+    width: 100px;
+    height: 100px;
   `}
 `;
 
 const BigImage = styled(Image)`
   width: 150px;
+
+  ${media.tablet`
+    width: 100px;
+  `}
 `;
 
 const Info = styled.div`
@@ -39,13 +40,6 @@ const Info = styled.div`
   ${mixins.flexSpaceBetween}
   text-align: left;
   margin-left: 1.25em;
-
-  ${media.tablet`
-    order: 1;
-    text-align: center;
-    margin-bottom: 0.5em;
-    margin-left: 0;
-  `}
 `;
 
 const TextWrapper = styled.div`
@@ -55,7 +49,6 @@ const TextWrapper = styled.div`
 const Name = styled.h1`
   color: ${color.white};
   font-size: 30px;
-  width: calc(350px - 1.25em);
   overflow: hidden;
 
   ${(props) =>
@@ -63,17 +56,28 @@ const Name = styled.h1`
       ? `
       white-space: nowrap;
       text-overflow: ellipsis;
-    `
+      `
+      : `
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+  `}
+
+  ${media.tablet`
+  font-size: 24px;
+
+  ${(props) =>
+    props.singleLine
+      ? `
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      `
       : `
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
   `}
-
-  ${media.tablet`
-    font-size: 24px;
-    width: 300px;
-  `}
+`}
 `;
 
 const Buttons = styled.div`
@@ -81,15 +85,6 @@ const Buttons = styled.div`
 
   ${media.tablet`
     display: none;
-  `}
-`;
-
-const ButtonsMobile = styled.div`
-  display: none;
-
-  ${media.tablet`
-    ${mixins.flexRow} 
-    order: 3;
   `}
 `;
 
@@ -151,21 +146,39 @@ function Trend(props) {
       <ImageWrapper>
         <BigImage src={image} alt="artist" />
       </ImageWrapper>
-      <Info>
-        <TextWrapper>
-          <Label>TOP {category}</Label>
-          <Name id="name" singleLine={singleLine}>
-            {name}
-          </Name>
-        </TextWrapper>
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Info>
+          <TextWrapper>
+            <Label>TOP {category}</Label>
+            <div
+              style={{ display: "table", tableLayout: "fixed", width: "100%" }}
+            >
+              <Name id="name" singleLine={singleLine}>
+                {name}
+              </Name>
+            </div>
+          </TextWrapper>
+        </Info>
         <Buttons>
+          {" "}
+          <PrimaryButton>PLAY</PrimaryButton>{" "}
+          <SecondaryButton>FOLLOW</SecondaryButton>
+        </Buttons>
+      </div>
+      {/* <Buttons>
           <PrimaryButton>PLAY</PrimaryButton>
           <SecondaryButton>SHARE</SecondaryButton>
         </Buttons>
-      </Info>
       <ButtonsMobile>
         <PrimaryButton>PLAY</PrimaryButton>
-      </ButtonsMobile>
+      </ButtonsMobile> */}
     </Container>
   );
 }

@@ -145,10 +145,13 @@ export const isSingleLine = (el) => {
   }
 
   const numOfLines = Math.round(height / lineHeight);
+  console.log(numOfLines);
 
   if (numOfLines === 1) {
     singleLine = true;
   }
+
+  console.log(singleLine);
 
   return singleLine;
 };

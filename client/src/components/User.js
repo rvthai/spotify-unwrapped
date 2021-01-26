@@ -35,11 +35,9 @@ const Overview = styled.div`
 `;
 
 const OverviewItem = styled.div`
-  display: flex;
-  flex-direction: column;
+  ${mixins.flexColumn}
   align-items: center;
   margin: 0 1em;
-  width: 100px;
 `;
 
 const Stat = styled.p`

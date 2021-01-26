@@ -6,11 +6,22 @@ import Trend from "components/Trend";
 
 // Styles
 import { Section } from "styles";
-import { mixins } from "styles";
+import { theme, mixins } from "styles";
+
+const { color } = theme;
 
 const Content = styled.div`
+  ${mixins.flexColumn}
   ${mixins.flexCenter};
   ${mixins.flexWrap};
+  widthL 100%;
+`;
+
+const PreviewHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid ${color.darkGray};
   width: 100%;
 `;
 
@@ -19,7 +30,11 @@ function TrendsPreview(props) {
 
   return (
     <Section>
-      <h3>Your Latest Listening Trends</h3>
+      <PreviewHeader>
+        <h3 style={{ margin: "10px 0 10px 0" }}>
+          Your Latest Listening Trends
+        </h3>
+      </PreviewHeader>
       <Content>
         <Trend
           category="ARTIST"

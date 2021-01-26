@@ -1,8 +1,8 @@
 import React from "react";
-import { Card } from "styles";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
+import { Section } from "styles";
 import { theme } from "styles";
 
 const { color } = theme;
@@ -11,30 +11,29 @@ const PreviewHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1rem;
-  border-bottom: 1px solid ${color.lightGray};
-  padding-bottom: 1em;
+  border-bottom: 1px solid ${color.darkGray};
+  width: 100%;
 `;
 
 const TopTracksPreview = (props) => (
-  <Card>
+  <Section>
     <PreviewHeader>
-      <h3>Top Tracks of all Time</h3>
+      <h3 style={{ margin: "10px 0 10px 0" }}>Top Tracks of All Time</h3>
       <Link style={{ textDecoration: "none" }} to="/top-tracks">
         <p>SEE MORE</p>
       </Link>
     </PreviewHeader>
-    <div>
+    <div style={{ width: "100%" }}>
       {props.data.map((track, index) => (
         <div
           key={index}
           style={{
             display: "flex",
-            margin: "1.5em",
+            margin: "1em 0",
             whiteSpace: "nowrap",
             overflow: "hidden",
             textOverflow: "ellipsis",
-            paddingBottom: "1em",
+            alignItems: "center",
           }}
         >
           <img
@@ -45,6 +44,7 @@ const TopTracksPreview = (props) => (
             src={track.album.images[2].url}
             alt="album-cover"
           />
+          <p style={{ margin: "0 1em 0 1em" }}>{index + 1}</p>
           <div
             style={{
               width: "100%",
@@ -61,7 +61,9 @@ const TopTracksPreview = (props) => (
                 justifyContent: "center",
               }}
             >
-              <p style={{ marginLeft: "1em" }}>{track.name}</p>
+              <p style={{ marginLeft: "1em", color: "white", fontWeight: 500 }}>
+                {track.name}
+              </p>
               <p style={{ marginLeft: "1em" }}>{track.artists[0].name}</p>
             </div>
             <p>4:07</p>
@@ -69,7 +71,7 @@ const TopTracksPreview = (props) => (
         </div>
       ))}
     </div>
-  </Card>
+  </Section>
 );
 
 export default TopTracksPreview;

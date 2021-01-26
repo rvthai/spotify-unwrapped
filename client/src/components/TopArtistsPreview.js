@@ -1,8 +1,8 @@
 import React from "react";
-import { Card } from "styles";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
+import { Section } from "styles";
 import { theme } from "styles";
 
 const { color } = theme;
@@ -11,27 +11,26 @@ const PreviewHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1rem;
-  border-bottom: 1px solid ${color.lightGray};
-  padding-bottom: 1em;
+  border-bottom: 1px solid ${color.darkGray};
+  width: 100%;
 `;
 
 function TopArtistsPreview(props) {
   return (
-    <Card>
+    <Section>
       <PreviewHeader>
-        <h3>Top Artists of All Time</h3>
-        <Link style={{ textDecoration: "none" }} to="/top-artists">
+        <h3 style={{ margin: "10px 0 10px 0" }}>Top Artists of All Time</h3>
+        <Link style={{ textDecoration: "none" }} to="/top-tracks">
           <p>SEE MORE</p>
         </Link>
       </PreviewHeader>
-      <div>
+      <div style={{ width: "100%" }}>
         {props.data.map((artist, index) => (
           <div
             key={index}
             style={{
               display: "flex",
-              margin: "1.5em",
+              margin: "1em 0",
               whiteSpace: "nowrap",
               overflow: "hidden",
               textOverflow: "ellipsis",
@@ -48,6 +47,7 @@ function TopArtistsPreview(props) {
               src={artist.images[2].url}
               alt="artist-profile-pic"
             />
+            <p style={{ margin: "0 2em 0 0.5em" }}>{index + 1}</p>
             <div
               style={{
                 width: "100%",
@@ -62,7 +62,7 @@ function TopArtistsPreview(props) {
           </div>
         ))}
       </div>
-    </Card>
+    </Section>
   );
 }
 

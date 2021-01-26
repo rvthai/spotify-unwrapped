@@ -1,13 +1,13 @@
 import styled from "styled-components";
+import mixins from "./mixins";
 
 const Section = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
+  ${mixins.flexColumn}
+  ${mixins.flexCenter}
+  ${mixins.flexWrap}
   padding: 20px 0;
+
+  width: 80%;
 `;
 
 export default Section;
