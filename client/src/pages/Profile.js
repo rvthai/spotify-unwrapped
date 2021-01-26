@@ -191,13 +191,13 @@ function Profile() {
 
   return (
     <Main>
-      {/* {user ? <User data={user} /> : null} */}
-      {/* {currentTopArtist && currentTopTrack ? (
+      {user ? <User data={user} /> : null}
+      {currentTopArtist && currentTopTrack ? (
         <TrendsPreview artist={currentTopArtist} track={currentTopTrack} />
-      ) : null} */}
-      {/* {topTracks ? <TopTracksPreview data={topTracks} /> : null}
+      ) : null}
+      {topTracks ? <TopTracksPreview data={topTracks} /> : null}
       {topArtists ? <TopArtistsPreview data={topArtists} /> : null}
-      {topGenres ? <TopGenresPreview data={topGenres} max={max} /> : null} */}
+      {topGenres ? <TopGenresPreview data={topGenres} max={max} /> : null}
     </Main>
   );
 }

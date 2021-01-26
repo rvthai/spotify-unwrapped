@@ -12,6 +12,11 @@ const mixins = {
     align-items: center;
   `,
 
+  flexAlignEnd: css`
+    display: flex;
+    align-items: center;
+  `,
+
   flexSpaceBetween: css`
     display: flex;
     justify-content: space-between;
@@ -30,6 +35,12 @@ const mixins = {
   flexRow: css`
     display: flex;
     flex-direction: row;
+  `,
+
+  ellipsis: css`
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   `,
 };
 

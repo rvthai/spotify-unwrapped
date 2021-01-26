@@ -2,76 +2,75 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
-import { Section } from "styles";
-import { theme } from "styles";
+import { Section, Header, MoreLink, Image } from "styles";
+import { theme, mixins } from "styles";
 
 const { color } = theme;
 
-const PreviewHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid ${color.darkGray};
+const Content = styled.div`
   width: 100%;
 `;
 
-const TopTracksPreview = (props) => (
-  <Section>
-    <PreviewHeader>
-      <h3 style={{ margin: "10px 0 10px 0" }}>Top Tracks of All Time</h3>
-      <Link style={{ textDecoration: "none" }} to="/top-tracks">
-        <p>SEE MORE</p>
-      </Link>
-    </PreviewHeader>
-    <div style={{ width: "100%" }}>
-      {props.data.map((track, index) => (
-        <div
-          key={index}
-          style={{
-            display: "flex",
-            margin: "1em 0",
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            alignItems: "center",
-          }}
-        >
-          <img
-            style={{
-              width: "50px",
-              height: "50px",
-            }}
-            src={track.album.images[2].url}
-            alt="album-cover"
-          />
-          <p style={{ margin: "0 1em 0 1em" }}>{index + 1}</p>
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
+const Track = styled.div`
+  ${mixins.flexRow}
+  ${mixins.flexAlignCenter}
+`;
+
+const TrackName = styled.p`
+  ${mixins.ellipsis}
+  color: ${color.white};
+  font-weight: 500;
+`;
+
+const TrackArtist = styled.p`
+  ${mixins.ellipsis}
+`;
+
+const TrackImage = styled(Image)`
+  width: 50px;
+  height: 50px;
+`;
+
+function TopTracksPreview(props) {
+  console.log(props.data);
+  return (
+    <Section>
+      <Header>
+        <h3>Top Tracks of All Time</h3>
+        <MoreLink to="/top-tracks">SEE MORE</MoreLink>
+      </Header>
+
+      <Content>
+        {props.data.map((track, index) => (
+          <Track key={index}>
+            <TrackImage src={track.album.images[2].url} alt="track-image" />
+            <p style={{ margin: "0 1em 0 1em" }}>{index + 1}</p>
             <div
               style={{
+                width: "100%",
                 display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-                justifyContent: "center",
+                justifyContent: "space-between",
+                alignItems: "center",
               }}
             >
-              <p style={{ marginLeft: "1em", color: "white", fontWeight: 500 }}>
-                {track.name}
-              </p>
-              <p style={{ marginLeft: "1em" }}>{track.artists[0].name}</p>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  justifyContent: "center",
+                }}
+              >
+                <TrackName>{track.name}</TrackName>
+                <TrackArtist>{track.artists[0].name}</TrackArtist>
+              </div>
+              <p>{track.duration_ms}</p>
             </div>
-            <p>4:07</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  </Section>
-);
+          </Track>
+        ))}
+      </Content>
+    </Section>
+  );
+}
 
 export default TopTracksPreview;

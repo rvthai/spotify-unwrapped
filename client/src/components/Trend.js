@@ -166,19 +166,11 @@ function Trend(props) {
             </div>
           </TextWrapper>
         </Info>
-        <Buttons>
-          {" "}
+        {/* <Buttons>
           <PrimaryButton>PLAY</PrimaryButton>{" "}
           <SecondaryButton>FOLLOW</SecondaryButton>
-        </Buttons>
+        </Buttons> */}
       </div>
-      {/* <Buttons>
-          <PrimaryButton>PLAY</PrimaryButton>
-          <SecondaryButton>SHARE</SecondaryButton>
-        </Buttons>
-      <ButtonsMobile>
-        <PrimaryButton>PLAY</PrimaryButton>
-      </ButtonsMobile> */}
     </Container>
   );
 }

@@ -3,11 +3,11 @@ import Button from "./Button";
 import Main from "./Main";
 import Nav from "./Nav";
 import Section from "./Section";
-import Card from "./Card";
 
 import Image from "./Image";
 import Label from "./Label";
 import Header from "./Header";
+import MoreLink from "./MoreLink";
 
 import mixins from "./mixins";
 import theme from "./theme";
@@ -22,8 +22,8 @@ export {
   theme,
   media,
   Section,
-  Card,
   Image,
   Label,
   Header,
+  MoreLink,
 };

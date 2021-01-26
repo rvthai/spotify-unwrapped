@@ -2,29 +2,23 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
-import { Section } from "styles";
+import { Section, Header, MoreLink } from "styles";
 import { theme } from "styles";
 
 const { color } = theme;
 
-const PreviewHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid ${color.darkGray};
+const Content = styled.div`
   width: 100%;
 `;
 
 function TopArtistsPreview(props) {
   return (
     <Section>
-      <PreviewHeader>
-        <h3 style={{ margin: "10px 0 10px 0" }}>Top Artists of All Time</h3>
-        <Link style={{ textDecoration: "none" }} to="/top-tracks">
-          <p>SEE MORE</p>
-        </Link>
-      </PreviewHeader>
-      <div style={{ width: "100%" }}>
+      <Header>
+        <h3>Top Tracks of All Time</h3>
+        <MoreLink to="/top-tracks">SEE MORE</MoreLink>
+      </Header>
+      <Content>
         {props.data.map((artist, index) => (
           <div
             key={index}
@@ -61,7 +55,7 @@ function TopArtistsPreview(props) {
             </div>
           </div>
         ))}
-      </div>
+      </Content>
     </Section>
   );
 }

@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Trend from "components/Trend";
 
 // Styles
-import { Section } from "styles";
+import { Section, Header } from "styles";
 import { theme, mixins } from "styles";
 
 const { color } = theme;
@@ -17,24 +17,14 @@ const Content = styled.div`
   widthL 100%;
 `;
 
-const PreviewHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid ${color.darkGray};
-  width: 100%;
-`;
-
 function TrendsPreview(props) {
   const { artist, track } = props;
 
   return (
     <Section>
-      <PreviewHeader>
-        <h3 style={{ margin: "10px 0 10px 0" }}>
-          Your Latest Listening Trends
-        </h3>
-      </PreviewHeader>
+      <Header>
+        <h3>Your Latest Listening Trends</h3>
+      </Header>
       <Content>
         <Trend
           category="ARTIST"

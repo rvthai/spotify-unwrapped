@@ -81,6 +81,7 @@ const GlobalStyle = createGlobalStyle`
 
   h3 {
     font-size: ${fontSize.lg};
+    margin: 5px 0 5px 0;
   }
 
   p {
