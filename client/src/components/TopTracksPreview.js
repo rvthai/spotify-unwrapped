@@ -14,16 +14,7 @@ const Content = styled.div`
 const Track = styled.div`
   ${mixins.flexRow}
   ${mixins.flexAlignCenter}
-`;
-
-const TrackName = styled.p`
-  ${mixins.ellipsis}
-  color: ${color.white};
-  font-weight: 500;
-`;
-
-const TrackArtist = styled.p`
-  ${mixins.ellipsis}
+  margin: 1em 0;
 `;
 
 const TrackImage = styled(Image)`
@@ -31,8 +22,56 @@ const TrackImage = styled(Image)`
   height: 50px;
 `;
 
+const TrackNumber = styled.p`
+  margin: 0 2em 0 1em;
+`;
+
+const TrackInfo = styled.div`
+  ${mixins.flexRow}
+  ${mixins.flexSpaceBetween}
+  ${mixins.flexAlignCenter}
+  width: 100%;
+`;
+
+const TrackLabel = styled.div`
+  ${mixins.flexColumn};
+  ${mixins.flexAlignStart};
+  ${mixins.flexJustifyCenter};
+`;
+const TrackName = styled.p`
+  ${mixins.ellipsis}
+  color: ${color.white};
+  font-weight: 500;
+`;
+const TrackArtist = styled.p`
+  ${mixins.ellipsis}
+`;
+
 function TopTracksPreview(props) {
   console.log(props.data);
+
+  const time = (ms) => {
+    const min = Math.floor((ms / 1000 / 60) << 0);
+    const sec = Math.floor((ms / 1000) % 60);
+
+    let connector = ":";
+    if (sec < 10) {
+      connector += "0";
+    }
+
+    return min + connector + sec;
+  };
+
+  const getArtists = (artists) => {
+    let l = [];
+
+    for (let i = 0; i < artists.length; i++) {
+      l.push(artists[i].name);
+    }
+
+    return l.join(", ");
+  };
+
   return (
     <Section>
       <Header>
@@ -44,28 +83,14 @@ function TopTracksPreview(props) {
         {props.data.map((track, index) => (
           <Track key={index}>
             <TrackImage src={track.album.images[2].url} alt="track-image" />
-            <p style={{ margin: "0 1em 0 1em" }}>{index + 1}</p>
-            <div
-              style={{
-                width: "100%",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                  justifyContent: "center",
-                }}
-              >
+            <TrackNumber>{index + 1}</TrackNumber>
+            <TrackInfo>
+              <TrackLabel>
                 <TrackName>{track.name}</TrackName>
-                <TrackArtist>{track.artists[0].name}</TrackArtist>
-              </div>
-              <p>{track.duration_ms}</p>
-            </div>
+                <TrackArtist>{getArtists(track.artists)}</TrackArtist>
+              </TrackLabel>
+              <p>{time(track.duration_ms)}</p>
+            </TrackInfo>
           </Track>
         ))}
       </Content>

@@ -28,6 +28,16 @@ function TopTracks(props) {
     setTimeRange(event.target.id);
   };
 
+  const getArtists = (artists) => {
+    let l = [];
+
+    for (let i = 0; i < artists.length; i++) {
+      l.push(artists[i].name);
+    }
+
+    return l.join(", ");
+  };
+
   return (
     <div style={{ marginLeft: "200px" }}>
       <div>
@@ -59,6 +69,7 @@ function TopTracks(props) {
               <p style={{ marginLeft: "1em", cursor: "pointer" }}>
                 {track.name}
               </p>
+              <p>||{getArtists(track.artists)}</p>
             </div>
           ))
         : null}

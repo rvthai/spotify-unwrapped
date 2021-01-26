@@ -7,6 +7,11 @@ const mixins = {
     align-items: center;
   `,
 
+  flexJustifyCenter: css`
+    display: flex;
+    justify-content: center;
+  `,
+
   flexAlignCenter: css`
     display: flex;
     align-items: center;
@@ -14,7 +19,12 @@ const mixins = {
 
   flexAlignEnd: css`
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+  `,
+
+  flexAlignStart: css`
+    display: flex;
+    align-items: flex-start;
   `,
 
   flexSpaceBetween: css`

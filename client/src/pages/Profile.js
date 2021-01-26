@@ -192,12 +192,15 @@ function Profile() {
   return (
     <Main>
       {user ? <User data={user} /> : null}
-      {currentTopArtist && currentTopTrack ? (
-        <TrendsPreview artist={currentTopArtist} track={currentTopTrack} />
-      ) : null}
+      <div style={{ width: "80%", display: "flex", alignItems: "flex-start" }}>
+        {currentTopArtist && currentTopTrack ? (
+          <TrendsPreview artist={currentTopArtist} track={currentTopTrack} />
+        ) : null}
+        {topGenres ? <TopGenresPreview data={topGenres} max={max} /> : null}
+      </div>
       {topTracks ? <TopTracksPreview data={topTracks} /> : null}
       {topArtists ? <TopArtistsPreview data={topArtists} /> : null}
-      {topGenres ? <TopGenresPreview data={topGenres} max={max} /> : null}
+      {/* {topGenres ? <TopGenresPreview data={topGenres} max={max} /> : null} */}
     </Main>
   );
 }

@@ -35,11 +35,15 @@ const Bar = styled.div`
   align-items: center;
 `;
 
+const GenresSection = styled(Section)`
+  width: 40%;
+`;
+
 function TopGenresPreview(props) {
   const ratio = Math.round(props.max / 10) * 10;
 
   return (
-    <Section>
+    <GenresSection>
       <PreviewHeader>
         <h3 style={{ margin: "10px 0 10px 0" }}>Top Genres of All Time</h3>
         <Link style={{ textDecoration: "none" }} to="/top-genres">
@@ -68,7 +72,7 @@ function TopGenresPreview(props) {
           </div>
         ))}
       </Bars>
-    </Section>
+    </GenresSection>
   );
 }
 

@@ -6,9 +6,7 @@ import Trend from "components/Trend";
 
 // Styles
 import { Section, Header } from "styles";
-import { theme, mixins } from "styles";
-
-const { color } = theme;
+import { mixins } from "styles";
 
 const Content = styled.div`
   ${mixins.flexColumn}
@@ -17,11 +15,15 @@ const Content = styled.div`
   widthL 100%;
 `;
 
+const TrendsSection = styled(Section)`
+  width: 60%;
+`;
+
 function TrendsPreview(props) {
   const { artist, track } = props;
 
   return (
-    <Section>
+    <TrendsSection>
       <Header>
         <h3>Your Latest Listening Trends</h3>
       </Header>
@@ -37,7 +39,7 @@ function TrendsPreview(props) {
           image={track.album.images[0].url}
         />
       </Content>
-    </Section>
+    </TrendsSection>
   );
 }
 
