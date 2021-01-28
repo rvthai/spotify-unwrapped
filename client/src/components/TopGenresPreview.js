@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // Components
 import Genre from "components/Genre";
@@ -29,6 +29,22 @@ function TopGenresPreview(props) {
   const ratio = Math.round(max / 10) * 10;
   const percent = 80;
 
+  const [axisData, setAxisData] = useState([]);
+
+  useEffect(() => {
+    if (max !== 0) {
+      const limit = Math.ceil(max / 10) * 10;
+      const interval = limit / 5;
+      let range = [];
+
+      for (let i = 0; i <= limit; i += interval) {
+        range.push(i);
+      }
+
+      setAxisData(range);
+    }
+  }, [max]);
+
   return (
     <Section>
       <Header>
@@ -46,6 +62,17 @@ function TopGenresPreview(props) {
         ))}
       </Bars>
       <Axis />
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        {axisData.map((num, index) => (
+          <p key={index}>{num}</p>
+        ))}
+      </div>
     </Section>
   );
 }

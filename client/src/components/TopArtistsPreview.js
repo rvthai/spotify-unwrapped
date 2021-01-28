@@ -12,7 +12,6 @@ const Content = styled.div`
 `;
 
 function TopArtistsPreview(props) {
-  console.log(props.data);
   return (
     <Section>
       <Header>
