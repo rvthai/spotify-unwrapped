@@ -3,6 +3,7 @@ import React from "react";
 // Components
 import Artist from "components/Artist";
 
+// Styles
 import styled from "styled-components";
 import { Section, Header, MoreLink } from "styles";
 

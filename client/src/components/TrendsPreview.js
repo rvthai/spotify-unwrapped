@@ -15,15 +15,11 @@ const Content = styled.div`
   widthL 100%;
 `;
 
-const TrendsSection = styled(Section)`
-  width: 60%;
-`;
-
 function TrendsPreview(props) {
   const { artist, track } = props;
 
   return (
-    <TrendsSection>
+    <Section>
       <Header>
         <h3>Your Latest Listening Trends</h3>
       </Header>
@@ -39,7 +35,7 @@ function TrendsPreview(props) {
           image={track.album.images[0].url}
         />
       </Content>
-    </TrendsSection>
+    </Section>
   );
 }
 

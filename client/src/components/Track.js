@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 
 // Styles
 import styled from "styled-components";
-import { Image } from "styles";
+import { Image, Text } from "styles";
 import { theme, mixins } from "styles";
 
-const { color } = theme;
+const { color, fontSize } = theme;
 
 const Container = styled.div`
   ${mixins.flexRow}
@@ -18,8 +18,8 @@ const TrackImage = styled(Image)`
   height: 50px;
 `;
 
-const TrackNumber = styled.p`
-  margin: 0 2em 0 1em;
+const TrackNumber = styled(Text)`
+  margin: 0 2em;
 `;
 
 const TrackInfo = styled.div`
@@ -37,10 +37,6 @@ const TrackLabel = styled.div`
 const TrackName = styled.p`
   ${mixins.ellipsis}
   color: ${color.white};
-  font-weight: 500;
-`;
-const TrackArtist = styled.p`
-  ${mixins.ellipsis}
 `;
 
 function Track(props) {
@@ -86,9 +82,9 @@ function Track(props) {
       <TrackInfo>
         <TrackLabel>
           <TrackName>{name}</TrackName>
-          <TrackArtist>{artists}</TrackArtist>
+          <Text>{artists}</Text>
         </TrackLabel>
-        <p>{time}</p>
+        <Text>{time}</Text>
       </TrackInfo>
     </Container>
   );

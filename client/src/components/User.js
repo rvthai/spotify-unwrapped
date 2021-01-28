@@ -4,7 +4,7 @@ import Logout from "components/Logout";
 import { NoUserIcon } from "icons";
 
 import styled from "styled-components";
-import { Section } from "styles";
+import { Section, Label } from "styles";
 import { mixins, theme } from "styles";
 
 const { color, fontSize } = theme;
@@ -44,10 +44,6 @@ const Stat = styled.p`
   color: ${color.green};
   font-size: ${fontSize.lg};
   line-height: 1.5em;
-`;
-
-const Label = styled.p`
-  letter-spacing: 2px;
 `;
 
 function User(props) {

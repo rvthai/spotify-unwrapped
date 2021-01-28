@@ -2,7 +2,7 @@ import React from "react";
 
 // Styles
 import styled from "styled-components";
-import { Image } from "styles";
+import { Image, Text } from "styles";
 import { theme, mixins } from "styles";
 
 const { color } = theme;
@@ -19,8 +19,8 @@ const ArtistImage = styled(Image)`
   border-radius: 50%;
 `;
 
-const ArtistNumber = styled.p`
-  margin: 0 2em 0 1em;
+const ArtistNumber = styled(Text)`
+  margin: 0 2em 0 2em;
 `;
 
 const ArtistInfo = styled.div`
@@ -33,7 +33,6 @@ const ArtistInfo = styled.div`
 const ArtistName = styled.p`
   ${mixins.ellipsis}
   color: ${color.white};
-  font-weight: 500;
 `;
 
 function Artist(props) {
@@ -45,7 +44,7 @@ function Artist(props) {
       <ArtistNumber>{number + 1}</ArtistNumber>
       <ArtistInfo>
         <ArtistName>{name}</ArtistName>
-        <p>{followers.toLocaleString()}</p>
+        <Text>{followers.toLocaleString()}</Text>
       </ArtistInfo>
     </Container>
   );

@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import font from "../fonts";
 import theme from "./theme";
+import media from "./media";
 
 const { color, fontSize } = theme;
 
@@ -86,9 +87,13 @@ const GlobalStyle = createGlobalStyle`
 
   p {
     color: ${color.lightGray};
-    font-size: ${fontSize.xs};
+    font-size: ${fontSize.md};
     font-weight: 400;
     margin: 0;
+
+    ${media.tablet`
+      font-size: ${fontSize.sm};
+    `}
   }
 
   button {

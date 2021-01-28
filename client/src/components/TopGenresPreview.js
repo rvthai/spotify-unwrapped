@@ -1,19 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
+// Components
+import Genre from "components/Genre";
+
+// Styles
 import styled from "styled-components";
-import { Section } from "styles";
+import { Section, Header, MoreLink } from "styles";
 import { theme } from "styles";
 
 const { color } = theme;
-
-const PreviewHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid ${color.darkGray};
-  width: 100%;
-`;
 
 const Bars = styled.div`
   display: flex;
@@ -22,57 +17,36 @@ const Bars = styled.div`
   margin-top: 1em;
 `;
 
-const Bar = styled.div`
-  width: ${(props) => props.percentage}%;
-  height: 25px;
-  background-color: ${theme.color.green};
-  margin: 0 0.5em 1em 0;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border-top-left-radius: 2px;
-  border-bottom-left-radius: 2px;
-  display: flex;
-  align-items: center;
-`;
-
-const GenresSection = styled(Section)`
-  width: 40%;
+const Axis = styled.div`
+  width: 100%;
+  height: 1px;
+  background: ${color.lightGray};
+  margin: 1em 0;
 `;
 
 function TopGenresPreview(props) {
-  const ratio = Math.round(props.max / 10) * 10;
+  const { data, max } = props;
+  const ratio = Math.round(max / 10) * 10;
+  const percent = 80;
 
   return (
-    <GenresSection>
-      <PreviewHeader>
-        <h3 style={{ margin: "10px 0 10px 0" }}>Top Genres of All Time</h3>
-        <Link style={{ textDecoration: "none" }} to="/top-genres">
-          <p>SEE MORE</p>
-        </Link>
-      </PreviewHeader>
+    <Section>
+      <Header>
+        <h3>Top Genres of All Time</h3>
+        <MoreLink to="/top-genres">SEE MORE</MoreLink>
+      </Header>
       <Bars>
-        {Object.keys(props.data).map((genre, index) => (
-          <div key={index}>
-            <p
-              style={{
-                color: "#fff",
-                textAlign: "left",
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                fontSize: "14px",
-              }}
-            >
-              {genre}
-            </p>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <Bar percentage={(props.data[genre] / ratio) * 75}></Bar>
-              <p>{props.data[genre]}%</p>
-            </div>
-          </div>
+        {Object.keys(data).map((genre, index) => (
+          <Genre
+            key={index}
+            name={genre}
+            width={(data[genre] / ratio) * percent}
+            percentage={data[genre]}
+          />
         ))}
       </Bars>
-    </GenresSection>
+      <Axis />
+    </Section>
   );
 }
 

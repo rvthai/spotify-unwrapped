@@ -6,7 +6,7 @@ const Section = styled.section`
   ${mixins.flexCenter}
   ${mixins.flexWrap}
   padding: 20px 0;
-  width: 80%;
+  width: 75%;
 `;
 
 export default Section;

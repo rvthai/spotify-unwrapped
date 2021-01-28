@@ -8,6 +8,7 @@ import Image from "./Image";
 import Label from "./Label";
 import Header from "./Header";
 import MoreLink from "./MoreLink";
+import Text from "./Text";
 
 import mixins from "./mixins";
 import theme from "./theme";
@@ -26,4 +27,5 @@ export {
   Label,
   Header,
   MoreLink,
+  Text,
 };
