@@ -37,7 +37,6 @@ const Overview = styled.div`
 const OverviewItem = styled.div`
   ${mixins.flexColumn}
   align-items: center;
-  margin: 0 1em;
 `;
 
 const Stat = styled.p`
@@ -74,7 +73,7 @@ function User(props) {
           <Stat>{followers}</Stat>
           <Label>FOLLOWERS</Label>
         </OverviewItem>
-        <OverviewItem>
+        <OverviewItem style={{ margin: "0 2em" }}>
           <Stat>{following}</Stat>
           <Label>FOLLOWING</Label>
         </OverviewItem>

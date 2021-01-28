@@ -20,7 +20,7 @@ const Bars = styled.div`
 const Axis = styled.div`
   width: 100%;
   height: 1px;
-  background: ${color.lightGray};
+  background: ${color.gray};
   margin: 1em 0;
 `;
 
@@ -70,7 +70,9 @@ function TopGenresPreview(props) {
         }}
       >
         {axisData.map((num, index) => (
-          <p key={index}>{num}</p>
+          <p style={{ color: `${color.gray}` }} key={index}>
+            {num}
+          </p>
         ))}
       </div>
     </Section>

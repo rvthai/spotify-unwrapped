@@ -41,7 +41,7 @@ function Genre(props) {
       <Label>{name}</Label>
       <Stats>
         <Bar width={width}></Bar>
-        <Text>{percentage}%</Text>
+        {/* <Text>{percentage}%</Text> */}
       </Stats>
     </Container>
   );

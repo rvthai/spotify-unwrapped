@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import { isSingleLine } from "utils";
 
-import styled from "styled-components";
+// Styles
 import { Label, Image, Button } from "styles";
 import { theme, mixins, media } from "styles";
 
@@ -10,8 +11,11 @@ const { color } = theme;
 const Container = styled.div`
   ${mixins.flexRow}
   align-items: center;
-  width: 100%;
-  margin: 1em 0;
+  width: 440px;
+
+  ${media.desktop`
+    width: 100%;
+  `}
 `;
 
 const ImageWrapper = styled.div`
@@ -80,56 +84,6 @@ const Name = styled.h1`
 `}
 `;
 
-const Buttons = styled.div`
-  ${mixins.flexRow}
-
-  ${media.tablet`
-    display: none;
-  `}
-`;
-
-const PrimaryButton = styled(Button)`
-  color: ${color.white};
-  background: ${color.green};
-
-  ${media.tablet`
-    margin-top: 1em;
-  `}
-
-  &:hover {
-    background: ${color.lightGreen};
-    transform: scale(1.05);
-  }
-
-  &:active {
-    color: #e6e6e6;
-    background: ${color.darkGreen};
-    transform: scale(1);
-  }
-`;
-
-const SecondaryButton = styled(Button)`
-  color: ${color.white};
-  background: transparent;
-  border: 1px solid ${color.lightGray};
-  margin-left: 1.25em;
-
-  ${media.tablet`
-    display: none;
-  `}
-
-  &:hover {
-    border: 1px solid ${color.white};
-    transform: scale(1.05);
-  }
-
-  &:active {
-    color: ${color.lightGray};
-    border: 1px solid ${color.gray};
-    transform: scale(1);
-  }
-`;
-
 function Trend(props) {
   const [singleLine, setSingleLine] = useState();
 
@@ -166,10 +120,6 @@ function Trend(props) {
             </div>
           </TextWrapper>
         </Info>
-        {/* <Buttons>
-          <PrimaryButton>PLAY</PrimaryButton>{" "}
-          <SecondaryButton>FOLLOW</SecondaryButton>
-        </Buttons> */}
       </div>
     </Container>
   );

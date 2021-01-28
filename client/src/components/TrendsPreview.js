@@ -9,10 +9,14 @@ import { Section, Header } from "styles";
 import { mixins } from "styles";
 
 const Content = styled.div`
-  ${mixins.flexColumn}
-  ${mixins.flexCenter};
+  ${mixins.flexRow}
   ${mixins.flexWrap};
-  widthL 100%;
+  margin: 1em 0;
+  width: 100%;
+`;
+
+const FlexGap = styled.div`
+  margin: 0.5em;
 `;
 
 function TrendsPreview(props) {
@@ -29,6 +33,7 @@ function TrendsPreview(props) {
           name={artist.name}
           image={artist.images[0].url}
         />
+        <FlexGap />
         <Trend
           category="TRACK"
           name={track.name}

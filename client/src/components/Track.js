@@ -84,7 +84,7 @@ function Track(props) {
           <TrackName>{name}</TrackName>
           <Text>{artists}</Text>
         </TrackLabel>
-        <Text>{time}</Text>
+        {/* <Text>{time}</Text> */}
       </TrackInfo>
     </Container>
   );

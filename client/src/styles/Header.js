@@ -8,9 +8,7 @@ const Header = styled.div`
   ${mixins.flexRow}
   ${mixins.flexSpaceBetween}
   ${mixins.flexAlignEnd}
-  align-items: flex-end;
   border-bottom: 1px solid ${color.darkGray};
-  margin-bottom: 0.5em;
   width: 100%;
 `;
 

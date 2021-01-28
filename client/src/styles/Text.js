@@ -6,7 +6,6 @@ const { fontSize } = theme;
 
 const Text = styled.p`
   font-size: ${fontSize.sm};
-  ${mixins.ellipsis}
 `;
 
 export default Text;

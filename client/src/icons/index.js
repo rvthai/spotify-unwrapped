@@ -7,7 +7,7 @@ import GenreIcon from "./GenreIcon";
 import TrendsIcon from "./TrendsIcon";
 import LogoutIcon from "./LogoutIcon";
 import NoUserIcon from "./NoUserIcon";
-import EllipsisIcon from "./EllipsisIcon";
+import PlaylistsIcon from "./PlaylistsIcon";
 
 export {
   SpotifyIcon,
@@ -19,5 +19,5 @@ export {
   TrendsIcon,
   LogoutIcon,
   NoUserIcon,
-  EllipsisIcon,
+  PlaylistsIcon,
 };

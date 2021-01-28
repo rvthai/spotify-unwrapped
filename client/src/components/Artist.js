@@ -44,7 +44,7 @@ function Artist(props) {
       <ArtistNumber>{number + 1}</ArtistNumber>
       <ArtistInfo>
         <ArtistName>{name}</ArtistName>
-        <Text>{followers.toLocaleString()}</Text>
+        {/* <Text>{followers.toLocaleString()}</Text> */}
       </ArtistInfo>
     </Container>
   );

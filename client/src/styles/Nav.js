@@ -10,7 +10,7 @@ const Nav = styled.nav`
   min-height: 100vh;
   width: 200px;
   left: 0;
-  background: ${color.slateGray};
+  background: #000;
   ${mixins.flexColumn};
   ${mixins.flexSpaceBetween};
   box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;

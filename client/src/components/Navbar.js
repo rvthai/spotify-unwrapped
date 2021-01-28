@@ -14,6 +14,7 @@ import {
   TrackIcon,
   ArtistIcon,
   GenreIcon,
+  PlaylistsIcon,
 } from "icons";
 
 const Logo = styled.div`
@@ -130,6 +131,10 @@ function Navbar() {
         <MenuItem exact to="/top-genres">
           <GenreIcon />
           Top Genres
+        </MenuItem>
+        <MenuItem exact to="/playlist">
+          <PlaylistsIcon />
+          Playlists
         </MenuItem>
         {/* <MenuItem exact to="/sign-out" onClick={handleLogout}>
           <LogoutIcon />

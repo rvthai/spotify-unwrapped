@@ -108,3 +108,6 @@ What to tackle first...
 [ ] Add  current top track and artist to the top
 [ ] Add the doughnut chart preview for genres semi-styled 
   - includes cleaning up and solidifying the genre calculating algorithms
+
+
+  CHECK IF IMAGE EXISTS FIRST EVEN FOR ESTABLISHED ARTISTS
