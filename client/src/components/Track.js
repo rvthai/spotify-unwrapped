@@ -48,6 +48,10 @@ const TrackArtist = styled.p`
   font-size: ${fontSize.sm};
 `;
 
+const TrackDuration = styled.p`
+  font-size: ${fontSize.sm};
+`;
+
 function Track(props) {
   const [artists, setArtists] = useState("");
   const [time, setTime] = useState("");
@@ -91,11 +95,9 @@ function Track(props) {
       <TrackInfo>
         <TrackLabel>
           <TrackName>{name}</TrackName>
-          <TrackArtist>
-            {artists} dfajsdlkfjkldsa jflkdsaj lkdsajlfkjlk;j
-          </TrackArtist>
+          <TrackArtist>{artists}</TrackArtist>
         </TrackLabel>
-        {/* <TrackArtist>{time}</TrackArtist> */}
+        <TrackDuration>{time}</TrackDuration>
       </TrackInfo>
     </Container>
   );

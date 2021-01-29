@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 
 // API
 import {
@@ -20,7 +19,6 @@ import TopGenresPreview from "components/TopGenresPreview";
 
 // Styles
 import { Main } from "styles";
-import { mixins } from "styles";
 
 function Profile() {
   const [user, setUser] = useState(null);

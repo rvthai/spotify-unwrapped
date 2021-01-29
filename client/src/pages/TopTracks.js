@@ -1,79 +1,67 @@
-import { useEffect, useState } from "react";
-import { getTopTracks } from "../utils";
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 
-const trackStyles = {
-  display: "flex",
-  alignItems: "center",
-  padding: "1em",
-};
+// API
+import { getTopTracks } from "utils";
+
+// Components
+import Track from "components/Track";
+import Range from "components/Range";
+
+// Styles
+import { Main, Section, Header } from "styles";
+
+const Content = styled.div``;
+
+const HeaderA = styled(Header)`
+  border: 2px solid pink;
+  display: flex;
+  flex-wrap: wrap;
+`;
 
 function TopTracks(props) {
   const [topTracks, setTopTracks] = useState(null);
-  const [timeRange, setTimeRange] = useState("long_term");
+  const [term, setTerm] = useState("long_term");
 
   useEffect(() => {
-    getData();
-  }, [timeRange]);
+    getTopTracksData();
+  }, []);
 
-  const getData = async () => {
+  const getTopTracksData = async () => {
     try {
-      const response = await getTopTracks({ time_range: timeRange, limit: 50 });
+      const response = await getTopTracks({
+        time_range: term,
+        limit: 50,
+      });
       setTopTracks(response.data.items);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleClick = (event) => {
-    setTimeRange(event.target.id);
-  };
-
-  const getArtists = (artists) => {
-    let l = [];
-
-    for (let i = 0; i < artists.length; i++) {
-      l.push(artists[i].name);
-    }
-
-    return l.join(", ");
-  };
-
   return (
-    <div style={{ marginLeft: "200px" }}>
-      <div>
-        <button id="short_term" onClick={handleClick}>
-          Last 4 Weeks
-        </button>
-        <button id="medium_term" onClick={handleClick}>
-          Last 6 Months
-        </button>
-        <button id="long_term" onClick={handleClick}>
-          All Time
-        </button>
-      </div>
-
-      <h1>Showing top tracks for: {timeRange}</h1>
-
-      {topTracks
-        ? topTracks.map((track, index) => (
-            <div key={index} style={trackStyles}>
-              <p style={{ marginRight: "1em" }}>{index + 1}</p>
-              <img
-                style={{
-                  width: "50px",
-                  height: "50px",
-                }}
-                src={track.album.images[2].url}
-                alt="album-cover"
+    <Main>
+      <Section>
+        <HeaderA>
+          <h1 style={{ margin: "5px 0 5px 0" }}>Top Tracks</h1>
+          <Range />
+        </HeaderA>
+        {topTracks ? (
+          <div>
+            {topTracks.map((track, index) => (
+              <Track
+                key={index}
+                number={index}
+                image={track.album.images[2].url}
+                name={track.name}
+                artists={track.artists}
+                time={track.duration_ms}
               />
-              <p style={{ marginLeft: "1em", cursor: "pointer" }}>
-                {track.name}
-              </p>
-              <p>||{getArtists(track.artists)}</p>
-            </div>
-          ))
-        : null}
-    </div>
+            ))}
+          </div>
+        ) : null}{" "}
+      </Section>
+    </Main>
   );
 }
 
