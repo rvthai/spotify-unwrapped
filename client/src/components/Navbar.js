@@ -132,14 +132,10 @@ function Navbar() {
           <GenreIcon />
           Top Genres
         </MenuItem>
-        <MenuItem exact to="/playlist">
+        <MenuItem exact to="/playlists">
           <PlaylistsIcon />
           Playlists
         </MenuItem>
-        {/* <MenuItem exact to="/sign-out" onClick={handleLogout}>
-          <LogoutIcon />
-          Logout
-        </MenuItem> */}
       </Menu>
 
       <GithubLogo>

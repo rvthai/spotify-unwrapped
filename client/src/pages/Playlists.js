@@ -17,12 +17,12 @@ const Title = styled.h1`
   margin: 0;
 `;
 
-function TopGenres(props) {
+function Playlists(props) {
   return (
     <Main>
       <Section>
         <HeaderA>
-          <Title>Top Genres</Title>
+          <Title>Playlists</Title>
           <Range />
         </HeaderA>
       </Section>
@@ -30,4 +30,4 @@ function TopGenres(props) {
   );
 }
 
-export default TopGenres;
+export default Playlists;

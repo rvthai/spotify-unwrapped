@@ -14,9 +14,14 @@ import { Main, Section, Header } from "styles";
 const Content = styled.div``;
 
 const HeaderA = styled(Header)`
-  border: 2px solid pink;
+  border: none;
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 2em;
+`;
+
+const Title = styled.h1`
+  margin: 0;
 `;
 
 function TopTracks(props) {
@@ -43,7 +48,7 @@ function TopTracks(props) {
     <Main>
       <Section>
         <HeaderA>
-          <h1 style={{ margin: "5px 0 5px 0" }}>Top Tracks</h1>
+          <Title>Top Tracks</Title>
           <Range />
         </HeaderA>
         {topTracks ? (

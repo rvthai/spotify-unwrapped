@@ -1,5 +1,33 @@
-import { useEffect, useState } from "react";
-import { getTopArtists } from "../utils";
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+
+// API
+import { getTopArtists } from "utils";
+
+// Components
+import Range from "components/Range";
+
+// Styles
+import { Main, Section, Header } from "styles";
+
+const HeaderA = styled(Header)`
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2em;
+`;
+
+const Content = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  width: 100%;
+  margin-top: 1em;
+  row-gap: 2em;
+`;
+
+const Title = styled.h1`
+  margin: 0;
+`;
 
 function TopArtists() {
   const [topArtists, setTopArtists] = useState(null);
@@ -19,48 +47,41 @@ function TopArtists() {
   };
 
   return (
-    <div style={{ marginLeft: "200px" }}>
-      <div>
-        <button id="short_term" onClick={handleClick}>
-          Last 4 Weeks
-        </button>
-        <button id="medium_term" onClick={handleClick}>
-          Last 6 Months
-        </button>
-        <button id="long_term" onClick={handleClick}>
-          All Time
-        </button>
-      </div>
+    <Main>
+      <Section>
+        <HeaderA>
+          <Title>Top Artists</Title>
+          <Range />
+        </HeaderA>
 
-      <h1>Showing top tracks for: {timeRange}</h1>
-
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
-        {topArtists
-          ? topArtists.map((artist, index) => (
-              <div
-                key={index}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  margin: "1rem",
-                }}
-              >
-                <img
+        <Content>
+          {topArtists
+            ? topArtists.map((artist, index) => (
+                <div
+                  key={index}
                   style={{
-                    width: "100px",
-                    height: "100px",
-                    borderRadius: "50%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    //border: "1px solid pink",
                   }}
-                  src={artist.images[2].url}
-                  alt="artist-profile-pic"
-                />
-                <p>{artist.name}</p>
-              </div>
-            ))
-          : null}
-      </div>
-    </div>
+                >
+                  <img
+                    style={{
+                      width: "200px",
+                      height: "200px",
+                      borderRadius: "50%",
+                    }}
+                    src={artist.images[0].url}
+                    alt="artist-profile-pic"
+                  />
+                  <p>{artist.name}</p>
+                </div>
+              ))
+            : null}
+        </Content>
+      </Section>
+    </Main>
   );
 }
 

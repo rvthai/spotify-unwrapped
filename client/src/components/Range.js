@@ -13,19 +13,32 @@ const Wrapper = styled.div`
 
 const TermLink = styled(MoreLink)`
   font-weight: 700;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 5px;
   margin-left: 2em;
 
   &:hover {
-    border-color: ${color.green};
+    &:after {
+      content: "";
+      display: block;
+      margin: 0 auto;
+      width: 50%;
+      padding-bottom: 5px;
+      border-bottom: 2px solid ${color.green};
+    }
   }
 
   ${(props) =>
     props.active &&
     `
     color: ${color.white};
-    border-color: ${color.green};
+
+    &:after {
+      content: "";
+      display: block;
+      margin: 0 auto;
+      width: 50%;
+      padding-bottom: 5px;
+      border-bottom: 2px solid ${color.green};
+    }
   `}
 `;
 
