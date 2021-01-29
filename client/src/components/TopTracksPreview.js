@@ -1,9 +1,10 @@
 import React from "react";
+import styled from "styled-components";
 
 // Components
 import Track from "components/Track";
 
-import styled from "styled-components";
+// Styles
 import { Section, Header, MoreLink, Image } from "styles";
 
 const Content = styled.div`
@@ -11,6 +12,8 @@ const Content = styled.div`
 `;
 
 function TopTracksPreview(props) {
+  const { data } = props;
+
   return (
     <Section>
       <Header>
@@ -19,7 +22,7 @@ function TopTracksPreview(props) {
       </Header>
 
       <Content>
-        {props.data.map((track, index) => (
+        {data.map((track, index) => (
           <Track
             key={index}
             number={index}

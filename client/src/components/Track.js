@@ -11,6 +11,7 @@ const Container = styled.div`
   ${mixins.flexRow}
   ${mixins.flexAlignCenter}
   margin: 1em 0;
+  width: 100%;
 `;
 
 const TrackImage = styled(Image)`
@@ -33,10 +34,18 @@ const TrackLabel = styled.div`
   ${mixins.flexColumn};
   ${mixins.flexAlignStart};
   ${mixins.flexJustifyCenter};
+  display: table;
+  table-layout: fixed;
+  text-align: left;
+  width: 100%;
 `;
 const TrackName = styled.p`
-  ${mixins.ellipsis}
+  ${mixins.ellipsis};
   color: ${color.white};
+`;
+const TrackArtist = styled.p`
+  ${mixins.ellipsis};
+  font-size: ${fontSize.sm};
 `;
 
 function Track(props) {
@@ -82,9 +91,11 @@ function Track(props) {
       <TrackInfo>
         <TrackLabel>
           <TrackName>{name}</TrackName>
-          <Text>{artists}</Text>
+          <TrackArtist>
+            {artists} dfajsdlkfjkldsa jflkdsaj lkdsajlfkjlk;j
+          </TrackArtist>
         </TrackLabel>
-        {/* <Text>{time}</Text> */}
+        {/* <TrackArtist>{time}</TrackArtist> */}
       </TrackInfo>
     </Container>
   );
