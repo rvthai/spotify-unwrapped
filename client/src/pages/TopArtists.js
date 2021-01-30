@@ -31,19 +31,26 @@ const Title = styled.h1`
 
 function TopArtists() {
   const [topArtists, setTopArtists] = useState(null);
-  const [timeRange, setTimeRange] = useState("long_term");
+  const [term, setTerm] = useState("long_term");
 
   useEffect(() => {
-    getData();
-  }, [timeRange]);
+    getTopArtistsData();
+  }, [term]);
 
-  const getData = async () => {
-    const response = await getTopArtists({ time_range: timeRange, limit: 50 });
-    setTopArtists(response.data.items);
+  const getTopArtistsData = async () => {
+    try {
+      const response = await getTopArtists({
+        time_range: term,
+        limit: 50,
+      });
+      setTopArtists(response.data.items);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const handleClick = (event) => {
-    setTimeRange(event.target.id);
+  const onTermChange = (t) => {
+    setTerm(t);
   };
 
   return (
@@ -51,7 +58,7 @@ function TopArtists() {
       <Section>
         <HeaderA>
           <Title>Top Artists</Title>
-          <Range />
+          <Range onTermChange={onTermChange} />
         </HeaderA>
 
         <Content>
@@ -63,7 +70,6 @@ function TopArtists() {
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                    //border: "1px solid pink",
                   }}
                 >
                   <img
@@ -75,7 +81,7 @@ function TopArtists() {
                     src={artist.images[0].url}
                     alt="artist-profile-pic"
                   />
-                  <p>{artist.name}</p>
+                  <p style={{ marginTop: "1em" }}>{artist.name}</p>
                 </div>
               ))
             : null}

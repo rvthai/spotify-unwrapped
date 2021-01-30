@@ -45,20 +45,43 @@ const TermLink = styled(MoreLink)`
 function Range(props) {
   const [term, setTerm] = useState("long_term");
   const [longTerm, setLongTerm] = useState(false);
+  const [mediumTerm, setMediumTerm] = useState(false);
+  const [shortTerm, setShortTerm] = useState(false);
 
   useEffect(() => {
     if (term === "long_term") {
       setLongTerm(true);
+      setMediumTerm(false);
+      setShortTerm(false);
+    } else if (term === "medium_term") {
+      setLongTerm(false);
+      setMediumTerm(true);
+      setShortTerm(false);
+    } else if (term === "short_term") {
+      setLongTerm(false);
+      setMediumTerm(false);
+      setShortTerm(true);
     } else {
       return null;
     }
   }, [term]);
 
+  const handleTermClick = (event) => {
+    setTerm(event.target.id);
+    props.onTermChange(event.target.id);
+  };
+
   return (
     <Wrapper>
-      <TermLink active={longTerm}>ALL TIME</TermLink>
-      <TermLink>LAST 6 MONTHS</TermLink>
-      <TermLink>LAST 4 WEEKS</TermLink>
+      <TermLink id="long_term" onClick={handleTermClick} active={longTerm}>
+        ALL TIME
+      </TermLink>
+      <TermLink id="medium_term" onClick={handleTermClick} active={mediumTerm}>
+        LAST 6 MONTHS
+      </TermLink>
+      <TermLink id="short_term" onClick={handleTermClick} active={shortTerm}>
+        LAST 4 WEEKS
+      </TermLink>
     </Wrapper>
   );
 }

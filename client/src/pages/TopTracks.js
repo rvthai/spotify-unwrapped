@@ -30,7 +30,7 @@ function TopTracks(props) {
 
   useEffect(() => {
     getTopTracksData();
-  }, []);
+  }, [term]);
 
   const getTopTracksData = async () => {
     try {
@@ -44,12 +44,16 @@ function TopTracks(props) {
     }
   };
 
+  const onTermChange = (t) => {
+    setTerm(t);
+  };
+
   return (
     <Main>
       <Section>
         <HeaderA>
           <Title>Top Tracks</Title>
-          <Range />
+          <Range onTermChange={onTermChange} />
         </HeaderA>
         {topTracks ? (
           <div>

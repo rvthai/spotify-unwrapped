@@ -62,7 +62,7 @@ function Track(props) {
 
     setArtists(artistsStr);
     setTime(timeStr);
-  }, []);
+  }, [props.time, props.artists]);
 
   const convertTime = (ms) => {
     const min = Math.floor((ms / 1000 / 60) << 0);
