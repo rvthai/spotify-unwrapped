@@ -12,6 +12,12 @@ const Container = styled.div`
   ${mixins.flexAlignCenter}
   margin: 1em 0;
   width: 100%;
+  transition: all 0.3s;
+  padding: 0.5em;
+
+  &:hover {
+    background: ${color.darkGray};
+  }
 `;
 
 const TrackImage = styled(Image)`

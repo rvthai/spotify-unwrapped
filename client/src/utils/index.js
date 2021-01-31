@@ -96,8 +96,8 @@ export const getFollowing = () =>
     headers: { Authorization: "Bearer " + token },
   });
 
-export const getPlaylists = () =>
-  axios.get(`https://api.spotify.com/v1/me/playlists?limit=3`, {
+export const getPlaylists = (url = `https://api.spotify.com/v1/me/playlists`) =>
+  axios.get(url, {
     headers: { Authorization: "Bearer " + token },
   });
 

@@ -21,7 +21,6 @@ const Content = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   width: 100%;
-  margin-top: 1em;
   row-gap: 2em;
 `;
 

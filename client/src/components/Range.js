@@ -38,7 +38,7 @@ const TermLink = styled(MoreLink)`
       width: 50%;
       padding-bottom: 5px;
       border-bottom: 2px solid ${color.green};
-    }
+    } 
   `}
 `;
 

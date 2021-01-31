@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import Logout from "components/Logout";
 import { NoUserIcon } from "icons";
@@ -45,6 +46,15 @@ const Stat = styled.p`
   line-height: 1.5em;
 `;
 
+const PlaylistsLink = styled(Link)`
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+
+  &:hover {
+    border-bottom: 1px solid ${color.lightGray};
+  }
+`;
+
 function User(props) {
   const { data } = props;
 
@@ -79,7 +89,9 @@ function User(props) {
         </OverviewItem>
         <OverviewItem>
           <Stat>{playlists}</Stat>
-          <Label>PLAYLISTS</Label>
+          <PlaylistsLink to="/playlists">
+            <Label>PLAYLISTS</Label>
+          </PlaylistsLink>
         </OverviewItem>
       </Overview>
     </Section>
