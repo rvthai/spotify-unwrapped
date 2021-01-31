@@ -1,10 +1,6 @@
 import React from "react";
 import { withRouter, NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { theme, mixins, media } from "styles";
-
-// Styled Components
-import { Nav } from "styles";
 
 // Icons
 import {
@@ -15,14 +11,19 @@ import {
   ArtistIcon,
   GenreIcon,
   PlaylistsIcon,
-} from "icons";
+} from "assets/icons";
+
+// Styles
+import { Nav } from "styles";
+import { theme, mixins, media } from "styles";
+
+const { color, transition } = theme;
 
 const Logo = styled.div`
-  margin: 2em 0;
-  cursor: pointer;
-  transition: ${theme.transition};
   border-radius: 50%;
-  margin-left: 2em;
+  margin: 2em 0;
+  transition: ${transition};
+  cursor: pointer;
 
   svg {
     display: block;
@@ -34,115 +35,107 @@ const Logo = styled.div`
 `;
 
 const SpotifyLogo = styled(Logo)`
-  color: ${theme.color.green};
-  width: 100px;
+  color: ${color.green};
+  width: 50px;
 
   &:hover {
-    color: ${theme.color.lightGreen};
+    color: ${color.lightGreen};
   }
 `;
 
 const GithubLogo = styled(Logo)`
-  color: ${theme.color.gray};
+  color: ${color.gray};
   width: 30px;
 
   &:hover {
-    color: ${theme.color.white};
+    color: ${color.white};
   }
 `;
 
 const Menu = styled.div`
-  width: 100%;
   ${mixins.flexColumn}
+  width: 100%;
 
   ${media.tablet`
-    width: 100%;
     ${mixins.flexRow}
-    ${mixins.flexSpaceBetween}
   `}
 `;
 
 const MenuItem = styled(NavLink)`
-  max-height: 25px;
-  /*${mixins.flexColumn}*/
-  /*${mixins.flexCenter}*/
-  display: flex;
-  align-items: center;
-  color: ${theme.color.lightGray};
-  transition: ${theme.transition};
-  cursor: pointer;
-  margin: 1em 0em 1em 0em;
-  text-decoration: none;
+  ${mixins.flexColumn}
+  ${mixins.flexCenter}
+  color: ${color.lightGray};
+  height: 75px;
   font-size: 11px;
-  border-right: 3px solid transparent;
-
-  &.active {
-    border-color: ${theme.color.lightGreen};
-    color: ${theme.color.white};
-  }
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: ${transition};
+  cursor: pointer;
 
   &:hover {
-    color: ${theme.color.white};
+    color: ${color.white};
+    background: ${color.darkGray};
+  }
+
+  &.active {
+    color: ${color.white};
+    background: ${color.darkGray};
+    border-color: ${color.lightGreen};
   }
 
   svg {
     width: 20px;
     height: 20px;
-    margin-left: 2em;
-    margin-right: 2em;
+    margin-bottom: 5px;
   }
 
   ${media.tablet`
     flex: 1 1 0;
-    padding: 1em 0;
+    height: 100%;
     max-height: 100%;
+    padding: 1em 0;
+    border-left: 0;
     border-top: 3px solid transparent;
-    border-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    flex-direction: column;
-    svg {
-      margin-bottom: 0.5em;
-    }
-
   `}
 `;
 
-function Navbar() {
-  return (
-    <Nav>
+const Navbar = () => (
+  <Nav>
+    <a href="/">
       <SpotifyLogo>
         <SpotifyIcon />
       </SpotifyLogo>
+    </a>
 
-      <Menu>
-        <MenuItem exact to="/">
-          <UserIcon />
-          Profile
-        </MenuItem>
-        <MenuItem exact to="/top-tracks">
-          <TrackIcon />
-          Top Tracks
-        </MenuItem>
-        <MenuItem exact to="/top-artists">
-          <ArtistIcon />
-          Top Artists
-        </MenuItem>
-        <MenuItem exact to="/top-genres">
-          <GenreIcon />
-          Top Genres
-        </MenuItem>
-        <MenuItem exact to="/playlists">
-          <PlaylistsIcon />
-          Playlists
-        </MenuItem>
-      </Menu>
+    <Menu>
+      <MenuItem exact to="/">
+        <UserIcon />
+        Profile
+      </MenuItem>
+      <MenuItem exact to="/top-tracks">
+        <TrackIcon />
+        Top Tracks
+      </MenuItem>
+      <MenuItem exact to="/top-artists">
+        <ArtistIcon />
+        Top Artists
+      </MenuItem>
+      <MenuItem exact to="/top-genres">
+        <GenreIcon />
+        Top Genres
+      </MenuItem>
+      <MenuItem exact to="/playlists">
+        <PlaylistsIcon />
+        Playlists
+      </MenuItem>
+    </Menu>
 
+    <a href="https://github.com/rvthai">
       <GithubLogo>
         <GithubIcon />
       </GithubLogo>
-    </Nav>
-  );
-}
+    </a>
+  </Nav>
+);
 
 export default withRouter(Navbar);

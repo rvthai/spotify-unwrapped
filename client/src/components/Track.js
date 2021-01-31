@@ -10,7 +10,6 @@ const { color, fontSize } = theme;
 const Container = styled.div`
   ${mixins.flexRow}
   ${mixins.flexAlignCenter}
-  margin: 1em 0;
   width: 100%;
   transition: all 0.3s;
   padding: 0.5em;

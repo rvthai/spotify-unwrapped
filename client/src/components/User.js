@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Logout from "components/Logout";
-import { NoUserIcon } from "icons";
+import { NoUserIcon } from "assets/icons";
 
 import styled from "styled-components";
 import { Section, Label } from "styles";
@@ -76,7 +76,7 @@ function User(props) {
       )}
       <h2>{name}</h2>
 
-      <Logout />
+      {/* <Logout /> */}
 
       <Overview>
         <OverviewItem>

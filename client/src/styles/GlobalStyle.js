@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import font from "../fonts";
+import font from "../assets/fonts";
 import theme from "./theme";
 import media from "./media";
 
@@ -56,7 +56,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     font-family: "Circular Std", "sans-serif";
     font-size: 16px;
-    background-color: ${color.black};
+    background-color: ${color.darkGray};
     color: #fff;
   }
 

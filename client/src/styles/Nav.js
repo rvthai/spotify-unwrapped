@@ -1,25 +1,26 @@
 import styled from "styled-components";
-import media from "./media";
-import mixins from "./mixins";
 import theme from "./theme";
+import mixins from "./mixins";
+import media from "./media";
 
 const { color } = theme;
 
 const Nav = styled.nav`
   position: fixed;
-  min-height: 100vh;
-  width: 200px;
   left: 0;
-  background: #000;
-  ${mixins.flexColumn};
-  ${mixins.flexSpaceBetween};
+  width: 100px;
+  min-height: 100vh;
+  ${mixins.flexColumn}
+  ${mixins.flexSpaceBetween}
+  ${mixins.flexAlignCenter}
+  background: ${color.black};
   box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
 
   ${media.tablet`
-    min-height: 0;
-    width: 100%;
-    bottom: 0;
     right: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: 0;
   `};
 `;
 
