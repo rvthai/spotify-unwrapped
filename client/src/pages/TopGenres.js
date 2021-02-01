@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { getTopTracks, getSeveralArtists } from "utils";
 
 // Components
-import Range from "components/Range";
+import Range from "components/TimeRanges";
 import Genre from "components/Genre";
 
 // Styles

@@ -1,19 +1,21 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
-import { media } from "styles";
 
 // Components
-import Navbar from "./Navbar";
+import Navbar from "components/Navbar";
 import Profile from "pages/Profile";
 import TopTracks from "pages/TopTracks";
 import TopArtists from "pages/TopArtists";
 import TopGenres from "pages/TopGenres";
 import Playlists from "pages/Playlists";
 
+// Styles
+import { media } from "styles";
+
 const Content = styled.div`
   min-height: 100vh;
-  margin-left: 200px;
+  margin-left: 100px;
 
   ${media.tablet`
     margin-left: 0;

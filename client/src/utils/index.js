@@ -152,3 +152,25 @@ export const isSingleLine = (el) => {
 
   return singleLine;
 };
+
+export const convertTime = (ms) => {
+  const min = Math.floor((ms / 1000 / 60) << 0);
+  const sec = Math.floor((ms / 1000) % 60);
+
+  let connector = ":";
+  if (sec < 10) {
+    connector += "0";
+  }
+
+  return min + connector + sec;
+};
+
+export const joinArtists = (a) => {
+  let l = [];
+
+  for (let i = 0; i < a.length; i++) {
+    l.push(a[i].name);
+  }
+
+  return l.join(", ");
+};

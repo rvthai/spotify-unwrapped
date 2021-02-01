@@ -1,12 +1,12 @@
 import styled from "styled-components";
+import mixins from "./mixins";
 import media from "./media";
 
 const Main = styled.main`
-  padding: 80px 0;
+  ${mixins.flexColumn}
+  ${mixins.flexAlignCenter}
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 80px 0;
 `;
 
 export default Main;

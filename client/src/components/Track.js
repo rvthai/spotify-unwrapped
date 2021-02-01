@@ -1,21 +1,51 @@
 import React, { useEffect, useState } from "react";
 
+// Components
+import Loader from "components/Loader";
+
+// Utils
+import { convertTime, joinArtists } from "utils";
+
+// Icons
+import { PlayIcon, PauseIcon } from "assets/icons";
+
 // Styles
 import styled from "styled-components";
 import { Image, Text } from "styles";
 import { theme, mixins } from "styles";
 
-const { color, fontSize } = theme;
+const { color, fontSize, transition } = theme;
 
 const Container = styled.div`
   ${mixins.flexRow}
   ${mixins.flexAlignCenter}
   width: 100%;
-  transition: all 0.3s;
-  padding: 0.5em;
+  transition: ${transition};
+  padding: 0.5em 0;
 
   &:hover {
-    background: ${color.darkGray};
+    background: #212121;
+
+    img {
+      opacity: 0.5;
+    }
+
+    svg {
+      display: block;
+    }
+  }
+`;
+
+const PlayIconWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  svg {
+    display: none;
+    width: 35px;
+    height: 35px;
   }
 `;
 
@@ -55,11 +85,13 @@ const TrackArtist = styled.p`
 
 const TrackDuration = styled.p`
   font-size: ${fontSize.sm};
+  margin-right: 0.5em;
 `;
 
 function Track(props) {
   const [artists, setArtists] = useState("");
   const [time, setTime] = useState("");
+  const [play, setPlay] = useState(false);
 
   useEffect(() => {
     const timeStr = convertTime(props.time);
@@ -69,40 +101,34 @@ function Track(props) {
     setTime(timeStr);
   }, [props.time, props.artists]);
 
-  const convertTime = (ms) => {
-    const min = Math.floor((ms / 1000 / 60) << 0);
-    const sec = Math.floor((ms / 1000) % 60);
-
-    let connector = ":";
-    if (sec < 10) {
-      connector += "0";
+  const handleTrackClick = () => {
+    if (!play) {
+      setPlay(true);
+    } else {
+      setPlay(false);
     }
-
-    return min + connector + sec;
-  };
-
-  const joinArtists = (a) => {
-    let l = [];
-
-    for (let i = 0; i < a.length; i++) {
-      l.push(a[i].name);
-    }
-
-    return l.join(", ");
   };
 
   const { image, number, name } = props;
 
   return (
-    <Container>
-      <TrackImage src={image} alt="track-image" />
+    <Container onClick={handleTrackClick}>
+      <div
+        style={{
+          position: "relative",
+          marginLeft: "0.5em",
+        }}
+      >
+        <TrackImage src={image} alt="track-image" />
+        <PlayIconWrapper>{play ? <PauseIcon /> : <PlayIcon />}</PlayIconWrapper>
+      </div>
       <TrackNumber>{number + 1}</TrackNumber>
       <TrackInfo>
         <TrackLabel>
           <TrackName>{name}</TrackName>
           <TrackArtist>{artists}</TrackArtist>
         </TrackLabel>
-        <TrackDuration>{time}</TrackDuration>
+        {play ? <Loader /> : <TrackDuration>{time}</TrackDuration>}
       </TrackInfo>
     </Container>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import styled from "styled-components";
 
 // API
@@ -6,33 +6,24 @@ import { getTopTracks } from "utils";
 
 // Components
 import Track from "components/Track";
-import Range from "components/Range";
+import TimeRanges from "components/TimeRanges";
 
 // Styles
-import { Main, Section, Header } from "styles";
-
-const Content = styled.div``;
-
-const HeaderA = styled(Header)`
-  border: none;
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 2em;
-`;
+import { Main, Section, PageHeader } from "styles";
 
 const Title = styled.h1`
   margin: 0;
+`;
+
+const Tracks = styled.div`
+  margin-top: 2em;
 `;
 
 function TopTracks(props) {
   const [topTracks, setTopTracks] = useState(null);
   const [term, setTerm] = useState("long_term");
 
-  useEffect(() => {
-    getTopTracksData();
-  }, [term]);
-
-  const getTopTracksData = async () => {
+  const getTopTracksData = useCallback(async () => {
     try {
       const response = await getTopTracks({
         time_range: term,
@@ -42,21 +33,25 @@ function TopTracks(props) {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [term]);
 
-  const onTermChange = (t) => {
-    setTerm(t);
+  useEffect(() => {
+    getTopTracksData();
+  }, [getTopTracksData]);
+
+  const onTimeRangeChange = (timeRange) => {
+    setTerm(timeRange);
   };
 
   return (
     <Main>
       <Section>
-        <HeaderA>
+        <PageHeader>
           <Title>Top Tracks</Title>
-          <Range onTermChange={onTermChange} />
-        </HeaderA>
+          <TimeRanges onTimeRangeChange={onTimeRangeChange} />
+        </PageHeader>
         {topTracks ? (
-          <div>
+          <Tracks>
             {topTracks.map((track, index) => (
               <Track
                 key={index}
@@ -67,8 +62,8 @@ function TopTracks(props) {
                 time={track.duration_ms}
               />
             ))}
-          </div>
-        ) : null}{" "}
+          </Tracks>
+        ) : null}
       </Section>
     </Main>
   );

@@ -24,6 +24,18 @@ const theme = {
     xxl: "50px",
   },
 
+  fontWeight: {
+    light: "400",
+    normal: "500",
+    bold: "700",
+    bolder: "900",
+  },
+
+  kerning: {
+    enhance: "-0.025em",
+    lost: "2px",
+  },
+
   transition: "all 0.2s",
 };
 

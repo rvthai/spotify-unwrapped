@@ -9,6 +9,7 @@ import Label from "./Label";
 import Header from "./Header";
 import MoreLink from "./MoreLink";
 import Text from "./Text";
+import PageHeader from "./PageHeader";
 
 import mixins from "./mixins";
 import theme from "./theme";
@@ -28,4 +29,5 @@ export {
   Header,
   MoreLink,
   Text,
+  PageHeader,
 };

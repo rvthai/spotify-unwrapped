@@ -4,10 +4,10 @@ import media from "./media";
 
 const Section = styled.section`
   ${mixins.flexColumn}
-  ${mixins.flexCenter}
   ${mixins.flexWrap}
+  ${mixins.flexCenter}
   padding: 20px 0;
-  width: 900px;
+  width: 1000px;
 
   ${media.desktop`
     width: 75%;

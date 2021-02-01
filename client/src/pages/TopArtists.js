@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { getTopArtists } from "utils";
 
 // Components
-import Range from "components/Range";
+import Range from "components/TimeRanges";
 
 // Styles
 import { Main, Section, Header } from "styles";
