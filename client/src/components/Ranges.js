@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-
-// Styles
-import { theme, mixins } from "styles";
+import { theme, mixins, media } from "styles";
 
 const { color, fontSize, fontWeight, kerning, transition } = theme;
 
@@ -37,34 +35,38 @@ const Link = styled.p`
       border-bottom: 2px solid ${color.green};
     } 
   `}
+
+  ${media.tablet`
+    margin-left: 1.25em;
+  `}
 `;
 
-function TimeRanges(props) {
-  const [term, setTerm] = useState("long_term");
+function Ranges(props) {
+  const [term, setTerm] = useState("long");
 
   useEffect(() => {
     setTerm(term);
   }, [term]);
 
-  const handleTimeRangeClick = (event) => {
-    const timeRange = event.target.id;
-    props.onTimeRangeChange(timeRange);
-    setTerm(timeRange);
+  const handleTermClick = (event) => {
+    const range = event.target.id;
+    props.onTermChange(range);
+    setTerm(range);
   };
 
   return (
     <Container>
-      <Link id="long_term" term={term} onClick={handleTimeRangeClick}>
+      <Link id="long" term={term} onClick={handleTermClick}>
         ALL TIME
       </Link>
-      <Link id="medium_term" term={term} onClick={handleTimeRangeClick}>
+      <Link id="medium" term={term} onClick={handleTermClick}>
         LAST 6 MONTHS
       </Link>
-      <Link id="short_term" term={term} onClick={handleTimeRangeClick}>
+      <Link id="short" term={term} onClick={handleTermClick}>
         LAST 4 WEEKS
       </Link>
     </Container>
   );
 }
 
-export default TimeRanges;
+export default Ranges;

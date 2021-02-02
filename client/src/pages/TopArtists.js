@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { getTopArtists } from "utils";
 
 // Components
-import Range from "components/TimeRanges";
+import Ranges from "components/Ranges";
 
 // Styles
 import { Main, Section, Header } from "styles";
@@ -57,7 +57,7 @@ function TopArtists() {
       <Section>
         <HeaderA>
           <Title>Top Artists</Title>
-          <Range onTermChange={onTermChange} />
+          <Ranges onTermChange={onTermChange} />
         </HeaderA>
 
         <Content>

@@ -15,6 +15,7 @@ const Nav = styled.nav`
   ${mixins.flexAlignCenter}
   background: ${color.black};
   box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
+  z-index: 1;
 
   ${media.tablet`
     right: 0;

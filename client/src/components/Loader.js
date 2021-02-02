@@ -1,10 +1,16 @@
 import React from "react";
 import styled, { keyframes } from "styled-components/macro";
 import { theme, mixins } from "styles";
-const { color } = theme;
 
 const Container = styled.div`
   ${mixins.flexCenter};
+
+  ${(props) =>
+    props.isPage &&
+    `
+    width: 100%;
+    height: 100vh;
+  `}
 `;
 const dance = keyframes`
   from {
@@ -20,16 +26,13 @@ const Bars = styled.div`
   align-items: center;
   overflow: hidden;
   height: 20px;
-  z-index: 2;
-  position: relative;
-  left: 0;
-  right: 0;
+  margin-right: 0.5em;
 `;
 const Bar = styled.div`
   width: 2px;
   height: 10px;
   margin: 0 2px;
-  background-color: ${color.gray};
+  background-color: ${(props) => props.color};
   animation-name: ${dance};
   animation-duration: 500ms;
   animation-play-state: running;
@@ -39,14 +42,14 @@ const Bar = styled.div`
   animation-delay: ${(props) => props.delay || "0ms"};
 `;
 
-const Loader = () => (
-  <Container>
+const Loader = (props) => (
+  <Container isPage={props.isPage}>
     <Bars>
-      <Bar delay="250ms" />
-      <Bar delay="150ms" />
-      <Bar delay="50ms" />
-      <Bar delay="150ms" />
-      <Bar delay="250ms" />
+      <Bar color={props.color} delay="350ms" />
+      <Bar color={props.color} delay="150ms" />
+      <Bar color={props.color} delay="0ms" />
+      <Bar color={props.color} delay="150ms" />
+      <Bar color={props.color} delay="350ms" />
     </Bars>
   </Container>
 );

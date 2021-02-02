@@ -21,6 +21,7 @@ import TopGenresPreview from "components/TopGenresPreview";
 import { Main } from "styles";
 
 function Profile() {
+  const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
 
   // Data for current top track and artist
@@ -185,17 +186,22 @@ function Profile() {
     setTopGenres(genresMap);
     setMax((m / t) * 100);
     setTotal(total);
+    setIsLoading(false);
   };
 
   return (
     <Main>
-      {user ? <User data={user} /> : null}
-      {/* {currentTopArtist && currentTopTrack ? (
+      {!isLoading ? (
+        <div>
+          {user ? <User data={user} /> : null}
+          {/* {currentTopArtist && currentTopTrack ? (
         <TrendsPreview artist={currentTopArtist} track={currentTopTrack} />
       ) : null} */}
-      {topTracks ? <TopTracksPreview data={topTracks} /> : null}
-      {topArtists ? <TopArtistsPreview data={topArtists} /> : null}
-      {topGenres ? <TopGenresPreview data={topGenres} max={max} /> : null}
+          {topTracks ? <TopTracksPreview data={topTracks} /> : null}
+          {topArtists ? <TopArtistsPreview data={topArtists} /> : null}
+          {topGenres ? <TopGenresPreview data={topGenres} max={max} /> : null}
+        </div>
+      ) : null}
     </Main>
   );
 }

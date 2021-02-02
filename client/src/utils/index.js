@@ -110,6 +110,33 @@ export const getTopTracks = ({ time_range, limit }) =>
       },
     }
   );
+export const getTopTracksLong = () =>
+  axios.get(
+    `https://api.spotify.com/v1/me/top/tracks?limit=50&time_range=long_term`,
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
+export const getTopTracksMedium = () =>
+  axios.get(
+    `https://api.spotify.com/v1/me/top/tracks?limit=50&time_range=medium_term`,
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
+export const getTopTracksShort = () =>
+  axios.get(
+    `https://api.spotify.com/v1/me/top/tracks?limit=50&time_range=short_term`,
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
 
 export const getTopArtists = ({ time_range, limit }) =>
   axios.get(

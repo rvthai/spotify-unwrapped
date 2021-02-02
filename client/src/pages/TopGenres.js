@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { getTopTracks, getSeveralArtists } from "utils";
 
 // Components
-import Range from "components/TimeRanges";
+import Ranges from "components/Ranges";
 import Genre from "components/Genre";
 
 // Styles
@@ -150,7 +150,7 @@ function TopGenres(props) {
       <Section>
         <HeaderA>
           <Title>Top Genres</Title>
-          <Range onTermChange={onTermChange} />
+          <Ranges onTermChange={onTermChange} />
         </HeaderA>
         {topGenres ? (
           <Bars>
