@@ -7,6 +7,10 @@ const Main = styled.main`
   ${mixins.flexAlignCenter}
   text-align: center;
   padding: 80px 0;
+
+  ${media.tablet`
+    padding: 20px 0;
+  `}
 `;
 
 export default Main;

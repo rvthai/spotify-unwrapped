@@ -32,6 +32,11 @@ const mixins = {
     justify-content: space-between;
   `,
 
+  flexSpaceAround: css`
+    display: flex;
+    justify-content: space-around;
+  `,
+
   flexWrap: css`
     display: flex;
     flex-wrap: wrap;

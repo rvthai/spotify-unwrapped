@@ -5,7 +5,9 @@ import { theme, mixins, media } from "styles";
 const { color, fontSize, fontWeight, kerning, transition } = theme;
 
 const Container = styled.div`
-  ${mixins.flexRow};
+  ${mixins.flexRow}
+  ${mixins.flexSpaceAround}
+  width: 350px;
 `;
 
 const Link = styled.p`
@@ -13,7 +15,6 @@ const Link = styled.p`
   font-weight: ${fontWeight.bold};
   letter-spacing: ${kerning.lost};
   text-decoration: none;
-  margin-left: 2em;
   transition: ${transition};
   cursor: pointer;
 
@@ -34,10 +35,6 @@ const Link = styled.p`
       padding-bottom: 5px;
       border-bottom: 2px solid ${color.green};
     } 
-  `}
-
-  ${media.tablet`
-    margin-left: 1.25em;
   `}
 `;
 

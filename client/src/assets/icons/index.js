@@ -9,6 +9,8 @@ import PlaylistsIcon from "./PlaylistsIcon";
 import PlayIcon from "./PlayIcon";
 import PauseIcon from "./PauseIcon";
 import NoMusicIcon from "./NoMusicIcon";
+import InfoIcon from "./InfoIcon";
+import BackIcon from "./BackIcon";
 
 export {
   SpotifyIcon,
@@ -22,4 +24,6 @@ export {
   PlayIcon,
   PauseIcon,
   NoMusicIcon,
+  InfoIcon,
+  BackIcon,
 };

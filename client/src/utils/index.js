@@ -147,6 +147,33 @@ export const getTopArtists = ({ time_range, limit }) =>
       },
     }
   );
+export const getTopArtistsLong = () =>
+  axios.get(
+    `https://api.spotify.com/v1/me/top/artists?limit=50&time_range=long_term`,
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
+export const getTopArtistsMedium = () =>
+  axios.get(
+    `https://api.spotify.com/v1/me/top/artists?limit=50&time_range=medium_term`,
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
+export const getTopArtistsShort = () =>
+  axios.get(
+    `https://api.spotify.com/v1/me/top/artists?limit=50&time_range=short_term`,
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
 
 export const getSeveralArtists = (ids) =>
   axios.get(`https://api.spotify.com/v1/artists?ids=${ids}`, {

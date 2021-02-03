@@ -116,7 +116,7 @@ const Navbar = () => (
         <TrackIcon />
         Top Tracks
       </MenuItem>
-      <MenuItem exact to="/top-artists">
+      <MenuItem to="/top-artists">
         <ArtistIcon />
         Top Artists
       </MenuItem>

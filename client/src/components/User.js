@@ -5,15 +5,21 @@ import Logout from "components/Logout";
 import { NoUserIcon } from "assets/icons";
 
 import styled from "styled-components";
-import { Section, Label } from "styles";
+import { Section, Label, Image } from "styles";
 import { mixins, theme } from "styles";
 
 const { color, fontSize } = theme;
 
-const Avatar = styled.img`
+const AvatarWrapper = styled.div`
   width: 150px;
   height: 150px;
+  overflow: hidden;
   border-radius: 50%;
+`;
+
+const Avatar = styled(Image)`
+  width: 150px;
+  height: 150px;
 `;
 
 const UnknownProfile = styled.div`
@@ -68,7 +74,9 @@ function User(props) {
   return (
     <Section>
       {avatar ? (
-        <Avatar src={avatar} alt="avatar" />
+        <AvatarWrapper>
+          <Avatar src={avatar} alt="avatar" />
+        </AvatarWrapper>
       ) : (
         <UnknownProfile>
           <NoUserIcon />

@@ -9,12 +9,13 @@ import Track from "components/Track";
 import Ranges from "components/Ranges";
 import Loader from "components/Loader";
 
-const { color } = theme;
+const { color, fontSize } = theme;
 
 const Title = styled.h1`
+  font-size: ${fontSize.xl};
   margin: 0;
 
-  ${media.laptop`
+  ${media.tablet`
     margin-bottom: 0.5em;
   `}
 `;
@@ -30,10 +31,10 @@ function TopTracks() {
   const [term, setTerm] = useState("long");
 
   useEffect(() => {
-    getTopTracksData();
+    getData();
   }, []);
 
-  const getTopTracksData = async () => {
+  const getData = async () => {
     try {
       const long = await getTopTracksLong();
       const medium = await getTopTracksMedium();
@@ -46,13 +47,14 @@ function TopTracks() {
       };
 
       setTopTracks(data);
-      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
+
+    setIsLoading(false);
   };
 
-  const onTermChange = async (range) => {
+  const onTermChange = (range) => {
     setTerm(range);
   };
 
@@ -79,9 +81,7 @@ function TopTracks() {
     }
   };
 
-  if (isLoading) {
-    return <Loader color={color.lightGray} isPage={true} />;
-  }
+  if (isLoading) return <Loader color={color.lightGray} isPage={true} />;
 
   return (
     <Main>

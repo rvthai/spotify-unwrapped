@@ -4,12 +4,12 @@ import media from "./media";
 
 const PageHeader = styled.div`
   ${mixins.flexRow}
-  ${mixins.flexWrap}
   ${mixins.flexSpaceBetween}
   ${mixins.flexAlignEnd}
   width: 100%;
 
-  ${media.laptop`
+  ${media.tablet`
+    ${mixins.flexColumn}
     ${mixins.flexCenter}
   `}
 `;

@@ -9,6 +9,8 @@ import TopTracks from "pages/TopTracks";
 import TopArtists from "pages/TopArtists";
 import TopGenres from "pages/TopGenres";
 import Playlists from "pages/Playlists";
+import ArtistPage from "pages/ArtistPage";
+import PageNotFound from "pages/PageNotFound";
 
 // Styles
 import { media } from "styles";
@@ -32,6 +34,8 @@ const Home = () => (
         <Route exact path="/top-artists" component={TopArtists} />
         <Route exact path="/top-genres" component={TopGenres} />
         <Route exact path="/playlists" component={Playlists} />
+        <Route exact path="/top-artists/:id" component={ArtistPage} />
+        <Route path="*" component={PageNotFound} />
       </Switch>
     </Content>
   </Router>
