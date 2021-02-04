@@ -94,7 +94,6 @@ function TopArtists() {
                   image={artist.images[0] ? artist.images[0].url : null}
                   genres={artist.genres}
                   followers={artist.followers.total}
-                  popularity={artist.popularity}
                 />
               ))
             : null}

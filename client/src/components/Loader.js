@@ -26,12 +26,11 @@ const Bars = styled.div`
   align-items: center;
   overflow: hidden;
   height: 20px;
-  margin-right: 0.5em;
 `;
 const Bar = styled.div`
   width: 2px;
   height: 10px;
-  margin: 0 2px;
+  margin: 0 1.5px;
   background-color: ${(props) => props.color};
   animation-name: ${dance};
   animation-duration: 500ms;

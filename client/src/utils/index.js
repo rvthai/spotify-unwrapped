@@ -182,6 +182,37 @@ export const getSeveralArtists = (ids) =>
     },
   });
 
+export const getFollowStatus = (id) =>
+  axios.get(
+    `https://api.spotify.com/v1/me/following/contains?type=artist&ids=${id}`,
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
+
+export const followArtist = (id) =>
+  axios.put(
+    `https://api.spotify.com/v1/me/following?type=artist&ids=${id}`,
+    null,
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
+
+export const unfollowArtist = (id) =>
+  axios.delete(
+    `https://api.spotify.com/v1/me/following?type=artist&ids=${id}`,
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
+
 /* Helper Functions -------------------------------------------------------------*/
 export const isSingleLine = (el) => {
   let singleLine = false;

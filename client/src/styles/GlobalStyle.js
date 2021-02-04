@@ -64,6 +64,10 @@ const GlobalStyle = createGlobalStyle`
     font-size: ${fontSize.xxl};
     letter-spacing: -0.025em;
     margin: 10px 0 10px 0;
+
+    ${media.tablet`
+      font-size: 8vw;
+    `}
   }
 
   h1 {
@@ -72,12 +76,6 @@ const GlobalStyle = createGlobalStyle`
 
   h2, h3 {
     font-weight: 700;
-  }
-
-  @media screen and (max-width: 768px) {
-    h2 {
-      font-size: 8vw;
-    }
   }
 
   h3 {

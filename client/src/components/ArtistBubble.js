@@ -18,13 +18,15 @@ const Artist = styled(Link)`
   text-decoration: none;
   color: ${color.white};
 
-  &:hover {
-    img {
-      opacity: 0.5;
-    }
+  @media (hover: hover) {
+    &:hover {
+      img {
+        opacity: 0.5;
+      }
 
-    svg {
-      display: block;
+      svg {
+        display: block;
+      }
     }
   }
 `;

@@ -9,7 +9,7 @@ import TopTracks from "pages/TopTracks";
 import TopArtists from "pages/TopArtists";
 import TopGenres from "pages/TopGenres";
 import Playlists from "pages/Playlists";
-import ArtistPage from "pages/ArtistPage";
+import Artist from "pages/Artist";
 import PageNotFound from "pages/PageNotFound";
 
 // Styles
@@ -21,6 +21,7 @@ const Content = styled.div`
 
   ${media.tablet`
     margin-left: 0;
+    padding-bottom: 55px;
   `}
 `;
 
@@ -34,7 +35,7 @@ const Home = () => (
         <Route exact path="/top-artists" component={TopArtists} />
         <Route exact path="/top-genres" component={TopGenres} />
         <Route exact path="/playlists" component={Playlists} />
-        <Route exact path="/top-artists/:id" component={ArtistPage} />
+        <Route exact path="/top-artists/:id" component={Artist} />
         <Route path="*" component={PageNotFound} />
       </Switch>
     </Content>
