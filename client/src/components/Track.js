@@ -10,7 +10,7 @@ import { PlayIcon, PauseIcon, NoMusicIcon } from "assets/icons";
 // Styles
 import styled from "styled-components";
 import { Image } from "styles";
-import { theme, mixins } from "styles";
+import { theme, mixins, media } from "styles";
 
 const { color, fontSize, transition } = theme;
 
@@ -22,15 +22,17 @@ const Container = styled.div`
   transition: ${transition};
   cursor: pointer;
 
-  &:hover {
-    background: ${color.gray};
+  @media (hover: hover) {
+    &:hover {
+      background: ${color.gray};
 
-    img {
-      opacity: 0.5;
-    }
+      img {
+        opacity: 0.5;
+      }
 
-    svg {
-      display: block;
+      svg {
+        display: block;
+      }
     }
   }
 
@@ -129,6 +131,9 @@ const TrackArtist = styled.p`
 
 const TrackDuration = styled.p`
   font-size: ${fontSize.sm};
+`;
+
+const DurationWrapper = styled.div`
   margin-right: 0.5em;
   padding-left: 1em;
 `;
@@ -168,11 +173,14 @@ function Track(props) {
           <TrackName>{name}</TrackName>
           <TrackArtist>{trackArtists}</TrackArtist>
         </TrackCaption>
-        {isPlaying ? (
-          <Loader color={color.lightGreen} isPage={false} />
-        ) : (
-          <TrackDuration>{trackDuration}</TrackDuration>
-        )}
+
+        <DurationWrapper>
+          {isPlaying ? (
+            <Loader color={color.lightGreen} isPage={false} />
+          ) : (
+            <TrackDuration>{trackDuration}</TrackDuration>
+          )}
+        </DurationWrapper>
       </TrackInfo>
     </Container>
   );
