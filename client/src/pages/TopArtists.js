@@ -48,7 +48,7 @@ function TopArtists() {
 
   useEffect(() => {
     getData();
-  }, [term]);
+  }, []);
 
   const getData = async () => {
     try {

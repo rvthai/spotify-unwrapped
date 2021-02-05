@@ -213,6 +213,57 @@ export const unfollowArtist = (id) =>
     }
   );
 
+export const getTopGenresLong = async () => {
+  const response = await getTopTracksLong();
+  const tracks = response.data.items;
+
+  const { genres, max } = await getGenres(tracks);
+  const range = getRange(max);
+  const ratio = Math.round(max / 10) * 10;
+
+  const data = {
+    genres: genres,
+    range: range,
+    ratio: ratio,
+  };
+
+  return data;
+};
+
+export const getTopGenresMedium = async () => {
+  const response = await getTopTracksMedium();
+  const tracks = response.data.items;
+
+  const { genres, max } = await getGenres(tracks);
+  const range = getRange(max);
+  const ratio = Math.round(max / 10) * 10;
+
+  const data = {
+    genres: genres,
+    range: range,
+    ratio: ratio,
+  };
+
+  return data;
+};
+
+export const getTopGenresShort = async () => {
+  const response = await getTopTracksShort();
+  const tracks = response.data.items;
+
+  const { genres, max } = await getGenres(tracks);
+  const range = getRange(max);
+  const ratio = Math.round(max / 10) * 10;
+
+  const data = {
+    genres: genres,
+    range: range,
+    ratio: ratio,
+  };
+
+  return data;
+};
+
 /* Helper Functions -------------------------------------------------------------*/
 export const isSingleLine = (el) => {
   let singleLine = false;
@@ -258,4 +309,81 @@ export const joinArtists = (a) => {
   }
 
   return l.join(", ");
+};
+
+const getGenres = async (tracks) => {
+  let genres = {};
+
+  const artists = await getArtists(tracks);
+  console.log("ARTISTS", artists);
+
+  for (let i = 0; i < artists.length; i++) {
+    let artistGenres = artists[i].genres;
+    for (let j = 0; j < artistGenres.length; j++) {
+      let genre = artistGenres[j];
+      if (!genres[genre]) {
+        genres[genre] = 0;
+      }
+      genres[genre] += 1;
+    }
+  }
+
+  let entries = Object.entries(genres);
+  entries.sort((a, b) => b[1] - a[1]);
+  entries = entries.splice(0, 10);
+
+  const total = entries.reduce((sum, entry) => sum + entry[1], 0);
+  const max =
+    (entries.reduce((max, entry) => Math.max(max, entry[1]), 0) / total) * 100;
+
+  genres = entries.reduce((accumulator, entry) => {
+    const key = entry[0];
+    const value = Math.round((entry[1] / total) * 100); // Convert to a percentage
+    accumulator[key] = value;
+    return accumulator;
+  }, {});
+
+  return { genres, max };
+};
+
+const getArtists = async (tracks) => {
+  let artists = [];
+
+  let artistIds = new Set();
+
+  for (let i = 0; i < tracks.length; i++) {
+    let trackArtists = tracks[i].artists;
+    for (let j = 0; j < trackArtists.length; j++) {
+      artistIds.add(trackArtists[j].id);
+    }
+  }
+
+  artistIds = [...artistIds];
+
+  while (artistIds.length > 0) {
+    let ids = "";
+    if (artistIds.length >= 50) {
+      ids = artistIds.splice(0, 50).join(",");
+    } else {
+      ids = artistIds.splice(0, artistIds.length).join(",");
+    }
+
+    const response = await getSeveralArtists(ids);
+    artists = artists.concat(response.data.artists);
+  }
+
+  return artists;
+};
+
+const getRange = (max) => {
+  let range = [];
+
+  const limit = Math.ceil(max / 10) * 10;
+  const interval = limit / 5;
+
+  for (let i = 0; i <= limit; i += interval) {
+    range.push(i);
+  }
+
+  return range;
 };
