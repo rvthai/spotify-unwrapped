@@ -26,12 +26,22 @@ const Genres = styled.div`
   width: 100%;
 `;
 
-// const Axis = styled.div`
-//   width: 100%;
-//   height: 1px;
-//   background: ${color.gray};
-//   margin: 1em 0;
-// `;
+const Axis = styled.div`
+  background-color: ${color.gray};
+  margin-top: 1em;
+  width: 100%;
+  height: 1px;
+`;
+
+const Coords = styled.div`
+  ${mixins.flexRow}
+  ${mixins.flexSpaceBetween}
+  width: 100%;
+`;
+
+const Coord = styled.p`
+  margin-top: 0.5em;
+`;
 
 function TopGenres() {
   const [isLoading, setIsLoading] = useState(true);
@@ -91,22 +101,15 @@ function TopGenres() {
           </Genres>
         ) : null}
 
-        {/* <Axis />
+        <Axis />
+
         {topGenres ? (
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-          >
-            {topGenres[term].range.map((num, index) => (
-              <p style={{ color: `${color.lightGray}` }} key={index}>
-                {num}
-              </p>
+          <Coords>
+            {topGenres[term].range.map((coord, index) => (
+              <Coord key={index}>{coord}</Coord>
             ))}
-          </div>
-        ) : null} */}
+          </Coords>
+        ) : null}
       </Section>
     </Main>
   );
