@@ -315,7 +315,6 @@ const getGenres = async (tracks) => {
   let genres = {};
 
   const artists = await getArtists(tracks);
-  console.log("ARTISTS", artists);
 
   for (let i = 0; i < artists.length; i++) {
     let artistGenres = artists[i].genres;

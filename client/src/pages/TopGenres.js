@@ -20,29 +20,27 @@ const Title = styled.h1`
   `}
 `;
 
-const Bars = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+const Genres = styled.div`
+  ${mixins.flexColumn}
   margin-top: 2em;
-`;
-
-const Axis = styled.div`
   width: 100%;
-  height: 1px;
-  background: ${color.gray};
-  margin: 1em 0;
 `;
 
-function TopGenres(props) {
-  // Data for genre data
+// const Axis = styled.div`
+//   width: 100%;
+//   height: 1px;
+//   background: ${color.gray};
+//   margin: 1em 0;
+// `;
+
+function TopGenres() {
   const [isLoading, setIsLoading] = useState(true);
   const [topGenres, setTopGenres] = useState(null);
   const [term, setTerm] = useState("long");
 
   useEffect(() => {
     getData();
-  }, [term]);
+  }, []);
 
   const getData = async () => {
     try {
@@ -79,19 +77,21 @@ function TopGenres(props) {
         </PageHeader>
 
         {topGenres ? (
-          <Bars>
+          <Genres>
             {Object.keys(topGenres[term].genres).map((genre, index) => (
               <Genre
                 key={index}
-                name={genre}
+                genre={genre}
                 width={
                   (topGenres[term].genres[genre] / topGenres[term].ratio) * 100
                 }
+                percentage={topGenres[term].genres[genre]}
               />
             ))}
-          </Bars>
+          </Genres>
         ) : null}
-        <Axis />
+
+        {/* <Axis />
         {topGenres ? (
           <div
             style={{
@@ -106,7 +106,7 @@ function TopGenres(props) {
               </p>
             ))}
           </div>
-        ) : null}
+        ) : null} */}
       </Section>
     </Main>
   );
