@@ -98,12 +98,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: "Circular Std", "sans-serif";
     font-weight: 500;
   }
-
-  .fit {
-    display: inline-block;
-    white-space: nowrap;
-    word-wrap: break-word;
-  }
 `;
 
 export default GlobalStyle;

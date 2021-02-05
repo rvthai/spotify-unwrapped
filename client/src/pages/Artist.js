@@ -125,11 +125,10 @@ const FollowButton = styled(Button)`
   }
 
   ${(props) =>
-    (props.following &&
-      `
+    props.following &&
+    `
     color: ${color.green};
-  `) ||
-    `color: ${color.white}`}
+  `}
 `;
 
 function Artist(props) {

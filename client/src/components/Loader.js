@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components/macro";
-import { theme, mixins } from "styles";
+import { mixins } from "styles";
 
 const Container = styled.div`
   ${mixins.flexCenter};

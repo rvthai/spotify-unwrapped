@@ -1,10 +1,10 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { Main, Section, Button } from "styles";
 import { theme } from "styles";
-import { useHistory } from "react-router-dom";
 
-const { color, fontWeight } = theme;
+const { color, transition } = theme;
 
 const CenteredSection = styled(Section)`
   position: absolute;
@@ -13,10 +13,20 @@ const CenteredSection = styled(Section)`
 `;
 
 const HomeButton = styled(Button)`
-  margin-top: 5em;
-  background: ${color.green};
+  background-color: ${color.green};
   color: ${color.white};
+  margin-top: 5em;
+  transition: ${transition};
   cursor: pointer;
+  padding: 10px 35px;
+
+  &:hover {
+    background-color: ${color.lightGreen};
+  }
+
+  &:active {
+    background-color: ${color.darkGreen};
+  }
 `;
 
 function PageNotFound() {

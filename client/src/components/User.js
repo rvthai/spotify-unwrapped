@@ -38,7 +38,6 @@ const UnknownProfile = styled.div`
 
 const Overview = styled.div`
   ${mixins.flexRow}
-  margin: 2em 0;
 `;
 
 const OverviewItem = styled.div`
@@ -83,9 +82,6 @@ function User(props) {
         </UnknownProfile>
       )}
       <h2>{name}</h2>
-
-      {/* <Logout /> */}
-
       <Overview>
         <OverviewItem>
           <Stat>{followers}</Stat>
@@ -102,6 +98,7 @@ function User(props) {
           </PlaylistsLink>
         </OverviewItem>
       </Overview>
+      <Logout />
     </Section>
   );
 }

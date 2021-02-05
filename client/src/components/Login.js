@@ -1,47 +1,44 @@
-import { Button, Main, mixins } from "../styles";
+import React from "react";
 import styled from "styled-components";
+import { Main, Section, Button } from "styles";
+import { theme } from "styles";
 
-const LoginContainer = styled(Main)`
-  ${mixins.flexCenter};
-  flex-direction: column;
+const { color, transition } = theme;
+
+const CenteredSection = styled(Section)`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 `;
 
 const LoginButton = styled(Button)`
-  border-radius: 25px;
-  letter-spacing: 2px;
-  text-decoration: none;
-  color: #fff;
-`;
-
-const URL = "http://localhost:8888/login";
-
-const Login = () => (
-  <LoginContainer>
-    <h1>Statify</h1>
-    <LoginButton as="a" href={URL}>
-      LOG IN WITH SPOTIFY
-    </LoginButton>
-  </LoginContainer>
-);
-
-export default Login;
-/*
-Original: #1db954
-#4bdf80 or #1ed760 hover
-#18ac4d focus
-#1aa34a active
-*/
-
-/*
+  background-color: ${color.green};
+  padding: 10px 35px;
+  transition: ${transition};
+  cursor: pointer;
 
   &:hover {
-    background: #1ed760;
-  }
-
-  &:focus {
-    background: #18ac4d;
+    background-color: ${color.lightGreen};
   }
 
   &:active {
-    background: #1aa34a;
-  }*/
+    background-color: ${color.darkGreen};
+  }
+`;
+
+function Login() {
+  const URL = "http://localhost:8888/login";
+
+  return (
+    <Main>
+      <CenteredSection>
+        <h1>Statify</h1>
+        <LoginButton as="a" href={URL}>
+          LOG IN WITH SPOTIFY
+        </LoginButton>
+      </CenteredSection>
+    </Main>
+  );
+}
+
+export default Login;

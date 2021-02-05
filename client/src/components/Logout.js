@@ -8,18 +8,18 @@ import { theme } from "styles";
 const { color } = theme;
 
 const LogoutButton = styled(Button)`
-  color: ${color.lightGray};
-  background: ${color.lightSlateGray};
+  background: transparent;
+  border: 1px solid ${color.white};
+  margin-top: 2em;
+  cursor: pointer;
 
   &:hover {
-    color: ${color.white};
     transform: scale(1.05);
   }
 
-  &:active,
-  &:focus {
-    background-color: ${color.slateGray};
-    color: ${color.gray};
+  &:active {
+    color: ${color.lightGray};
+    border: 1px solid ${color.lightGray};
     transform: scale(1);
   }
 `;
@@ -30,7 +30,7 @@ function Logout() {
     logout();
   };
 
-  return <LogoutButton onClick={handleLogout}>SIGN OUT</LogoutButton>;
+  return <LogoutButton onClick={handleLogout}>LOG OUT</LogoutButton>;
 }
 
 export default Logout;
