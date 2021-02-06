@@ -124,10 +124,6 @@ const Navbar = () => (
         <GenreIcon />
         Top Genres
       </MenuItem>
-      <MenuItem exact to="/playlists">
-        <PlaylistsIcon />
-        Playlists
-      </MenuItem>
     </Menu>
 
     <a href="https://github.com/rvthai">

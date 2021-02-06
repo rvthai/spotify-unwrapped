@@ -1,57 +1,79 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-
-// API
 import { getPlaylists } from "utils";
+import styled from "styled-components";
+import { Main, Section, PageHeader, Image } from "styles";
+import { theme, mixins, media } from "styles";
 
-// Styles
-import { Main, Section, Header } from "styles";
+// Components
+import Loader from "components/Loader";
 
-const HeaderA = styled(Header)`
-  border: none;
-  margin-bottom: 2em;
-`;
+const { color, fontSize, transition } = theme;
+
 const Title = styled.h1`
+  font-size: ${fontSize.xl};
   margin: 0;
+
+  ${media.tablet`
+    margin-bottom: 0.5em;
+  `}
 `;
 
 const Content = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   width: 100%;
+  column-gap: 2em;
   row-gap: 2em;
+  margin-top: 2em;
 `;
 
-function Playlists(props) {
+const ImageWrapper = styled.div`
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+`;
+
+const PlaylistImage = styled(Image)`
+  width: 200px;
+  height: 200px;
+`;
+
+function Playlists() {
+  const [isLoading, setIsLoading] = useState(true);
   const [playlists, setPlaylists] = useState(null);
 
   useEffect(() => {
-    fetchData();
+    getData();
   }, []);
 
-  const fetchData = async () => {
+  const getData = async () => {
     try {
-      let data = [];
-      let nextURL = "https://api.spotify.com/v1/me/playlists";
+      let response = await getPlaylists();
+      let next = response.data.next;
 
-      while (nextURL !== null) {
-        const response = await getPlaylists(nextURL);
-        nextURL = response.data.next;
+      let data = response.data.items;
+      while (next !== null) {
+        response = await getPlaylists(next);
         data = data.concat(response.data.items);
+        next = response.data.next;
       }
-
+      console.log(data);
       setPlaylists(data);
     } catch (error) {
       console.log(error);
     }
+
+    setIsLoading(false);
   };
+
+  if (isLoading) return <Loader color={color.lightGray} isPage={true} />;
 
   return (
     <Main>
       <Section>
-        <HeaderA>
+        <PageHeader>
           <Title>Playlists</Title>
-        </HeaderA>
+        </PageHeader>
         <Content>
           {playlists
             ? playlists.map((playlist, index) => (
@@ -59,13 +81,13 @@ function Playlists(props) {
                   key={index}
                   style={{ display: "flex", flexDirection: "column" }}
                 >
-                  <img
-                    style={{ width: "200px", height: "200px" }}
-                    src={playlist.images[0].url}
-                    alt="playlist-cover"
-                  />
+                  <ImageWrapper>
+                    <PlaylistImage
+                      src={playlist.images[0].url}
+                      alt="playlist-cover"
+                    />
+                  </ImageWrapper>
                   <p>Name: {playlist.name}</p>
-                  <p>Description: {playlist.description}</p>
                 </div>
               ))
             : null}

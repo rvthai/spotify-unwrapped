@@ -101,15 +101,6 @@ export const getPlaylists = (url = `https://api.spotify.com/v1/me/playlists`) =>
     headers: { Authorization: "Bearer " + token },
   });
 
-export const getTopTracks = ({ time_range, limit }) =>
-  axios.get(
-    `https://api.spotify.com/v1/me/top/tracks?limit=${limit}&time_range=${time_range}`,
-    {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    }
-  );
 export const getTopTracksLong = (limit = 50) =>
   axios.get(
     `https://api.spotify.com/v1/me/top/tracks?limit=${limit}&time_range=long_term`,
@@ -138,15 +129,6 @@ export const getTopTracksShort = (limit = 50) =>
     }
   );
 
-export const getTopArtists = ({ time_range, limit }) =>
-  axios.get(
-    `https://api.spotify.com/v1/me/top/artists?limit=${limit}&time_range=${time_range}`,
-    {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    }
-  );
 export const getTopArtistsLong = (limit = 50) =>
   axios.get(
     `https://api.spotify.com/v1/me/top/artists?limit=${limit}&time_range=long_term`,
