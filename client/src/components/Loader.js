@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { keyframes } from "styled-components/macro";
+import styled, { keyframes } from "styled-components";
 import { mixins } from "styles";
 
 const Container = styled.div`
@@ -12,18 +12,18 @@ const Container = styled.div`
     height: 100vh;
   `}
 `;
-const dance = keyframes`
+
+const wave = keyframes`
   from {
     height: 2px;
   }
+
   to {
     height: 100%;
   }
 `;
 const Bars = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${mixins.flexCenter}
   overflow: hidden;
   height: 20px;
 `;
@@ -32,13 +32,13 @@ const Bar = styled.div`
   height: 10px;
   margin: 0 1.5px;
   background-color: ${(props) => props.color};
-  animation-name: ${dance};
+  animation-name: ${wave};
   animation-duration: 500ms;
   animation-play-state: running;
   animation-direction: alternate;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  animation-delay: ${(props) => props.delay || "0ms"};
+  animation-delay: ${(props) => props.delay};
 `;
 
 const Loader = (props) => (
