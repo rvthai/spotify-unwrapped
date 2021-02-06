@@ -3,14 +3,11 @@ const theme = {
     green: "#1db954",
     lightGreen: "#1ed760",
     darkGreen: "#18ac4d",
-    white: "#ffffff",
+    white: "#fff",
     black: "#040306",
-    offBlack: "#18181c",
     lightGray: "#9b9b9b",
     gray: "#212121",
     darkGray: "#181818",
-    slateGray: "#222229",
-    lightSlateGray: "#2e2e38",
   },
 
   fontSize: {

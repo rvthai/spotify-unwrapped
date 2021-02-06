@@ -1,17 +1,15 @@
 import React from "react";
+import styled from "styled-components";
+import { Section, Header, MoreLink } from "styles";
 
 // Components
 import Artist from "components/Artist";
 
-// Styles
-import styled from "styled-components";
-import { Section, Header, MoreLink } from "styles";
-
-const Content = styled.div`
+const Artists = styled.div`
   width: 100%;
 `;
 
-function TopArtistsPreview(props) {
+function TopArtists(props) {
   return (
     <Section>
       <Header>
@@ -19,19 +17,22 @@ function TopArtistsPreview(props) {
         <MoreLink to="/top-artists">SEE MORE</MoreLink>
       </Header>
 
-      <Content>
+      <Artists>
         {props.data.map((artist, index) => (
           <Artist
             key={index}
-            number={index}
-            image={artist.images[2].url}
+            rank={index + 1}
+            id={artist.id}
             name={artist.name}
+            image={artist.images[0] ? artist.images[0].url : null}
+            genres={artist.genres}
             followers={artist.followers.total}
+            preview={1}
           />
         ))}
-      </Content>
+      </Artists>
     </Section>
   );
 }
 
-export default TopArtistsPreview;
+export default TopArtists;

@@ -11,7 +11,7 @@ import {
 // Components
 import Loader from "components/Loader";
 import Ranges from "components/Ranges";
-import ArtistBubble from "components/ArtistBubble";
+import Artist from "components/Artist";
 
 const { color, fontSize } = theme;
 
@@ -87,7 +87,7 @@ function TopArtists() {
         <Artists>
           {topArtists
             ? topArtists[term].map((artist, index) => (
-                <ArtistBubble
+                <Artist
                   key={index}
                   id={artist.id}
                   name={artist.name}

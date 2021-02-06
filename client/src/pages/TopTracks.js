@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { getTopTracksLong, getTopTracksMedium, getTopTracksShort } from "utils";
+import {
+  getTopTracksLong,
+  getTopTracksMedium,
+  getTopTracksShort,
+  playTrack,
+} from "utils";
 import { Main, Section, PageHeader } from "styles";
 import { theme, media } from "styles";
 
@@ -59,26 +64,8 @@ function TopTracks() {
   };
 
   const onActiveTrackChange = (previewURL) => {
-    const audio = new Audio(previewURL);
-    audio.volume = 0.2;
-    audio.onended = () => setActiveTrack(null);
-
-    if (!activeTrack) {
-      // Play
-      audio.play();
-      setActiveTrack(audio);
-    } else if (previewURL === activeTrack.src) {
-      // Stop
-      activeTrack.pause();
-      activeTrack.currentTime = 0;
-      setActiveTrack(null);
-    } else {
-      // Play New Track
-      activeTrack.pause();
-      activeTrack.currentTime = 0;
-      audio.play();
-      setActiveTrack(audio);
-    }
+    const track = playTrack({ url: previewURL, track: activeTrack });
+    setActiveTrack(track);
   };
 
   if (isLoading) return <Loader color={color.lightGray} isPage={true} />;
@@ -96,7 +83,7 @@ function TopTracks() {
               <Track
                 key={index}
                 rank={index + 1}
-                image={track.album.images[2].url}
+                image={track.album.images[2] ? track.album.images[2].url : null}
                 name={track.name}
                 artists={track.artists}
                 duration={track.duration_ms}

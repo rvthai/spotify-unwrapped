@@ -1,20 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-import Logout from "components/Logout";
-import { NoUserIcon } from "assets/icons";
-
 import styled from "styled-components";
 import { Section, Label, Image } from "styles";
-import { mixins, theme } from "styles";
+import { theme, mixins } from "styles";
+import { NoUserIcon } from "assets/icons";
 
-const { color, fontSize } = theme;
+// Components
+import Logout from "components/Logout";
+
+const { color, fontSize, fontWeight } = theme;
 
 const AvatarWrapper = styled.div`
   width: 150px;
   height: 150px;
-  overflow: hidden;
   border-radius: 50%;
+  overflow: hidden;
 `;
 
 const Avatar = styled(Image)`
@@ -24,30 +24,36 @@ const Avatar = styled(Image)`
 
 const UnknownProfile = styled.div`
   ${mixins.flexCenter}
+  background: ${color.gray};
   border-radius: 50%;
-  background: ${color.lightSlateGray};
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
 
   svg {
-    width: 100px;
-    height: 100px;
     color: ${color.lightGray};
+    width: 75px;
+    height: 75px;
   }
 `;
 
-const Overview = styled.div`
+const StatsWrapper = styled.div`
+  ${mixins.flexCenter}
+  width: 100%;
+`;
+
+const Stats = styled.div`
   ${mixins.flexRow}
 `;
 
-const OverviewItem = styled.div`
+const Stat = styled.div`
   ${mixins.flexColumn}
-  align-items: center;
+  ${mixins.flexAlignCenter}
 `;
 
-const Stat = styled.p`
+const Count = styled.p`
   color: ${color.green};
   font-size: ${fontSize.lg};
+  font-weight: ${fontWeight.bold};
   line-height: 1.5em;
 `;
 
@@ -63,9 +69,8 @@ const PlaylistsLink = styled(Link)`
 function User(props) {
   const { data } = props;
 
-  const avatar = data.user.images[0] ? data.user.images[0].url : null;
   const name = data.user.display_name;
-
+  const avatar = data.user.images[0] ? data.user.images[0].url : null;
   const followers = data.user.followers.total;
   const following = data.following.artists.total;
   const playlists = data.playlists.total;
@@ -82,22 +87,26 @@ function User(props) {
         </UnknownProfile>
       )}
       <h2>{name}</h2>
-      <Overview>
-        <OverviewItem>
-          <Stat>{followers}</Stat>
-          <Label>FOLLOWERS</Label>
-        </OverviewItem>
-        <OverviewItem style={{ margin: "0 2em" }}>
-          <Stat>{following}</Stat>
-          <Label>FOLLOWING</Label>
-        </OverviewItem>
-        <OverviewItem>
-          <Stat>{playlists}</Stat>
-          <PlaylistsLink to="/playlists">
-            <Label>PLAYLISTS</Label>
-          </PlaylistsLink>
-        </OverviewItem>
-      </Overview>
+
+      <StatsWrapper>
+        <Stats>
+          <Stat>
+            <Count>{followers}</Count>
+            <Label>FOLLOWERS</Label>
+          </Stat>
+          <Stat style={{ margin: "0 2em" }}>
+            <Count>{following}</Count>
+            <Label>FOLLOWING</Label>
+          </Stat>
+          <Stat>
+            <Count>{playlists}</Count>
+            <PlaylistsLink to="/playlists">
+              <Label>PLAYLISTS</Label>
+            </PlaylistsLink>
+          </Stat>
+        </Stats>
+      </StatsWrapper>
+
       <Logout />
     </Section>
   );

@@ -1,6 +1,5 @@
 import React from "react";
 import { logout } from "utils";
-
 import styled from "styled-components";
 import { Button } from "styles";
 import { theme } from "styles";

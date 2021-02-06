@@ -110,27 +110,27 @@ export const getTopTracks = ({ time_range, limit }) =>
       },
     }
   );
-export const getTopTracksLong = () =>
+export const getTopTracksLong = (limit = 50) =>
   axios.get(
-    `https://api.spotify.com/v1/me/top/tracks?limit=50&time_range=long_term`,
+    `https://api.spotify.com/v1/me/top/tracks?limit=${limit}&time_range=long_term`,
     {
       headers: {
         Authorization: "Bearer " + token,
       },
     }
   );
-export const getTopTracksMedium = () =>
+export const getTopTracksMedium = (limit = 50) =>
   axios.get(
-    `https://api.spotify.com/v1/me/top/tracks?limit=50&time_range=medium_term`,
+    `https://api.spotify.com/v1/me/top/tracks?limit=${limit}&time_range=medium_term`,
     {
       headers: {
         Authorization: "Bearer " + token,
       },
     }
   );
-export const getTopTracksShort = () =>
+export const getTopTracksShort = (limit = 50) =>
   axios.get(
-    `https://api.spotify.com/v1/me/top/tracks?limit=50&time_range=short_term`,
+    `https://api.spotify.com/v1/me/top/tracks?limit=${limit}&time_range=short_term`,
     {
       headers: {
         Authorization: "Bearer " + token,
@@ -147,27 +147,27 @@ export const getTopArtists = ({ time_range, limit }) =>
       },
     }
   );
-export const getTopArtistsLong = () =>
+export const getTopArtistsLong = (limit = 50) =>
   axios.get(
-    `https://api.spotify.com/v1/me/top/artists?limit=50&time_range=long_term`,
+    `https://api.spotify.com/v1/me/top/artists?limit=${limit}&time_range=long_term`,
     {
       headers: {
         Authorization: "Bearer " + token,
       },
     }
   );
-export const getTopArtistsMedium = () =>
+export const getTopArtistsMedium = (limit = 50) =>
   axios.get(
-    `https://api.spotify.com/v1/me/top/artists?limit=50&time_range=medium_term`,
+    `https://api.spotify.com/v1/me/top/artists?limit=${limit}&time_range=medium_term`,
     {
       headers: {
         Authorization: "Bearer " + token,
       },
     }
   );
-export const getTopArtistsShort = () =>
+export const getTopArtistsShort = (limit = 50) =>
   axios.get(
-    `https://api.spotify.com/v1/me/top/artists?limit=50&time_range=short_term`,
+    `https://api.spotify.com/v1/me/top/artists?limit=${limit}&time_range=short_term`,
     {
       headers: {
         Authorization: "Bearer " + token,
@@ -213,11 +213,11 @@ export const unfollowArtist = (id) =>
     }
   );
 
-export const getTopGenresLong = async () => {
+export const getTopGenresLong = async (limit = 10) => {
   const response = await getTopTracksLong();
   const tracks = response.data.items;
 
-  const { genres, max } = await getGenres(tracks);
+  const { genres, max } = await getGenres(tracks, limit);
   const range = getRange(max);
   const ratio = Math.round(max / 10) * 10;
 
@@ -230,11 +230,11 @@ export const getTopGenresLong = async () => {
   return data;
 };
 
-export const getTopGenresMedium = async () => {
+export const getTopGenresMedium = async (limit = 10) => {
   const response = await getTopTracksMedium();
   const tracks = response.data.items;
 
-  const { genres, max } = await getGenres(tracks);
+  const { genres, max } = await getGenres(tracks, limit);
   const range = getRange(max);
   const ratio = Math.round(max / 10) * 10;
 
@@ -247,11 +247,11 @@ export const getTopGenresMedium = async () => {
   return data;
 };
 
-export const getTopGenresShort = async () => {
+export const getTopGenresShort = async (limit = 10) => {
   const response = await getTopTracksShort();
   const tracks = response.data.items;
 
-  const { genres, max } = await getGenres(tracks);
+  const { genres, max } = await getGenres(tracks, limit);
   const range = getRange(max);
   const ratio = Math.round(max / 10) * 10;
 
@@ -311,7 +311,30 @@ export const joinArtists = (a) => {
   return l.join(", ");
 };
 
-const getGenres = async (tracks) => {
+export const playTrack = ({ url, track }) => {
+  const audio = new Audio(url);
+  audio.volume = 0.1;
+  audio.onended = () => null;
+
+  if (!track) {
+    // Play
+    audio.play();
+    return audio;
+  } else if (url === track.src) {
+    // Stop
+    track.pause();
+    track.currentTime = 0;
+    return null;
+  } else {
+    // Play New Track
+    track.pause();
+    track.currentTime = 0;
+    audio.play();
+    return audio;
+  }
+};
+
+const getGenres = async (tracks, limit) => {
   let genres = {};
 
   const artists = await getArtists(tracks);
@@ -329,7 +352,7 @@ const getGenres = async (tracks) => {
 
   let entries = Object.entries(genres);
   entries.sort((a, b) => b[1] - a[1]);
-  entries = entries.splice(0, 10);
+  entries = entries.splice(0, limit);
 
   const total = entries.reduce((sum, entry) => sum + entry[1], 0);
   const max =

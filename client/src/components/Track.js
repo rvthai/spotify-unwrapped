@@ -5,7 +5,7 @@ import { convertTime, joinArtists } from "utils";
 import Loader from "components/Loader";
 
 // Icons
-import { PlayIcon, PauseIcon, NoMusicIcon } from "assets/icons";
+import { PlayIcon, PauseIcon, NoMusicIcon, TrackIcon } from "assets/icons";
 
 // Styles
 import styled from "styled-components";
@@ -63,6 +63,19 @@ const PreviewWrapper = styled.div`
 const TrackImage = styled(Image)`
   width: 50px;
   height: 50px;
+`;
+
+const TrackIconWrapper = styled.div`
+  ${mixins.flexCenter}
+  color: ${color.lightGray};
+  background-color: ${color.gray};
+  width: 50px;
+  height: 50px;
+
+  svg {
+    width: 25px;
+    height: 25px;
+  }
 `;
 
 const IconWrapper = styled.div`
@@ -161,7 +174,13 @@ function Track(props) {
   return (
     <Container active={isPlaying} onClick={handleTrackClick}>
       <PreviewWrapper>
-        <TrackImage src={image} alt="track-image" />
+        {image ? (
+          <TrackImage src={image} alt="track-image" />
+        ) : (
+          <TrackIconWrapper>
+            <TrackIcon />
+          </TrackIconWrapper>
+        )}
         <IconWrapper disable={disable}>
           {disable ? <NoMusicIcon /> : isPlaying ? <PauseIcon /> : <PlayIcon />}
         </IconWrapper>

@@ -121,6 +121,7 @@ const FollowButton = styled(Button)`
 
   &:active {
     color: ${color.lightGray};
+    border: 1px solid ${color.lightGray};
     transform: scale(1);
   }
 

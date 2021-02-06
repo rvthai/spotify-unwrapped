@@ -2,7 +2,7 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import { theme, mixins } from "styles";
 
-const { color } = theme;
+const { color, transition } = theme;
 
 const Container = styled.div`
   margin: 0.5em 0;
@@ -32,7 +32,7 @@ const Stats = styled.div`
 const Bar = styled.div`
   ${mixins.flexRow}
   ${mixins.flexAlignCenter}
-  background-color: ${theme.color.green};
+  background-color: ${color.green};
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   margin-right: 1em;
@@ -41,6 +41,11 @@ const Bar = styled.div`
   animation-duration: 1s;
   width: ${(props) => props.width}%;
   height: 25px;
+  transition: ${transition};
+
+  &:hover {
+    background-color: ${color.lightGreen};
+  }
 `;
 
 function Genre(props) {
