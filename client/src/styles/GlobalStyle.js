@@ -54,7 +54,7 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100%;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-family: "Circular Std", "sans-serif";
+    font-family: 'Circular Std', 'system', '-apple-system', 'BlinkMacSystemFont', 'sans-serif';
     font-size: 16px;
     background-color: ${color.darkGray};
     color: #fff;
