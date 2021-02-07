@@ -35,7 +35,8 @@ function Login() {
   return (
     <Main>
       <CenteredSection>
-        <h1>Spotify Unwrapped</h1>
+        <h1>Spotify</h1>
+        <h1>Unwrapped</h1>
         <LoginButton as="a" href={URL}>
           LOG IN WITH SPOTIFY
         </LoginButton>
