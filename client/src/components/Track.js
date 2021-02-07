@@ -13,7 +13,6 @@ const { color, fontSize, transition } = theme;
 const Container = styled.div`
   ${mixins.flexRow}
   ${mixins.flexAlignCenter}
-  width: 100%;
   padding: 0.5em 0;
   transition: ${transition};
   cursor: pointer;
