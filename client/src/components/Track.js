@@ -13,10 +13,12 @@ const { color, fontSize, transition } = theme;
 const Container = styled.div`
   ${mixins.flexRow}
   ${mixins.flexAlignCenter}
+  justify-content: space-between;
+  width: 100%;
   padding: 0.5em 0;
   transition: ${transition};
   cursor: pointer;
-  border: 1px solid white;
+  border: solid 1px white;
 
   @media (hover: hover) {
     &:hover {
@@ -143,6 +145,10 @@ const DurationWrapper = styled.div`
   padding-left: 1em;
 `;
 
+const Left = styled.div`
+  ${mixins.flexRow}
+`;
+
 function Track(props) {
   const { image, name, artists, duration, preview, activeTrack } = props;
 
@@ -173,33 +179,38 @@ function Track(props) {
 
   return (
     <Container active={isPlaying} onClick={handleTrackClick}>
-      <PreviewWrapper>
-        {image ? (
-          <TrackImage src={image} alt="track-image" />
-        ) : (
-          <TrackIconWrapper>
-            <TrackIcon />
-          </TrackIconWrapper>
-        )}
-        <IconWrapper disable={disable}>
-          {disable ? <NoMusicIcon /> : isPlaying ? <PauseIcon /> : <PlayIcon />}
-        </IconWrapper>
-      </PreviewWrapper>
-
-      <TrackInfo>
+      <Left>
+        <PreviewWrapper>
+          {image ? (
+            <TrackImage src={image} alt="track-image" />
+          ) : (
+            <TrackIconWrapper>
+              <TrackIcon />
+            </TrackIconWrapper>
+          )}
+          <IconWrapper disable={disable}>
+            {disable ? (
+              <NoMusicIcon />
+            ) : isPlaying ? (
+              <PauseIcon />
+            ) : (
+              <PlayIcon />
+            )}
+          </IconWrapper>
+        </PreviewWrapper>
         <TrackCaption>
           <TrackName>{name}</TrackName>
           <TrackArtist>{trackArtists}</TrackArtist>
         </TrackCaption>
+      </Left>
 
-        <DurationWrapper>
-          {isPlaying ? (
-            <Loader color={color.lightGreen} isPage={false} />
-          ) : (
-            <TrackDuration>{trackDuration}</TrackDuration>
-          )}
-        </DurationWrapper>
-      </TrackInfo>
+      <DurationWrapper>
+        {isPlaying ? (
+          <Loader color={color.lightGreen} isPage={false} />
+        ) : (
+          <TrackDuration>{trackDuration}</TrackDuration>
+        )}
+      </DurationWrapper>
     </Container>
   );
 }
