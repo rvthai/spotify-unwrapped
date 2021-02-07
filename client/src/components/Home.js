@@ -16,12 +16,11 @@ import PageNotFound from "pages/PageNotFound";
 import { media } from "styles";
 
 const Content = styled.div`
-  min-height: 100vh;
   margin-left: 100px;
 
   ${media.tablet`
     margin-left: 0;
-    padding-bottom: 55px;
+    margin-bottom: 75px;
   `}
 `;
 
