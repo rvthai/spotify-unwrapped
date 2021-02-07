@@ -13,6 +13,7 @@ const { color, fontSize, fontWeight } = theme;
 const AvatarWrapper = styled.div`
   width: 150px;
   height: 150px;
+  margin-bottom: 1em;
   border-radius: 50%;
   overflow: hidden;
 `;
@@ -28,6 +29,7 @@ const UnknownProfile = styled.div`
   border-radius: 50%;
   width: 150px;
   height: 150px;
+  margin-bottom: 1em;
 
   svg {
     color: ${color.lightGray};
@@ -38,6 +40,7 @@ const UnknownProfile = styled.div`
 
 const StatsWrapper = styled.div`
   ${mixins.flexCenter}
+  margin: 1em 0;
   width: 100%;
 `;
 

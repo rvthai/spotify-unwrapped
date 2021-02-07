@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { convertTime, joinArtists } from "utils";
-
-// Components
-import Loader from "components/Loader";
-
-// Icons
 import { PlayIcon, PauseIcon, NoMusicIcon, TrackIcon } from "assets/icons";
-
-// Styles
 import styled from "styled-components";
 import { Image } from "styles";
 import { theme, mixins } from "styles";
+
+// Components
+import Loader from "components/Loader";
 
 const { color, fontSize, transition } = theme;
 
@@ -113,11 +109,6 @@ const IconWrapper = styled.div`
   `}
 `;
 
-const TrackRank = styled.p`
-  font-size: ${fontSize.sm};
-  margin: 0 2em;
-`;
-
 const TrackInfo = styled.div`
   ${mixins.flexRow}
   ${mixins.flexSpaceBetween}
@@ -129,6 +120,7 @@ const TrackCaption = styled.div`
   display: table;
   table-layout: fixed;
   text-align: left;
+  margin-left: 1em;
   width: 100%;
 `;
 
@@ -152,14 +144,22 @@ const DurationWrapper = styled.div`
 `;
 
 function Track(props) {
-  const { rank, image, name, artists, duration, preview, activeTrack } = props;
+  const { image, name, artists, duration, preview, activeTrack } = props;
 
   const [trackArtists, setTrackArtists] = useState("");
   const [trackDuration, setTrackDuration] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
   const [disable, setDisable] = useState(false);
 
+  let audio = useRef();
+
   useEffect(() => {
+    if (preview) {
+      audio.current = new Audio(preview);
+      audio.current.volume = 0.1;
+      audio.current.onended = () => null;
+    }
+
     setTrackArtists(joinArtists(artists));
     setTrackDuration(convertTime(duration));
     setIsPlaying(preview ? activeTrack === preview : false);
@@ -168,7 +168,7 @@ function Track(props) {
 
   const handleTrackClick = () => {
     if (disable) return null;
-    props.onActiveTrackChange(preview);
+    props.onActiveTrackChange(audio);
   };
 
   return (
@@ -186,7 +186,6 @@ function Track(props) {
         </IconWrapper>
       </PreviewWrapper>
 
-      <TrackRank>{rank}</TrackRank>
       <TrackInfo>
         <TrackCaption>
           <TrackName>{name}</TrackName>

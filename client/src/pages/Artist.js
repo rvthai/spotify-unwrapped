@@ -112,6 +112,7 @@ const Chip = styled.div`
 const FollowButton = styled(Button)`
   background: transparent;
   border: 1px solid ${color.white};
+  margin-botom: 1em;
   cursor: pointer;
   width: 165px;
 

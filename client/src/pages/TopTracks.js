@@ -37,7 +37,16 @@ function TopTracks() {
 
   useEffect(() => {
     getData();
-  }, []);
+
+    let audio = activeTrack;
+
+    return () => {
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+    };
+  }, [activeTrack]);
 
   const getData = async () => {
     try {
@@ -63,8 +72,8 @@ function TopTracks() {
     setTerm(range);
   };
 
-  const onActiveTrackChange = (previewURL) => {
-    const track = playTrack({ url: previewURL, track: activeTrack });
+  const onActiveTrackChange = (audio) => {
+    const track = playTrack({ audio: audio.current, track: activeTrack });
     setActiveTrack(track);
   };
 
@@ -82,7 +91,6 @@ function TopTracks() {
             {topTracks[term].map((track, index) => (
               <Track
                 key={index}
-                rank={index + 1}
                 image={track.album.images[2] ? track.album.images[2].url : null}
                 name={track.name}
                 artists={track.artists}

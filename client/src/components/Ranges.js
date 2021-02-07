@@ -2,19 +2,16 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { theme, mixins } from "styles";
 
-const { color, fontSize, fontWeight, kerning, transition } = theme;
+const { color, fontWeight, transition } = theme;
 
 const Container = styled.div`
   ${mixins.flexRow}
-  ${mixins.flexSpaceAround}
-  width: 350px;
 `;
 
 const Link = styled.p`
-  font-size: ${fontSize.xs};
   font-weight: ${fontWeight.bold};
-  letter-spacing: ${kerning.lost};
   text-decoration: none;
+  margin: 0 1em;
   transition: ${transition};
   cursor: pointer;
 
@@ -54,13 +51,13 @@ function Ranges(props) {
   return (
     <Container>
       <Link id="long" term={term} onClick={handleTermClick}>
-        ALL TIME
+        All Time
       </Link>
       <Link id="medium" term={term} onClick={handleTermClick}>
-        LAST 6 MONTHS
+        Last 6 Months
       </Link>
       <Link id="short" term={term} onClick={handleTermClick}>
-        LAST 4 WEEKS
+        Last 4 Weeks
       </Link>
     </Container>
   );

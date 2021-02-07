@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { playTrack } from "utils";
 import { Section, Header, MoreLink } from "styles";
 
@@ -9,8 +9,19 @@ function TopTracks(props) {
   const { data } = props;
   const [activeTrack, setActiveTrack] = useState(null);
 
-  const onActiveTrackChange = (previewURL) => {
-    const track = playTrack({ url: previewURL, track: activeTrack });
+  useEffect(() => {
+    let audio = activeTrack;
+
+    return () => {
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+    };
+  }, [activeTrack]);
+
+  const onActiveTrackChange = (audio) => {
+    const track = playTrack({ audio: audio.current, track: activeTrack });
     setActiveTrack(track);
   };
 
@@ -24,7 +35,6 @@ function TopTracks(props) {
       {data.map((track, index) => (
         <Track
           key={index}
-          rank={index + 1}
           image={track.album.images[2] ? track.album.images[2].url : null}
           name={track.name}
           artists={track.artists}

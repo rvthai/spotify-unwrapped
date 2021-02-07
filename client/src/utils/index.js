@@ -292,16 +292,12 @@ export const joinArtists = (a) => {
   return l.join(", ");
 };
 
-export const playTrack = ({ url, track }) => {
-  const audio = new Audio(url);
-  audio.volume = 0.1;
-  audio.onended = () => null;
-
+export const playTrack = ({ audio, track }) => {
   if (!track) {
     // Play
     audio.play();
     return audio;
-  } else if (url === track.src) {
+  } else if (audio.src === track.src) {
     // Stop
     track.pause();
     track.currentTime = 0;

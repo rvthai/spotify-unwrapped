@@ -5,7 +5,7 @@ import { Image } from "styles";
 import { theme, mixins, media } from "styles";
 import { InfoIcon, NoUserIcon } from "assets/icons";
 
-const { color, fontSize, transition } = theme;
+const { color, transition } = theme;
 
 const Container = styled.div`
   ${mixins.flexColumn}
@@ -191,17 +191,13 @@ const ArtistName = styled.p`
   ${(props) =>
     props.preview &&
     `
-    margin: 0;
+    margin-top: 0;
+    margin-left: 1em;
   `}
 `;
 
-const ArtistRank = styled.p`
-  font-size: ${fontSize.sm};
-  margin: 0 2em;
-`;
-
 function Artist(props) {
-  const { rank, id, name, image, preview } = props;
+  const { id, name, image, preview } = props;
   const history = useHistory();
   const prev = history.location.pathname;
 
@@ -232,8 +228,6 @@ function Artist(props) {
           <InfoIcon />
         </InfoIconWrapper>
       </Avatar>
-
-      {preview ? <ArtistRank>{rank}</ArtistRank> : null}
 
       <ArtistName onClick={handleClick} preview={preview}>
         {name}

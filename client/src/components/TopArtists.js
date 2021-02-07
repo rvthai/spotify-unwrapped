@@ -21,7 +21,6 @@ function TopArtists(props) {
         {props.data.map((artist, index) => (
           <Artist
             key={index}
-            rank={index + 1}
             id={artist.id}
             name={artist.name}
             image={artist.images[0] ? artist.images[0].url : null}

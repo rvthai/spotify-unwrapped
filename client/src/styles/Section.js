@@ -10,7 +10,7 @@ const Section = styled.section`
   width: 1000px;
 
   ${media.desktop`
-    width: 75%;
+    width: 90%;
   `}
 `;
 

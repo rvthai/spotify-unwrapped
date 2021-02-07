@@ -6,10 +6,10 @@ var cors = require("cors");
 var querystring = require("querystring");
 var cookieParser = require("cookie-parser");
 
-var app = express();
 const port = process.env.PORT || 8888;
 const path = require("path");
 
+const app = express();
 app.use(express.static(path.resolve(__dirname, "../client/build")));
 app.use(cors());
 app.use(cookieParser());
