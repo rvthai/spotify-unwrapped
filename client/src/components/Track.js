@@ -16,6 +16,7 @@ const Container = styled.div`
   padding: 0.5em 0;
   transition: ${transition};
   cursor: pointer;
+  border: 1px solid white;
 
   @media (hover: hover) {
     &:hover {
