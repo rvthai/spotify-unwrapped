@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getTopGenresLong } from "utils";
 import styled from "styled-components";
 import { Section, Header, MoreLink } from "styles";
-import { theme, mixins, media } from "styles";
+import { theme, mixins } from "styles";
 
 // Components
 import Genre from "components/Genre";
