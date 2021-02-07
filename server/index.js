@@ -18,6 +18,10 @@ app.get("/", function (req, res) {
   res.render(path.resolve(__dirname, "../client/build/index.html"));
 });
 
+app.get("*", function (req, res) {
+  res.render(path.resolve(__dirname, "../client/build/index.html"));
+});
+
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 let REDIRECT_URI = process.env.REDIRECT_URI || "http://localhost:8888/callback";
