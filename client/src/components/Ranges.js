@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { theme, mixins, media } from "styles";
+import { theme, mixins } from "styles";
 
 const { color, fontSize, fontWeight, kerning, transition } = theme;
 

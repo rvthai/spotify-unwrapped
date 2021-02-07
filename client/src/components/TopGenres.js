@@ -7,7 +7,7 @@ import { theme, mixins, media } from "styles";
 // Components
 import Genre from "components/Genre";
 
-const { color, fontSize } = theme;
+const { color } = theme;
 
 const Genres = styled.div`
   ${mixins.flexColumn}

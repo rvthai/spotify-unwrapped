@@ -8,7 +8,6 @@ import Image from "./Image";
 import Label from "./Label";
 import Header from "./Header";
 import MoreLink from "./MoreLink";
-import Text from "./Text";
 import PageHeader from "./PageHeader";
 import Grid from "./Grid";
 
@@ -29,7 +28,6 @@ export {
   Label,
   Header,
   MoreLink,
-  Text,
   PageHeader,
   Grid,
 };

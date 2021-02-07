@@ -10,7 +10,7 @@ import { PlayIcon, PauseIcon, NoMusicIcon, TrackIcon } from "assets/icons";
 // Styles
 import styled from "styled-components";
 import { Image } from "styles";
-import { theme, mixins, media } from "styles";
+import { theme, mixins } from "styles";
 
 const { color, fontSize, transition } = theme;
 

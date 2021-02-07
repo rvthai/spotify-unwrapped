@@ -5,13 +5,9 @@ var request = require("request"); // "Request" library
 var cors = require("cors");
 var querystring = require("querystring");
 var cookieParser = require("cookie-parser");
-var path = require("path");
 
 var app = express();
 const port = process.env.PORT || 8888;
-
-const publicPath = path.join(__dirname, "..", "public");
-app.use(express.static(publicPath));
 
 app.use(cors());
 app.use(cookieParser());
@@ -84,7 +80,7 @@ app.get("/callback", function (req, res) {
       headers: {
         Authorization:
           "Basic " +
-          new Buffer(client_id + ":" + CLIENT_SECRET).toString("base64"),
+          new Buffer(CLIENT_ID + ":" + CLIENT_SECRET).toString("base64"),
       },
       json: true,
     };
@@ -132,7 +128,7 @@ app.get("/refresh_token", function (req, res) {
     headers: {
       Authorization:
         "Basic " +
-        new Buffer(client_id + ":" + CLIENT_SECRET).toString("base64"),
+        new Buffer(CLIENT_ID + ":" + CLIENT_SECRET).toString("base64"),
     },
     form: {
       grant_type: "refresh_token",
