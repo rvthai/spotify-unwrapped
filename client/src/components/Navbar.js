@@ -125,7 +125,7 @@ const Navbar = () => (
       </MenuItem>
     </Menu>
 
-    <a href="https://github.com/rvthai">
+    <a href="https://github.com/rvthai/statify">
       <GithubLogo>
         <GithubIcon />
       </GithubLogo>
