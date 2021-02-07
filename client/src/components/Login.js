@@ -27,7 +27,10 @@ const LoginButton = styled(Button)`
 `;
 
 function Login() {
-  const URL = "http://localhost:8888/login";
+  const URL =
+    process.env.NODE_ENV !== "production"
+      ? "http://localhost:8888/login"
+      : "https://myspotifyunwrapped.herokuapp.com/login";
 
   return (
     <Main>
