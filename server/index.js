@@ -8,9 +8,15 @@ var cookieParser = require("cookie-parser");
 
 var app = express();
 const port = process.env.PORT || 8888;
+const path = require("path");
 
+app.use(express.static(path.resolve(__dirname, "../client/build")));
 app.use(cors());
 app.use(cookieParser());
+
+app.get("/", function (req, res) {
+  res.render(path.resolve(__dirname, "../client/build/index.html"));
+});
 
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
