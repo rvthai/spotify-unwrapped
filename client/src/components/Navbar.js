@@ -10,7 +10,6 @@ import {
   TrackIcon,
   ArtistIcon,
   GenreIcon,
-  PlaylistsIcon,
 } from "assets/icons";
 
 // Styles

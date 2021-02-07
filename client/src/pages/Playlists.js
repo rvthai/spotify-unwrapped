@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getPlaylists } from "utils";
 import styled from "styled-components";
-import { Main, Section, PageHeader, Image } from "styles";
+import { Main, Section, PageHeader, Grid, Image } from "styles";
 import { theme, mixins, media } from "styles";
 
 // Components
@@ -18,24 +18,60 @@ const Title = styled.h1`
   `}
 `;
 
-const Content = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  width: 100%;
-  column-gap: 2em;
-  row-gap: 2em;
-  margin-top: 2em;
+const GridItem = styled.div`
+  ${mixins.flexColumn}
+  ${mixins.flexAlignCenter}
 `;
 
 const ImageWrapper = styled.div`
   width: 200px;
   height: 200px;
   overflow: hidden;
+  transition: ${transition};
+  cursor: pointer;
+
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  ${media.tablet`
+    width: 150px;
+    height: 150px;
+  `}
+
+  ${media.phone`
+    width: 100px;
+    height: 100px;
+  `}
 `;
 
 const PlaylistImage = styled(Image)`
   width: 200px;
   height: 200px;
+
+  ${media.tablet`
+    width: 150px;
+    height: 150px;
+  `}
+
+  ${media.phone`
+    width: 100px;
+    height: 100px;
+  `}
+`;
+
+const PlaylistTitle = styled.p`
+  ${mixins.ellipsis};
+  color: ${color.white};
+  border-bottom: 1px solid transparent;
+  margin-top: 1em;
+  cursor: pointer;
+
+  &:hover {
+    border-bottom: 1px solid ${color.white};
+  }
 `;
 
 function Playlists() {
@@ -74,12 +110,13 @@ function Playlists() {
         <PageHeader>
           <Title>Playlists</Title>
         </PageHeader>
-        <Content>
+        <Grid>
           {playlists
             ? playlists.map((playlist, index) => (
-                <div
+                <GridItem
                   key={index}
-                  style={{ display: "flex", flexDirection: "column" }}
+                  as="a"
+                  href={playlist.external_urls.spotify}
                 >
                   <ImageWrapper>
                     <PlaylistImage
@@ -87,11 +124,13 @@ function Playlists() {
                       alt="playlist-cover"
                     />
                   </ImageWrapper>
-                  <p>Name: {playlist.name}</p>
-                </div>
+                  <PlaylistTitle as="a" href={playlist.external_urls.spotify}>
+                    {playlist.name}
+                  </PlaylistTitle>
+                </GridItem>
               ))
             : null}
-        </Content>
+        </Grid>
       </Section>
     </Main>
   );

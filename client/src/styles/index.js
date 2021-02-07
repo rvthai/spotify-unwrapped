@@ -10,6 +10,7 @@ import Header from "./Header";
 import MoreLink from "./MoreLink";
 import Text from "./Text";
 import PageHeader from "./PageHeader";
+import Grid from "./Grid";
 
 import mixins from "./mixins";
 import theme from "./theme";
@@ -30,4 +31,5 @@ export {
   MoreLink,
   Text,
   PageHeader,
+  Grid,
 };

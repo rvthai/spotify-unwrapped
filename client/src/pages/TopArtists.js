@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Main, Section, PageHeader } from "styles";
+import { Main, Section, PageHeader, Grid } from "styles";
 import { theme, media } from "styles";
 import {
   getTopArtistsLong,
@@ -21,23 +21,6 @@ const Title = styled.h1`
 
   ${media.tablet`
     margin-bottom: 0.5em;
-  `}
-`;
-
-const Artists = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  column-gap: 2em;
-  row-gap: 2em;
-  width: 100%;
-  margin-top: 2em;
-
-  ${media.tablet`
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  `}
-
-  ${media.phone`
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   `}
 `;
 
@@ -84,7 +67,7 @@ function TopArtists() {
           <Ranges onTermChange={onTermChange} />
         </PageHeader>
 
-        <Artists>
+        <Grid>
           {topArtists
             ? topArtists[term].map((artist, index) => (
                 <Artist
@@ -97,7 +80,7 @@ function TopArtists() {
                 />
               ))
             : null}
-        </Artists>
+        </Grid>
       </Section>
     </Main>
   );

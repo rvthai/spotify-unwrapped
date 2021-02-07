@@ -94,6 +94,10 @@ const GlobalStyle = createGlobalStyle`
     `}
   }
 
+  a {
+    text-decoration: none;
+  }
+
   button {
     font-family: "Circular Std", "sans-serif";
     font-weight: 500;

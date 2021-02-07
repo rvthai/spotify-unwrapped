@@ -35,7 +35,7 @@ const Bar = styled.div`
   background-color: ${color.green};
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  margin-right: 1em;
+  margin-right: 0.75em;
   animation-name: ${slide};
   animation-delay: 3ms;
   animation-duration: 1s;

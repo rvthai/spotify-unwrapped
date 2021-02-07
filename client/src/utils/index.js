@@ -38,7 +38,6 @@ const refreshAccessToken = async () => {
     const { access_token } = data;
     setLocalAccessToken(access_token);
     window.location.reload();
-    return;
   } catch (e) {
     console.error(e);
   }
