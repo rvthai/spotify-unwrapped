@@ -203,11 +203,15 @@ const ArtistRank = styled.p`
 function Artist(props) {
   const { rank, id, name, image, preview } = props;
   const history = useHistory();
+  const prev = history.location.pathname;
 
   const handleClick = () => {
     history.push({
       pathname: `/top-artists/${id}`,
-      state: props,
+      state: {
+        props: props,
+        prev: prev,
+      },
     });
   };
 

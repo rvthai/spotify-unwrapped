@@ -133,7 +133,7 @@ const FollowButton = styled(Button)`
 `;
 
 function Artist(props) {
-  const { id, name, genres, image, followers } = props.location.state;
+  const { id, name, genres, image, followers } = props.location.state.props;
   const history = useHistory();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -141,6 +141,7 @@ function Artist(props) {
 
   useEffect(() => {
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getData = async () => {
@@ -154,7 +155,7 @@ function Artist(props) {
     setIsLoading(false);
   };
 
-  const handleBackClick = () => history.goBack();
+  const handleBackClick = () => history.push(props.location.state.prev);
 
   const handleFollowClick = async () => {
     if (!following) {
