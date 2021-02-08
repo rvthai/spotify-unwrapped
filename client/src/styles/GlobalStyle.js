@@ -57,7 +57,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Circular Std', 'system', '-apple-system', 'BlinkMacSystemFont', 'sans-serif';
     font-size: 16px;
     background-color: ${color.darkGray};
-    color: #fff;
+    color: ${color.white};
   }
 
   h1, h2 {

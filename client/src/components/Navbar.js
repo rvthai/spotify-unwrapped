@@ -1,8 +1,8 @@
 import React from "react";
 import { withRouter, NavLink } from "react-router-dom";
 import styled from "styled-components";
-
-// Icons
+import { Nav } from "styles";
+import { theme, mixins, media } from "styles";
 import {
   SpotifyIcon,
   GithubIcon,
@@ -11,10 +11,6 @@ import {
   ArtistIcon,
   GenreIcon,
 } from "assets/icons";
-
-// Styles
-import { Nav } from "styles";
-import { theme, mixins, media } from "styles";
 
 const { color, transition } = theme;
 

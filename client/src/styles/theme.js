@@ -3,11 +3,11 @@ const theme = {
     green: "#1db954",
     lightGreen: "#1ed760",
     darkGreen: "#18ac4d",
+    gray: "#212121",
+    lightGray: "#9b9b9b",
+    darkGray: "#181818",
     white: "#ffffff",
     black: "#040306",
-    lightGray: "#9b9b9b",
-    gray: "#212121",
-    darkGray: "#181818",
   },
 
   fontSize: {
@@ -25,11 +25,6 @@ const theme = {
     normal: "500",
     bold: "700",
     bolder: "900",
-  },
-
-  kerning: {
-    enhance: "-0.025em",
-    lost: "2px",
   },
 
   transition: "all 0.2s",

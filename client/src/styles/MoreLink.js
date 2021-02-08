@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import theme from "./theme";
 
-const { color, fontSize } = theme;
+const { color, fontSize, transition } = theme;
 
 const MoreLink = styled(Link)`
   color: ${color.lightGray};
@@ -10,10 +10,12 @@ const MoreLink = styled(Link)`
   letter-spacing: 2px;
   text-decoration: none;
   margin: 5px 0 5px 0;
-  transition: all 0.2s;
+  transition: ${transition};
 
-  &:hover {
-    color: ${color.white};
+  @media (hover: hover) {
+    &:hover {
+      color: ${color.white};
+    }
   }
 `;
 

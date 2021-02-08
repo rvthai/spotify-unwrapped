@@ -1,14 +1,13 @@
 import GlobalStyle from "./GlobalStyle";
-import Button from "./Button";
 import Main from "./Main";
-import Nav from "./Nav";
 import Section from "./Section";
-
+import Nav from "./Nav";
+import Button from "./Button";
 import Image from "./Image";
 import Label from "./Label";
-import Header from "./Header";
 import MoreLink from "./MoreLink";
 import PageHeader from "./PageHeader";
+import Header from "./Header";
 import Grid from "./Grid";
 
 import mixins from "./mixins";

@@ -1,5 +1,7 @@
 import axios from "axios";
 
+/* Authorization ---------------------------------------------------- */
+
 function getHashParams() {
   var hashParams = {};
   var e,
@@ -83,7 +85,7 @@ export const logout = () => {
   window.location.replace("/");
 };
 
-/* API CALLS -------------------------------------------------------------*/
+/* API Calls ---------------------------------------------------- */
 
 export const getUser = () =>
   axios.get(`https://api.spotify.com/v1/me`, {
@@ -245,7 +247,8 @@ export const getTopGenresShort = async (limit = 10) => {
   return data;
 };
 
-/* Helper Functions -------------------------------------------------------------*/
+/* Helper Functions ---------------------------------------------------- */
+
 export const isSingleLine = (el) => {
   let singleLine = false;
 
