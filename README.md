@@ -2,13 +2,17 @@
 
 > A web app that visualizes your Spotify insights
 
-Deployed with Heroku
-![example badge](badges/succeeded.svg)
+Deployed with Heroku:
 
-Built and bootstrapped with:
+- [Heroku](https://www.heroku.com/)
+
+Bootstrapped with:
+
+- [Create React App](https://github.com/facebook/create-react-app)
+
+Built with:
 
 - [Spotify Web API](https://developer.spotify.com/documentation/web-api/)
-- [Create React App](https://github.com/facebook/create-react-app)
 - [Express](https://expressjs.com/)
 - [Axios](https://www.npmjs.com/package/axios)
 - [React Router](https://reactrouter.com/)
@@ -16,15 +20,15 @@ Built and bootstrapped with:
 
 ## Installation & Set Up
 
-1. [Register a Spotify App](https://developer.spotify.com/dashboard/applications) and add `http://localhost:8888/callback` as a Redirect URI in the app settings.
+1. Clone this repository.
 
-2. Clone this repository.
+2. [Register a Spotify App](https://developer.spotify.com/dashboard/applications) and add `http://localhost:8888/callback` as a Redirect URI in the app settings.
 
 3. Create an `.env` file in the root directory with the following configurations:
 
    ```
    CLIENT_ID=<your-client-id>
-   CLIENT_SECRET=<your-client-serent>
+   CLIENT_SECRET=<your-client-secret>
    REDIRECT_URI=https://localhost:8888/callback
    FRONTEND_URI=https://localhost:3000
    ```
