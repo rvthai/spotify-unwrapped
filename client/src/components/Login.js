@@ -14,7 +14,7 @@ const CenteredSection = styled(Section)`
 const LoginButton = styled(Button)`
   font-weight: ${fontWeight.bold};
   background-color: ${color.green};
-  padding: 10px 35px;
+  padding: 15px 40px;
   margin-top: 1em;
   transition: ${transition};
   cursor: pointer;
