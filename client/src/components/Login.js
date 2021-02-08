@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Main, Section, Button } from "styles";
 import { theme } from "styles";
 
-const { color, transition } = theme;
+const { color, fontWeight, transition } = theme;
 
 const CenteredSection = styled(Section)`
   position: absolute;
@@ -12,6 +12,7 @@ const CenteredSection = styled(Section)`
 `;
 
 const LoginButton = styled(Button)`
+  font-weight: ${fontWeight.bold};
   background-color: ${color.green};
   padding: 10px 35px;
   margin-top: 1em;
