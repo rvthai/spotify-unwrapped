@@ -12,8 +12,8 @@ const { color, fontSize, transition } = theme;
 
 const Container = styled.div`
   ${mixins.flexRow}
+  ${mixins.flexSpaceBetween}
   ${mixins.flexAlignCenter}
-  justify-content: space-between;
   width: 100%;
   padding: 0.5em 0;
   transition: ${transition};
@@ -124,6 +124,7 @@ const TrackCaption = styled.div`
 
 const TrackName = styled.p`
   ${mixins.ellipsis};
+  width: 100%:
   color: ${color.white};
 `;
 
@@ -138,7 +139,7 @@ const TrackDuration = styled.p`
 
 const DurationWrapper = styled.div`
   margin-right: 0.5em;
-  padding-left: 1em;
+  padding-left: 2em;
 `;
 
 function Track(props) {
@@ -191,10 +192,12 @@ function Track(props) {
             )}
           </IconWrapper>
         </PreviewWrapper>
-        <TrackCaption>
-          <TrackName>{name}</TrackName>
-          <TrackArtist>{trackArtists}</TrackArtist>
-        </TrackCaption>
+        <div>
+          <TrackCaption>
+            <TrackName>{name}</TrackName>
+            <TrackArtist>{trackArtists}</TrackArtist>
+          </TrackCaption>
+        </div>
       </TrackInfo>
 
       <DurationWrapper>
