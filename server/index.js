@@ -5,14 +5,29 @@ var request = require("request"); // "Request" library
 var cors = require("cors");
 var querystring = require("querystring");
 var cookieParser = require("cookie-parser");
+var history = require("connect-history-api-fallback");
 
 const port = process.env.PORT || 8888;
 const path = require("path");
 
 const app = express();
 app.use(express.static(path.resolve(__dirname, "../client/build")));
-app.use(cors());
-app.use(cookieParser());
+
+app
+  .use(express.static(path.resolve(__dirname, "../client/build")))
+  .use(cors())
+  .use(cookieParser())
+  .use(
+    history({
+      verbose: true,
+      rewrites: [
+        { from: /\/login/, to: "/login" },
+        { from: /\/callback/, to: "/callback" },
+        { from: /\/refresh_token/, to: "/refresh_token" },
+      ],
+    })
+  )
+  .use(express.static(path.resolve(__dirname, "../client/build")));
 
 app.get("/", function (req, res) {
   res.render(path.resolve(__dirname, "../client/build/index.html"));
