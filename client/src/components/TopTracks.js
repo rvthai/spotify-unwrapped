@@ -20,7 +20,8 @@ function TopTracks(props) {
     };
   }, [activeTrack]);
 
-  const onActiveTrackChange = (audio) => {
+  const onActiveTrackChange = (audio, preview) => {
+    audio.current.src = preview;
     const track = playTrack({ audio: audio.current, track: activeTrack });
     setActiveTrack(track);
   };

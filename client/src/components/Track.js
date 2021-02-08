@@ -18,7 +18,6 @@ const Container = styled.div`
   padding: 0.5em 0;
   transition: ${transition};
   cursor: pointer;
-  border: solid 1px white;
 
   @media (hover: hover) {
     &:hover {
@@ -51,6 +50,10 @@ const Container = styled.div`
       display: block;
     }
   `}
+`;
+
+const TrackInfo = styled.div`
+  ${mixins.flexRow}
 `;
 
 const PreviewWrapper = styled.div`
@@ -111,13 +114,6 @@ const IconWrapper = styled.div`
   `}
 `;
 
-const TrackInfo = styled.div`
-  ${mixins.flexRow}
-  ${mixins.flexSpaceBetween}
-  ${mixins.flexAlignCenter}
-  width: 100%;
-`;
-
 const TrackCaption = styled.div`
   display: table;
   table-layout: fixed;
@@ -145,10 +141,6 @@ const DurationWrapper = styled.div`
   padding-left: 1em;
 `;
 
-const Left = styled.div`
-  ${mixins.flexRow}
-`;
-
 function Track(props) {
   const { image, name, artists, duration, preview, activeTrack } = props;
 
@@ -161,7 +153,7 @@ function Track(props) {
 
   useEffect(() => {
     if (preview) {
-      audio.current = new Audio(preview);
+      audio.current = new Audio();
       audio.current.volume = 0.1;
       audio.current.onended = () => null;
     }
@@ -174,12 +166,13 @@ function Track(props) {
 
   const handleTrackClick = () => {
     if (disable) return null;
-    props.onActiveTrackChange(audio);
+    audio.current.play();
+    props.onActiveTrackChange(audio, preview);
   };
 
   return (
     <Container active={isPlaying} onClick={handleTrackClick}>
-      <Left>
+      <TrackInfo>
         <PreviewWrapper>
           {image ? (
             <TrackImage src={image} alt="track-image" />
@@ -202,7 +195,7 @@ function Track(props) {
           <TrackName>{name}</TrackName>
           <TrackArtist>{trackArtists}</TrackArtist>
         </TrackCaption>
-      </Left>
+      </TrackInfo>
 
       <DurationWrapper>
         {isPlaying ? (

@@ -10,7 +10,6 @@ const { color, transition } = theme;
 const Container = styled.div`
   ${mixins.flexColumn}
   ${mixins.flexAlignCenter}
-  border: 1px solid white;
 
   ${(props) =>
     props.preview &&
