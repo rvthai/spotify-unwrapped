@@ -124,8 +124,8 @@ const TrackCaption = styled.div`
 
 const TrackName = styled.p`
   ${mixins.ellipsis};
-  width: 100%:
   color: ${color.white};
+  width: 100%:
 `;
 
 const TrackArtist = styled.p`
