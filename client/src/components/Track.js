@@ -114,6 +114,10 @@ const IconWrapper = styled.div`
   `}
 `;
 
+const TrackMeta = styled.div`
+  ${mixins.flexAlignCenter}
+`;
+
 const TrackCaption = styled.div`
   display: table;
   table-layout: fixed;
@@ -192,12 +196,12 @@ function Track(props) {
             )}
           </IconWrapper>
         </PreviewWrapper>
-        <div>
+        <TrackMeta>
           <TrackCaption>
             <TrackName>{name}</TrackName>
             <TrackArtist>{trackArtists}</TrackArtist>
           </TrackCaption>
-        </div>
+        </TrackMeta>
       </TrackInfo>
 
       <DurationWrapper>

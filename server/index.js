@@ -11,6 +11,7 @@ const port = process.env.PORT || 8888;
 const path = require("path");
 
 const app = express();
+
 app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 app
@@ -101,7 +102,7 @@ app.get("/callback", function (req, res) {
       headers: {
         Authorization:
           "Basic " +
-          new Buffer(CLIENT_ID + ":" + CLIENT_SECRET).toString("base64"),
+          new Buffer.from(CLIENT_ID + ":" + CLIENT_SECRET).toString("base64"),
       },
       json: true,
     };
@@ -149,7 +150,7 @@ app.get("/refresh_token", function (req, res) {
     headers: {
       Authorization:
         "Basic " +
-        new Buffer(CLIENT_ID + ":" + CLIENT_SECRET).toString("base64"),
+        new Buffer.from(CLIENT_ID + ":" + CLIENT_SECRET).toString("base64"),
     },
     form: {
       grant_type: "refresh_token",
@@ -168,8 +169,9 @@ app.get("/refresh_token", function (req, res) {
   });
 });
 
+// All remaining requests return the React app, so it can handle routing.
 app.get("*", function (req, res) {
-  res.render(path.resolve(__dirname, "../client/build/index.html"));
+  res.sendFile(path.resolve(__dirname, "../client/public", "index.html"));
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}...`));
