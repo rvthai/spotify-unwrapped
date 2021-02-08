@@ -19,8 +19,10 @@ const LoginButton = styled(Button)`
   transition: ${transition};
   cursor: pointer;
 
-  &:hover {
-    background-color: ${color.lightGreen};
+  @media (hover: hover) {
+    &:hover {
+      background-color: ${color.lightGreen};
+    }
   }
 
   &:active {

@@ -12,8 +12,10 @@ const LogoutButton = styled(Button)`
   margin-top: 2em;
   cursor: pointer;
 
-  &:hover {
-    transform: scale(1.05);
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   &:active {

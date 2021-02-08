@@ -26,8 +26,10 @@ const BackIconWrapper = styled.div`
     height: 25px;
   }
 
-  &:hover {
-    color: ${color.white};
+  @media (hover: hover) {
+    &:hover {
+      color: ${color.white};
+    }
   }
 
   ${media.tablet`
