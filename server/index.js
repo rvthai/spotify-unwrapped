@@ -12,8 +12,6 @@ const path = require("path");
 
 const app = express();
 
-app.use(express.static(path.resolve(__dirname, "../client/build")));
-
 app
   .use(express.static(path.resolve(__dirname, "../client/build")))
   .use(cors())
@@ -36,13 +34,9 @@ app.get("/", function (req, res) {
 
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
-let REDIRECT_URI = process.env.REDIRECT_URI || "http://localhost:8888/callback";
+let REDIRECT_URI = process.env.REDIRECT_URI || "http://127.0.0.1:8888/callback";
 let FRONTEND_URI = process.env.FRONTEND_URI || "http://localhost:3000";
 
-if (process.env.NODE_ENV !== "production") {
-  REDIRECT_URI = "http://localhost:8888/callback";
-  FRONTEND_URI = "http://localhost:3000";
-}
 var generateRandomString = function (length) {
   var text = "";
   var possible =

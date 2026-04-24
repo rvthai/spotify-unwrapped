@@ -9,7 +9,6 @@
     "client-install": "cd client && npm install",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "start": "node server",
-    "heroku-postbuild": "cd client && npm install --production && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ricky Thai",
@@ -23,5 +22,8 @@
     "express": "^4.17.1",
     "querystring": "^0.2.0",
     "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }
