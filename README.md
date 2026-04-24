@@ -2,9 +2,9 @@
 
 > A web app that visualizes your Spotify insights
 
-Deployed with Heroku:
+Deployed with Render:
 
-- [Heroku](https://www.heroku.com/)
+- [Render](https://www.render.com/)
 
 Bootstrapped with:
 
@@ -22,15 +22,15 @@ Built with:
 
 1. Clone this repository.
 
-2. [Register a Spotify App](https://developer.spotify.com/dashboard/applications) and add `http://localhost:8888/callback` as a Redirect URI in the app settings.
+2. [Register a Spotify App](https://developer.spotify.com/dashboard/applications) and add `http://127.0.01:8888/callback` as a Redirect URI in the app settings.
 
 3. Create an `.env` file in the root directory with the following configurations:
 
    ```
    CLIENT_ID=<your-client-id>
    CLIENT_SECRET=<your-client-secret>
-   REDIRECT_URI=https://localhost:8888/callback
-   FRONTEND_URI=https://localhost:3000
+   REDIRECT_URI=http://127.0.0.1:8888/callback
+   FRONTEND_URI=http://localhost:3000
    ```
 
 4. Install dependencies for the server.
